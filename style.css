@@ -1,0 +1,514 @@
+/**
+ * @License(name="GNU General Public License", version="3.0")
+ * 
+ * Copyright (C) 2010 UnWebmaster.Com.Ar
+ * 
+ * This file is part of LaMantengo.
+ * 
+ * LaMantengo is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * LaMantengo is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with LaMantengo.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ */
+/* Based on phpBB 3.0 Style Sheet 'proSilver' Copyright 2006 phpBB Group ( http://www.phpbb.com/ ) */
+* { /* Reset browsers default margin, padding and font sizes */
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 100%;
+}
+
+body { /* Text-Sizing with ems: http://www.clagnut.com/blog/348/ */
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	color: #828282;
+	background-color: #FFFFFF;
+	/*font-size: 62.5%;			 This sets the default font size to be equivalent to 10px */
+	font-size: 12px;
+	margin: 0;
+	padding: 12px 0;
+	min-width: 968px;
+}
+
+h2 {
+	text-align: center;
+	font-size: 24px;
+}
+
+img {
+	border-width: 0;
+}
+
+div#logo {
+	width: 250px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+div#contenido {
+	float: left;
+	width: 100%;
+}
+
+#tos a,a:link,a:visited,a:active {
+	font-weight: normal;
+	font-size: 12px;
+}
+
+#tos a:hover {
+	font-weight: normal;
+	font-size: 12px;
+	background-color: #aaaaaa;
+}
+
+div#footer {
+	margin-top: 30px;
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+
+div#login {
+	text-align: center;
+	width: 50%;
+	padding: 10px;
+	border: 1px solid black;
+	margin-left: 25%;
+	margin-right: 25%;
+}
+
+div#explicacion {
+	float: left;
+	margin-top: 40px;
+	border: 1px solid black;
+	padding: 10px;
+	background-color: #505050;
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+	color: #ffffff;
+}
+
+#explicacion a,a:link,a:visited,a:active,a:hover {
+	color: #cccccc;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+#footer a,a:link,a:visited,a:active {
+	color: #000000;
+	background: transparent;
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+#footer a:hover {
+	color: #000000;
+	background: transparent;
+	text-decoration: underline;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+a,a:link,a:visited,a:active {
+	font-weight: normal;
+	text-decoration: none;
+	color: #747474;
+	font-size: 0.9em;
+}
+
+a:hover {
+	border-color: #d2d2d2;
+	background-color: #747474;
+	color: #FFF;
+	text-decoration: none;
+}
+
+a#logo,a#logo:hover,a#logo:link,a#logo:visited,a#logo:active {
+	text-decoration: none;
+	background: transparent;
+}
+
+div#reging {
+	float: right;
+	margin-right: 10px;
+	display: block;
+	margin-left: auto;
+	padding: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+	font-size: 12px;
+	text-align: center;
+	border: 1px solid black;
+	color: #747474;
+	background-color: #f0f0f0;
+	margin-top: 30px;
+}
+
+#reging a,a:link,a:visited,a:active {
+	text-decoration: none;
+	color: #747474;
+	background: transparent;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+#reging a:hover {
+	text-decoration: underline;
+	color: #000000;
+	background: transparent;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+#reging input {
+	background-color: #bfbfbf;
+	border: 1px solid black;
+	color: #000000;
+}
+
+div#upperLeftDiv {
+	float: left;
+	margin-left: 10px;
+}
+
+#upperLeftDiv a,a:link,a:visited,a:active {
+	text-decoration: none;
+	color: #747474;
+	background: transparent;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+/********* BOTONES INDEX ***************/
+#link_button {
+	border: 2px solid #bfbfbf;
+	padding: 2px;
+	margin: 6px;
+	background-color: #505050;
+	font-size: 20px;
+	color: #bfbfbf;
+	height: 40px;
+	vertical-align: middle;
+	/*background: url('images/link_button.png');*/
+}
+
+#dest_text {
+	border: 2px solid #505050;
+	height: 40px;
+	width: 500px;
+	font-size: 24px;
+	vertical-align: middle;
+	background-color: #bfbfbf;
+	color: black;
+}
+
+#desc_text {
+	border: 2px solid #505050;
+	background-color: #bfbfbf;
+	color: black;
+}
+
+#imglink a,a:hover,a:link,a:visited,a:active {
+	text-decoration: none;
+	background-color: transparent;
+}
+
+#imglink img,img:hover {
+	text-decoration: none;
+	background-color: transparent;
+}
+
+#imglink td:hover,td,tr:hover,tr {
+	text-decoration: none;
+	background-color: transparent;
+}
+
+/********* FIN BOTONES INDEX ***************/
+div#mylinks_div {
+	text-align: center;
+	width: 70%;
+	padding: 10px;
+	border: 1px solid black;
+	margin-left: 15%;
+	margin-right: 15%;
+	background-color: #f0f0f0;
+	color: #505050;
+}
+
+div#mylinks_div a,a:visited,a:link,a:active {
+	color: #505050;
+}
+
+#tabla_links {
+	text-align: center;
+	border: 0px;
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+#links_tr:hover {
+	font-weight: normal;
+	background-color: #505050;
+	color: #ffffff;
+}
+
+#links_tr:hover a,a:link,a:active,a:visited {
+	font-weight: normal;
+	color: #ffffff;
+	background-color: #505050;
+}
+
+#links_tr a:hover {
+	font-weight: normal;
+	color: #ffffff;
+	background-color: #505050;
+}
+
+#links_tr a,a:link,a:visited,a:active {
+	font-weight: normal;
+	background-color: transparent;
+	color: #505050;
+}
+
+#links_tr td {
+	border: 0px;
+	margin: 0px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#links_head_td {
+	font-weight: bold;
+}
+
+#errores {
+	width: 80%;
+	margin-top: 30px;
+	margin-bottom: 40px;
+	border: 3px solid #a60000;
+	padding: 10px;
+	background-color: #c66666;
+	margin-left: 10%;
+	margin-right: 10%;
+	color: #ffffff;
+}
+
+#td_reg1 {
+	text-align: right;
+}
+
+#td_reg2 {
+	text-align: left;
+}
+
+#td_reg2 a:hover,#td_check_reg a:hover {
+	color: #ffffff;
+	font-weight: normal;
+	background-color: #505050;
+}
+
+#form_reg {
+	text-align: center;
+	border: 1px solid black;
+	width: 60%;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+#table_reg {
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+#errores a,a:link,a:visited,a:active,a:hover {
+	color: #cccccc;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+#success {
+	width: 70%;
+	margin-top: 30px;
+	margin-bottom: 40px;
+	border: 3px solid #cccc55;
+	padding: 10px;
+	background-color: #eeee88;
+	margin-left: 15%;
+	margin-right: 15%;
+	color: #000000;
+	text-align: center;
+}
+
+div#success a,a:link,a:visited,a:active,a:hover {
+	color: #999900;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+#view {
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+#table_view {
+	border: 1px solid black;
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	font-size: 24px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.headers_view a,.headers_view a:link,.headers_view a:visited,.headers_view a:active,.data_view a,.data_view a:link,.data_view a:visited,.data_view a:active	{
+	font-size: 24px;
+	color: #828282;
+	font-weight: normal;
+}
+
+.headers_view a:hover,.data_view a:hover {
+	font-size: 24px;
+	color: #ffffff;
+	font-weight: normal;
+	background-color: #505050;
+}
+
+#link_td_links a,a:link,a:visited,a:active {
+	color: #828282;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+#dest_td_links a,a:link,a:visited,a:active {
+	color: #828282;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+#formedit {
+	width: 40%;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 0px;
+	text-align: center;
+}
+
+#table_edit {
+	width: 100%;
+	border: 1px solid black;
+}
+
+#td1_table_edit {
+	text-align: right;
+}
+
+#td2_table_edit {
+	text-align: left;
+}
+
+#td2_table_edit a,a:link,a:visited,a:active {
+	text-decoration: none;
+	background-color: transparent;
+	color: #828282;
+}
+
+#td2_table_edit a:hover {
+	text-decoration: none;
+	background-color: #505050;
+	color: #ffffff;
+}
+
+/**** Visit.php *****/
+#logo_link_visit a,a:visited,a:active,a:hover,a:link {
+	text-decoration: none;
+	border: none;
+}
+
+#destino {
+	margin: 0px;
+	padding: 0px;
+}
+
+#dest_frame {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	border-top: 1px solid black;
+}
+
+#tr_contenido_visit {
+	height: 1px;
+}
+
+#contenido_visit {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	top: 0;
+}
+
+#frame_visit {
+	margin: 0px;
+	padding: 0px;
+	height: 0%;
+	border: 0px;
+}
+
+#logo_visit {
+	float: left;
+	padding-right: 10px;
+	margin-left: 0px;
+	margin-right: auto;
+	border: 0px;
+}
+
+#table_contenido_visit {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+
+#panel_visit {
+	font-size: 12px;
+	padding: 0px;
+	padding-left: 10px;
+	margin: 0px;
+	border: 0px;
+}
+
+#cp_visit {
+	float: right;
+	margin: 0px;
+	margin-left: 30px;
+	padding-top: auto;
+	padding-bottom: auto;
+	height: 100%;
+}
+
+.description_view {
+	font-size: 14px;
+	
+}
