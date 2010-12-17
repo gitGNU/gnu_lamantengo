@@ -1,0 +1,23 @@
+
+==================================================================================
+                            INSTALL
+==================================================================================
+
+Installation of this package is easy.
+
+1. Copy the contents of 'public' directory to 'public_html' or equivalent in your server.
+2. Copy entire 'includes' directory one level above PUBLIC.
+3. Configure 'config.php' if necessary to set correct path to ROOT_DIR.
+
+
+
+
+
+
+
+
+
+
+==================================================================================
+Report Install bugs to <freedomdeveloper@yahoo.com>
+==================================================================================

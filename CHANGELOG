@@ -1,0 +1,46 @@
+********************************************************************************
+********************************************************************************
+********************************* CHANGELOG ************************************
+********************************************************************************
+********************************************************************************
+
+2010-12-17 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Edited & updated image path
+    * Edited CSS on home page
+
+2010-12-12 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Added "locale" directory for storing language files for internationalisation
+
+    * Created "en_us.inc" file for storing US english site translations.
+    * Created "es_ar.inc" file for storing Spanish (Argentina) site translations.
+
+    * Internationalised the home page.
+    * TODO - Both Spanish/English messages need more work on the home page.
+
+
+2010-12-11 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Added "CHANGELOG" to help document the site and its development.
+    * Added "README" files to both includes and public directories to help document the site.
+    * Added "INSTALL" file to root directory. Provides basic information on setting up this package.
+
+    * Added "includes" directory to store private global include files.
+    * Added "public" directory to store all public files.
+    * Added "classes" directory to the includes directory for storage of classes.
+    
+    * Added "config.php". File is used for storing site-wide configuration settings.
+    * Added "initialise.php". File is used for global initialisation of objects.
+    * TODO: Before any further development is done on the site, the site should be
+            OO'd to help in maintainability and ease of extension.
+
+    * Imported "database.php" into classes directory. File contains a My_Sql_Database class.
+    * Created "language.php" in classes directory. Language class is used for internationalisation.
+
+    * Deleted "dbconnect.php", contents replaced with database.php
+    * Deleted "dbinfo.php", contents replaced with config.php
+
+    * Replaced all calls to "dbconnect.php" with calls to "initialise.php".
+
+    * Moved most public files into the 'public' directory to help in structuring the website.
+    * Moved "styles.css" into it's very own styles folder -> "css"
+
+********************************************************************************
