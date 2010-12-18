@@ -1,10 +1,23 @@
-********************************************************************************
-********************************************************************************
-********************************* CHANGELOG ************************************
-********************************************************************************
-********************************************************************************
+================================================================================
+                                    CHANGELOG
+================================================================================
 
 2010-12-18 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Translated link.php
+    * Translated reging.php
+    * Translated register.php
+    * Translated email_register.php
+
+    * Added README for project directory
+    * Added README for locale directory
+    * Added README for classes directory
+    * Edited README in images directory
+    * Edited README in public directory
+    * Edited INSTALL file
+    * Edited TODO file
+    * Edited README in includes directory
+    * Edited README in images directory
+
     * Added documentation to the language class
     * Replaced translate() function in the language class to work with associative
       arrays instead of string variables. This will minimise the possibility of
@@ -53,4 +66,4 @@
     * Moved most public files into the 'public' directory to help in structuring the website.
     * Moved "styles.css" into it's very own styles folder -> "styles" in the "includes" folder
 
-********************************************************************************
+================================================================================

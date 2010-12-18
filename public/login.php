@@ -21,10 +21,12 @@
  * along with LaMantengo.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-define('INSITE', 1);
-$title = "Ingresar";
 require_once("../includes/initialise.php");
 include('get_sid.php');
+
+define('INSITE', 1);
+
+$title = "Ingresar";
 $errores = "";
 if ($uid) { //Ya esta loggeado
     $errores.="El usuario ya est&aacute; loggeado.";

@@ -142,6 +142,8 @@ class Language {
         include("../includes/locale/en_us.inc");
         include("../includes/locale/es_ar.inc");
         $this->_message_arr = array_merge($en_message_ar, $es_message_ar);
+
+        //print_r($this->_message_arr);
     }
 
     /**

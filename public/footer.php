@@ -30,11 +30,11 @@ if (defined('INSITE')) {
         &copy; Copyright 2010 <a href="http://www.unwebmaster.com.ar" title="<?php echo $language->translate("idea_and_realisation"); ?>">UnWebMaster</a> & <a href="mailto:tom_kaczocha@yahoo.com.au?subject=LaMantengo Project" title="<?php echo $language->translate("send_site_query_title_tom"); ?>">Tom Kaczocha</a><br />
         <a href="tos.php<?php if ($sid)
         echo "?sid=" . $sid; ?>" title="<?php echo $language->translate("terms_of_service_link_title"); ?>"><?php echo $language->translate("terms_of_service_link"); ?></a>
-    </div>
-    </body>
-    </html>
+</div>
+</body>
+</html>
 <?php
-}else {
-    include("404.php");
-}
+   }else {
+       include("404.php");
+   }
 ?>

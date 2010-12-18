@@ -23,6 +23,6 @@
      * 
      */
     require_once("../includes/initialise.php");
-    include("link.php");
+    require_once("link.php");
 
 ?>

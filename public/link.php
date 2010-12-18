@@ -21,15 +21,11 @@
  * along with LaMantengo.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-define('INSITE', 1);
-
 require_once("../includes/initialise.php");
 
-include('get_sid.php');
+define('INSITE', 1);
 
-if (($_GET['language'] == 'en') || ($_GET['language'] == 'es')) {
-    $language->setLocale($_GET['language'], $_GET['country']);
-}
+include('get_sid.php');
 
 $title = $language->translate("title_home");
 
@@ -44,7 +40,7 @@ if ($_POST) {
                 $uuid=0;
             $query = "INSERT INTO `links` (`uid` ,`destination`, `description`) VALUES ( $uuid, '" . $_POST['destination'] . "','" . $_POST['description'] . "');";
             $rs = mysql_query($query);
-            if (!(mysql_errno())) { //Si no hubo errores, success
+            if (!(mysql_errno())) { // If there were no errors, success
                 $lid = mysql_insert_id();
                 header('Location: view.php?id=' . $lid . '&new=1&sid=' . $sid);
                 exit;
@@ -53,10 +49,10 @@ if ($_POST) {
             }
         }
 } else {
-    if ($_GET['visitnoid']) //No hay id en visit.php
-        $errores.="La direcci&oacute;n que intenta visitar es err&oacute;nea (no incluye el id del link). Por favor, verif&iacute;quela.<br />\n";
-    if ($_GET['visitidnoexist'])//El link de visit.php no existe o fue dado de baja
-        $errores.="El link que intenta visitar no existe o fue dado de baja en nuestro sitio.<br />\n";
+    if ($_GET['visitnoid']) // No id on visit.php
+        $errores.= $language->translate("error_url");
+    if ($_GET['visitidnoexist']) // Visit.php the link does not exist or was discharged
+        $errores.= $language->translate("unknown_url");
 }
 include("header.php");
 ?>
@@ -67,7 +63,7 @@ include("header.php");
         <div id="success"><?php echo $success; ?></div>
     <?php
     }
-    if ($errores != null) { //Hay errores, los imprimo
+    if ($errores != null) { // There are errors in the print
     ?>
         <div id="errores"><?php echo $errores; ?></div>
     <?php

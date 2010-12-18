@@ -63,7 +63,12 @@ $en_message_ar = array();
 // link.php
 $en_message_ar['en']['title_home']                      = "Home";
 $en_message_ar['en']['error_insert_link']               = "Error trying to insert link. Please retry later. If problem persists, consider informing site's administrator.";
-$en_message_ar['en']['instructions']                    = 'Enter link\'s destination in the text box above. Read the Terms of Service and accept them. Click "Link" button and the site will give you back a new link, whose destination could be modified by any visitor. By registering, your links could be modified only by your account.';
+$en_message_ar['en']['instructions']                    = 'Enter the destination you want to link to in the text box above. Read the Terms of Service and accept them.
+                                                           Click "Link" button and the site will return a new link, whose destination may be modified by any visitor.
+                                                           By registering, the links you create can only be modified by your user account.';
+$en_message_ar['en']['error_url']                       = "The address you try to visit is wrong (link id not added) Please check it.<br />\n";
+$en_message_ar['en']['unknown_url']                     = "The link you are trying to visit does not exist or was discharged from our site.<br />\n";
+
 // reging.php
 $en_message_ar['en']['link_button']                     = "Link";
 $en_message_ar['en']['login_button']                    = "Login";
@@ -74,10 +79,63 @@ $en_message_ar['en']['register']                        = "Register";
 $en_message_ar['en']['register_title']                  = "Register a new User Account";
 $en_message_ar['en']['forgot_password']                 = "I forgot my password";
 $en_message_ar['en']['forgot_password_title']           = "Recover Password";
+
+$en_message_ar['en']['title_profile']                   = "User Profile";
+$en_message_ar['en']['profile_link']                    = "Profile";
+$en_message_ar['en']['title_links']                     = "View all Links";
+$en_message_ar['en']['links_link']                      = "My Links";
+$en_message_ar['en']['title_sess_close']                = "Close the current session";
+$en_message_ar['en']['sess_close_link']                 = "Close";
+
+
 // footer.php
 $en_message_ar['en']['terms_of_service_link']           = "Terms of Service";
 $en_message_ar['en']['terms_of_service_link_title']     = "Read the Terms of Service";
 $en_message_ar['en']['send_site_query_title_tom']       = "Send Site Query";
 $en_message_ar['en']['idea_and_realisation']            = "Idea and Realization: UnWebMaster.Com.Ar";
+
+// register.php
+$en_message_ar['en']['title_register']                  = "Register Account";
+$en_message_ar['en']['error_agree']                     = "Debes aceptar los T&eacute;rminos del Servicio para poder registrarte.<br />\n";
+$en_message_ar['en']['error_username']                  = "The user name is empty.<br />\n";
+$en_message_ar['en']['error_size']                      = "The username must be 4 characters or more.<br />\n";
+$en_message_ar['en']['error_email_empty']               = "The e-mail is empty.<br />\n";
+$en_message_ar['en']['error_email_nomatch']             = "The e-mails do not match.<br />\n";
+$en_message_ar['en']['error_email_invalid']             = "The e-mail entered is invalid.<br />\n";
+$en_message_ar['en']['error_already_registered']        = "The username or e-mail account entered is already registered.<br />\n";
+$en_message_ar['en']['error_already_reg']               = "Already logged in, cannot re-register.<br />\n";
+
+$en_message_ar['en']['registered_successfully']         = "Your account has been created successfully. Check your e-mail (<b>$email</ b>) to obtain their input.<br />\n";
+$en_message_ar['en']['important_message']               = "<br /><br /><b>** IMPORTANT **:</b>You are seeing this message because the site is in beta. Probably your account be removed after a few days, or update your password to verify your email.<br />\n";
+
+$en_message_ar['en']['username_message']                = "(Minimum 4 characters)";
+$en_message_ar['en']['first_name_message']              = "(Used for contact)";
+$en_message_ar['en']['first_name_label']                = "First Name:";
+$en_message_ar['en']['email_message']                   = "(Valid - password will be sent to this email)";
+$en_message_ar['en']['email_repeat_label']              = "Repeat Email *:";
+$en_message_ar['en']['email_repeat_message']            = "(Repeat the email)";
+
+$en_message_ar['en']['title_agreeToS']                  = "I agree to the ToS";
+$en_message_ar['en']['title_read_ToS']                  = "Read the ToS";
+$en_message_ar['en']['accept_agree_label']              = "I accept the";
+$en_message_ar['en']['register_button']                 = "Register";
+$en_message_ar['en']['reset_button']                    = "Reset";
+$en_message_ar['en']['reg_instruct']                    = "Enter the name of the user you want to register on the site, his real name (optional, only appear when we need to contact you), and a valid e-mail.<br />
+                                                           In addition, enter the two words you see in the image, to verify that you are a human, not a computer by automated registrations.<br />
+                                                           We will send a message to that address stating your login information, and will be the contact address associated with your account.<br />
+                                                           To register for the site has to be consistent with our <a href=\"tos.php?sid=$sid\" target=\"_blank\"";
+
+$en_message_ar['en']['read_ToS_nWindow']                = "Read the ToS (in a new window)";
+
+// email_register.php
+$en_message_ar['en']['mail_subj']                       = "Registration LaMantengo.Com.Ar";
+$en_message_ar['en']['mail_line1']                      = "Welcome to LaMantengo.Com.Ar<br />\r\n";
+$en_message_ar['en']['mail_line2']                      = "To start using the service, log on <a href=\"http://www.lamantengo.com.ar/login.php\">http://www.lamantengo.com.ar/login.php</a>.<br />\r\n";
+$en_message_ar['en']['mail_line3']                      = "Your login details are:<br />\r\n";
+$en_message_ar['en']['mail_username']                   = "Username: ";
+$en_message_ar['en']['mail_password']                   = "Password: ";
+$en_message_ar['en']['mail_line4']                      = "You can change your password from your profile after login.<br />\r\n";
+$en_message_ar['en']['mail_line5']                      = "If you forget your password, and you cannot recover, you can generate a new entering <a href=\"http://www.lamantengo.com.ar/forgot.php\">http://www.lamantengo.com.ar/forgot.php</a><br />\r\n"
+
 
 ?>

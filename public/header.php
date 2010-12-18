@@ -23,6 +23,10 @@
  */
 require_once("../includes/initialise.php");
 
+if (($_GET['language'] == 'en') || ($_GET['language'] == 'es')) {
+    $language->setLocale($_GET['language'], $_GET['country']);
+}
+
 if (defined('INSITE')) {
 ?>
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -41,7 +45,7 @@ if (defined('INSITE')) {
             <div id="upperLeftDiv"><a href="index.php<?php if ($sid)
         echo "?sid=" . $sid; ?>"><img src="<?php echo IMAGE_PATH . DS; ?>home.png" alt="Go to home" title="Go to home" /></a>
         </div>
-        <div id="inter"><a href="index.php?language=en&country=us" title="View in English">English</a> | <a href="index.php?language=es&country=ar" title="Ver en español">Spanish</a></div>
+        <div id="inter"><a href="<?php echo $_SERVER['PHP_SELF'].'?language=en&country=us'; ?>" title="View in English">English</a> | <a href="<?php echo $_SERVER['PHP_SELF'].'?language=es&country=ar'; ?>" title="Ver en español">Spanish</a></div>
         <div id="reging"><?php include("reging.php"); ?></div>
         <div id="logo">
             <a href="index.php<?php if ($sid)
