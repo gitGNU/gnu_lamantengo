@@ -1,0 +1,25 @@
+================================================================================
+                                locale
+================================================================================
+This directory contains language files.
+
+To report translation errors please email <freedomdeveloper@yahoo.com>
+and provide the following information:
+
+    * File name
+    * Variable name
+    * Current text (containing error)
+    * Correct text
+
+
+================================================================================
+For example:
+================================================================================
+FILE:           en_us.inc
+VARIABLE:       forgot_password_title
+CURRENT TEXT:   "Recover Pass"
+NEW TEXT:       "Recover Password"
+
+================================================================================
+Translation Errors email: <freedomdeveloper@yahoo.com>
+================================================================================
