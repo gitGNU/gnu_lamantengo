@@ -21,6 +21,7 @@
  *
  */
 
+/*
 // link.php
 $title_home = "Home";
 
@@ -55,5 +56,28 @@ $terms_of_service_link_title = "Read the Terms of Service";
 $send_site_query_title_tom = "Send Site Query";
 
 $idea_and_realisation = "Idea and Realization: UnWebMaster.Com.Ar";
+*/
+
+$en_message_ar = array();
+
+// link.php
+$en_message_ar['en']['title_home']                      = "Home";
+$en_message_ar['en']['error_insert_link']               = "Error trying to insert link. Please retry later. If problem persists, consider informing site's administrator.";
+$en_message_ar['en']['instructions']                    = 'Enter link\'s destination in the text box above. Read the Terms of Service and accept them. Click "Link" button and the site will give you back a new link, whose destination could be modified by any visitor. By registering, your links could be modified only by your account.';
+// reging.php
+$en_message_ar['en']['link_button']                     = "Link";
+$en_message_ar['en']['login_button']                    = "Login";
+$en_message_ar['en']['username']                        = "Username";
+$en_message_ar['en']['password']                        = "Password";
+$en_message_ar['en']['login_to_site']                   = "Login to Site";
+$en_message_ar['en']['register']                        = "Register";
+$en_message_ar['en']['register_title']                  = "Register a new User Account";
+$en_message_ar['en']['forgot_password']                 = "I forgot my password";
+$en_message_ar['en']['forgot_password_title']           = "Recover Password";
+// footer.php
+$en_message_ar['en']['terms_of_service_link']           = "Terms of Service";
+$en_message_ar['en']['terms_of_service_link_title']     = "Read the Terms of Service";
+$en_message_ar['en']['send_site_query_title_tom']       = "Send Site Query";
+$en_message_ar['en']['idea_and_realisation']            = "Idea and Realization: UnWebMaster.Com.Ar";
 
 ?>

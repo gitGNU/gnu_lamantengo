@@ -4,6 +4,16 @@
 ********************************************************************************
 ********************************************************************************
 
+2010-12-18 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Added documentation to the language class
+    * Replaced translate() function in the language class to work with associative
+      arrays instead of string variables. This will minimise the possibility of
+      reusing the same variable for different messages.
+    * Added a private fillArray method to the language class to prepare message
+      array for use.
+    * Edited CSS on home page
+    * Added TODO file to help in tracking tasks to be carried out.
+
 2010-12-17 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Edited & updated image path
     * Edited CSS on home page
@@ -41,6 +51,6 @@
     * Replaced all calls to "dbconnect.php" with calls to "initialise.php".
 
     * Moved most public files into the 'public' directory to help in structuring the website.
-    * Moved "styles.css" into it's very own styles folder -> "css"
+    * Moved "styles.css" into it's very own styles folder -> "styles" in the "includes" folder
 
 ********************************************************************************
