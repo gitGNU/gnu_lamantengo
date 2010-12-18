@@ -39,13 +39,13 @@ if (defined('INSITE')) {
     $mail_to = $mail_nombre . ' <' . $email . '>';
     $mail_subj = $language->translate("mail_subj");
 
-    $mail_cuerpo = $language->translate("mail_line1");
+    $mail_cuerpo  = $language->translate("mail_line1");
     $mail_cuerpo .= "<br />\r\n";
     $mail_cuerpo .= $language->translate("mail_line2");
     $mail_cuerpo .= "<br />\r\n";
     $mail_cuerpo .= $language->translate("mail_line3");
-    $mail_cuerpo .= $language->translate("mail_username")."<b>$username</b><br />\r\n";
-    $mail_cuerpo .= $language->translate("mail_password")."<b>$password</b><br />\r\n";
+    $mail_cuerpo .= $language->translate("mail_username") . "<b>$username</b><br />\r\n";
+    $mail_cuerpo .= $language->translate("mail_password") . "<b>$password</b><br />\r\n";
     $mail_cuerpo .= "<br />\r\n";
     $mail_cuerpo .= $language->translate("mail_line4");
     $mail_cuerpo .= "<br />\r\n";

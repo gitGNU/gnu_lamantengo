@@ -140,6 +140,37 @@ $es_message_ar['es']['mail_password']                   = "Contrase&ntilde;a: <b
 $es_message_ar['es']['mail_line4']                      = "Podr&aacute; cambiar su contrase&ntilde;a desde su perfil, luego de iniciar sesi&oacute;n.<br />\r\n";
 $es_message_ar['es']['mail_line5']                      = "En caso de olvidar su contrase&ntilde;a, si bien no es posible recuperarla, podr&aacute; generar una nueva ingresando a <a href=\"http://www.lamantengo.com.ar/forgot.php\">http://www.lamantengo.com.ar/forgot.php</a><br />\r\n";
 
+// enviar_email.php
+$es_message_ar['es']['mail_line6']                      = "* Este es un e-mail enviado desde LaMantengo.Com.Ar, donde ingresaste *<br />\r\n";
+$es_message_ar['es']['mail_line7']                      = "* esta direcci�n. Si est�s registrado, puedes cambiar la direcci�n    *<br />\r\n";
+$es_message_ar['es']['mail_line8']                      = "* asociada a tu cuenta desde tu PERFIL                                *<br />\r\n";
+$es_message_ar['es']['mail_line9']                      = "* [ http://www.lamantengo.com.ar/profile.php ]                        *<br />\r\n";
+
+$es_message_ar['es']['mail_line10']                     = "Estimad@ ";
+$es_message_ar['es']['mail_line11']                     = "Atentamente,<br />\r\nEl Equipo de <b>LaMantengo.Com.Ar</b><br />\r\n<br />\r\n";
+
+$es_message_ar['es']['mail_line12']                     = "* Este es un e-mail enviado desde LaMantengo.Com.Ar, donde ingresaste *<br />\r\n";
+$es_message_ar['es']['mail_line13']                     = "* esta direcci�n. Si est�s registrado, puedes cambiar la direcci�n    *<br />\r\n";
+$es_message_ar['es']['mail_line14']                     = "* asociada a tu cuenta desde tu PERFIL                                *<br />\r\n";
+$es_message_ar['es']['mail_line15']                     = "* [ http://www.lamantengo.com.ar/profile.php ]                        *<br />\r\n";
+
+$es_message_ar['es']['error_mail']                      = "Error al enviar los nuevos datos por mail<br />\n";
+
+// login.php
+$es_message_ar['es']['title_login']                     = "Ingresar";
+$es_message_ar['es']['error_loggedin']                  = "El usuario ya est&aacute; loggeado.";
+$es_message_ar['es']['error_username_empty']            = "El nombre de usuario est&aacute; vac&iacute;o<br/ >\n";
+$es_message_ar['es']['error_password_empty']            = "La contrase&ntilde;a est&aacute; vac&iacute;a<br/ >\n";
+$es_message_ar['es']['error_user_disabled']             = "El usuario fue desactivado por la administraci&oacute;n<br />\n";
+$es_message_ar['es']['error_unknown_user']              = "Usuario inexistente/Contrase&ntilde;a incorrecta. Intente de nuevo<br />\n";
+
+$es_message_ar['es']['login_welcome']                   = "Bienvenid@, <b>$user</b>. En breve ser&aacute; redirigido a la p&aacute;gina principal.<br />";
+$es_message_ar['es']['login_redirect']                  = "Si tras 3 segundos no es redirigido, haga click <a href=\"index.php?sid=$sid\">aqu&iacute;</a>.";
+
+// logout.php
+$es_message_ar['es']['title_logout']                    = "Cerrar sesi&oacute;n";
+$es_message_ar['es']['error_already_loggedout']         = "Ya est&aacute; desloggeado.<br />\n";
+$es_message_ar['es']['session_closed']                  = "<div id=\"success\">La sesi&oacute;n fue cerrada correctamente.</div>";
 
 
 ?>

@@ -85,7 +85,7 @@ $en_message_ar['en']['profile_link']                    = "Profile";
 $en_message_ar['en']['title_links']                     = "View all Links";
 $en_message_ar['en']['links_link']                      = "My Links";
 $en_message_ar['en']['title_sess_close']                = "Close the current session";
-$en_message_ar['en']['sess_close_link']                 = "Close";
+$en_message_ar['en']['sess_close_link']                 = "Logout";
 
 
 // footer.php
@@ -135,7 +135,44 @@ $en_message_ar['en']['mail_line3']                      = "Your login details ar
 $en_message_ar['en']['mail_username']                   = "Username: ";
 $en_message_ar['en']['mail_password']                   = "Password: ";
 $en_message_ar['en']['mail_line4']                      = "You can change your password from your profile after login.<br />\r\n";
-$en_message_ar['en']['mail_line5']                      = "If you forget your password, and you cannot recover, you can generate a new entering <a href=\"http://www.lamantengo.com.ar/forgot.php\">http://www.lamantengo.com.ar/forgot.php</a><br />\r\n"
+$en_message_ar['en']['mail_line5']                      = "If you forget your password, and you cannot recover, you can generate a new entering <a href=\"http://www.lamantengo.com.ar/forgot.php\">http://www.lamantengo.com.ar/forgot.php</a><br />\r\n";
 
+// enviar_email.php
+$en_message_ar['en']['mail_line6']                      = "* This is an e-mail sent from LaMantengo.Com.Ar where you entered *<br />\r\n";
+$en_message_ar['en']['mail_line7']                      = "* this direction. If you registered, you can change the direction *<br />\r\n";
+$en_message_ar['en']['mail_line8']                      = "* Associated with your account from your PROFILE                  *<br />\r\n";
+$en_message_ar['en']['mail_line9']                      = "* [ http://www.lamantengo.com.ar/profile.php ]                    *<br />\r\n";
+
+$en_message_ar['en']['mail_line10']                     = "Dear ";
+$en_message_ar['en']['mail_line11']                     = "Sincerely,<br />\r\nTeam <b>LaMantengo.Com.Ar</b><br />\r\n<br />\r\n";
+
+$en_message_ar['en']['mail_line12']                     = "* This is an e-mail sent from LaMantengo.Com.Ar where you entered *<br />\r\n";
+$en_message_ar['en']['mail_line13']                     = "* This direction. If you registered, you can change the address   *<br />\r\n";
+$en_message_ar['en']['mail_line14']                     = "* Associated with your account from your PROFILE                  *<br />\r\n";
+$en_message_ar['en']['mail_line15']                     = "* [ http://www.lamantengo.com.ar/profile.php ]                    *<br />\r\n";
+
+$en_message_ar['en']['mail_line16']                     = "Sincerely,<br />\r\nTeam <b>LaMantengo.Com.Ar</b><br />\r\n<br />\r\n";
+$en_message_ar['en']['mail_line16']                     = "Sincerely,<br />\r\nTeam <b>LaMantengo.Com.Ar</b><br />\r\n<br />\r\n";
+$en_message_ar['en']['mail_line16']                     = "Sincerely,<br />\r\nTeam <b>LaMantengo.Com.Ar</b><br />\r\n<br />\r\n";
+$en_message_ar['en']['mail_line16']                     = "Sincerely,<br />\r\nTeam <b>LaMantengo.Com.Ar</b><br />\r\n<br />\r\n";
+
+$en_message_ar['en']['error_mail']                      = "Failed to send new data by email.<br />\n";
+
+// login.php
+$en_message_ar['en']['title_login']                     = "Login";
+$en_message_ar['en']['error_loggedin']                  = "User already logged in.";
+$en_message_ar['en']['error_username_empty']            = "The username is empty.<br />\n";
+$en_message_ar['en']['error_password_empty']            = "The password is empty.<br/>\n";
+$en_message_ar['en']['error_user_disabled']             = "This user was disabled by admin.<br />\n";
+$en_message_ar['en']['error_unknown_user']              = "Username/password combination unknown. Try again.<br />\n";
+
+$en_message_ar['en']['login_welcome']                   = "Welcome, <b>$user</b>. You will shortly be redirected to the home page.<br />";
+$en_message_ar['en']['login_redirect']                  = "If you are not redirected after 3 seconds, click <a href=\"index.php?sid=$sid\">here</ a>.";
+
+// logout.php
+$en_message_ar['en']['title_logout']                    = "Logout";
+$en_message_ar['en']['error_already_loggedout']         = "Already logged out.<br />\n";
+
+$en_message_ar['en']['session_closed']                  = "<div id=\"success\">The session was closed properly.</div>";
 
 ?>

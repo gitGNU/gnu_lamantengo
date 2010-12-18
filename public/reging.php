@@ -35,12 +35,12 @@ if (defined('INSITE')) {
 ?>
         <a href="profile.php?sid=<?php echo $sid; ?>" title="<?php echo $language->translate("title_profile"); ?>"><?php echo $language->translate("profile_link"); ?></a> -
         <a href="mylinks.php?sid=<?php echo $sid; ?>" title="<?php echo $language->translate("title_links"); ?>"><?php echo $language->translate("links_link"); ?></a> -
-        <a href="logout.php?sid=<?php echo $sid; ?>" title="<?php echo $language->translate("title_sess_close"); ?>"><?php echo $language->translate("sess_close_link"); ?> [<b><?php echo $username; ?></b>]</a>
+        <a href="logout.php?sid=<?php echo $sid; ?>" title="<?php echo $language->translate("title_sess_close"); ?>"><?php echo $language->translate("sess_close_link"); ?> [<b><?php echo $username; ?>]</b></a>
 <?php
     } else { //Usuario no esta loggeado
 ?><form action="login.php?sid=<?php echo $sid; ?>" method="post">
-                				User: <input type="text" name="user" title="<?php echo $language->translate("username"); ?>" size="8" />
-                				Password: <input type="password" name="password" title="<?php echo $language->translate("password"); ?>" size="8" />
+        User: <input type="text" name="user" title="<?php echo $language->translate("username"); ?>" size="8" />
+        Password: <input type="password" name="password" title="<?php echo $language->translate("password"); ?>" size="8" />
         <input type="hidden" name="login" value="1" />
         <input type="submit" id="login" value="<?php echo $language->translate("login_button"); ?>" title="<?php echo $language->translate("login_to_site"); ?>" />
     </form>

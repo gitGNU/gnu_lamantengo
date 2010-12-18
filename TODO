@@ -4,3 +4,12 @@
 
     * Clicking on the register button activates the default language - english
       for the display.
+    * Implement COOKIES.
+    * Login message requires username from cookie.
+    * Cookie to store username & language.
+    * Destroy cookie and session on logout.
+    * Username not displaying next to logout link.
+    * Shouldn't pass session id in url... looks bad and could be a security
+      concern.
+    * 
+

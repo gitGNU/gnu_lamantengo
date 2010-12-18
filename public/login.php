@@ -22,23 +22,26 @@
  * 
  */
 require_once("../includes/initialise.php");
-include('get_sid.php');
 
 define('INSITE', 1);
 
-$title = "Ingresar";
+include('get_sid.php');
+
+$title = $language->translate("title_login");
 $errores = "";
-if ($uid) { //Ya esta loggeado
-    $errores.="El usuario ya est&aacute; loggeado.";
-} else { //No esta loggeado. Miro si llego data o no
-    if ($_POST['login']) { //Llego data en POST, osea, loggeo... Proceso
+
+if ($uid) { // Already logged in
+    $errores .= $language->translate("error_loggedin");
+    
+} else { // Not logged in
+    if ($_POST['login']) { // POST data
         if ($_POST['user'] == "") {
-            $errores.="El nombre de usuario est&aacute; vac&iacute;o<br/ >\n";
+            $errores .= $language->translate("error_username_empty");
         } else {
             $user = $_POST['user'];
         }
         if ($_POST['password'] == "") {
-            $errores.="La contrase&ntilde;a est&aacute; vac&iacute;a<br/ >\n";
+            $errores .= $language->translate("error_password_empty");
         } else {
             $pass = md5($_POST['password']);
             $_POST['password'] = "";
@@ -48,19 +51,19 @@ if ($uid) { //Ya esta loggeado
             $rs = mysql_query($query);
             if ($fila = mysql_fetch_object($rs)) {
                 if (!($fila->active))
-                    $errores.="El usuario fue desactivado por la administraci&oacute;n<br />\n";
+                    $errores .= $language->translate("error_user_disabled");
                 else {
                     $uid = $fila->uid;
                     $user = $fila->username;
                     //Actualizo el uid en la session
                     $query = "UPDATE `sessions` SET `uid` = '$uid' WHERE `sid`='$sid'; ";
                     $rs = mysql_query($query);
-                    $success = "Bienvenid@, <b>$user</b>. En breve ser&aacute; redirigido a la p&aacute;gina principal.<br />";
-                    $success.="Si tras 3 segundos no es redirigido, haga click <a href=\"index.php?sid=$sid\">aqu&iacute;</a>.";
+                    $success = $language->translate("login_welcome");
+                    $success.= $language->translate("login_redirect");
                     $success.="<meta http-equiv=\"refresh\" content=\"3,index.php?sid=$sid\" />";
                 }
             } else {
-                $errores.="Usuario inexistente/Contrase&ntilde;a incorrecta. Intente de nuevo<br />\n";
+                $errores .= "Usuario inexistente/Contrase&ntilde;a incorrecta. Intente de nuevo<br />\n";
             }
         }
     }

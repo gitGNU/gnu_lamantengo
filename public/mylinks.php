@@ -210,7 +210,7 @@
 				</form>
 			</div>
 		</div>
-		<div id="explicacion">
+		<div id="explanation">
 			Clickee el bot&oacute;n <img src="images/edit.png" alt="Editar" title="Editar" /> a la derecha de un link para cambiar el destino del mismo, o bien <img src="<?php echo IMAGE_PATH . DS; ?>delete.png" alt="Eliminar" title="Eliminar" /> para desactivarlo permanentemente.<br />
 			Para eliminar m&uacute;ltiples links juntos, tilde la casilla a la izquierda de cada link que quiera eliminar, y luego presione el bot&oacute;n &quot;Eliminar seleccionados&quot;.
 		</div>

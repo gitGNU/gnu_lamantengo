@@ -28,26 +28,24 @@ define('INSITE', 1);
 if (defined('INSITE')) {
     $mail_mensaje = "***********************************************************************<br />\r\n";
     $mail_mensaje.="*                                                                     *<br />\r\n";
-    $mail_mensaje.="* Este es un e-mail enviado desde LaMantengo.Com.Ar, donde ingresaste *<br />\r\n";
-    $mail_mensaje.="* esta direcci�n. Si est�s registrado, puedes cambiar la direcci�n    *<br />\r\n";
-    $mail_mensaje.="* asociada a tu cuenta desde tu PERFIL                                *<br />\r\n";
-    $mail_mensaje.="* [ http://www.lamantengo.com.ar/profile.php ]                        *<br />\r\n";
+    $mail_mensaje.= $language->translate("mail_line6");
+    $mail_mensaje.= $language->translate("mail_line7");
+    $mail_mensaje.= $language->translate("mail_line8");
+    $mail_mensaje.= $language->translate("mail_line9");
     $mail_mensaje.="*                                                                     *<br />\r\n";
     $mail_mensaje.="***********************************************************************<br />\r\n";
     $mail_mensaje.="<br />\r\n";
-    $mail_mensaje.="Estimad@ <b>$mail_nombre</b>:<br />\r\n";
+    $mail_mensaje.= $language->translate("mail_line10") . " <b>$mail_nombre</b>:<br />\r\n";
     $mail_mensaje.="<br />\r\n";
     $mail_mensaje.="$mail_cuerpo<br />\r\n";
     $mail_mensaje.="<br />\r\n";
-    $mail_mensaje.="Atentamente,<br />\r\n";
-    $mail_mensaje.="El Equipo de <b>LaMantengo.Com.Ar</b><br />\r\n";
-    $mail_mensaje.="<br />\r\n";
+    $mail_mensaje.= $language->translate("mail_line11");
     $mail_mensaje.="***********************************************************************<br />\r\n";
     $mail_mensaje.="*                                                                     *<br />\r\n";
-    $mail_mensaje.="* Este es un e-mail enviado desde LaMantengo.Com.Ar, donde ingresaste *<br />\r\n";
-    $mail_mensaje.="* esta direcci�n. Si est�s registrado, puedes cambiar la direcci�n    *<br />\r\n";
-    $mail_mensaje.="* asociada a tu cuenta desde tu PERFIL                                *<br />\r\n";
-    $mail_mensaje.="* [ http://www.lamantengo.com.ar/profile.php ]                        *<br />\r\n";
+    $mail_mensaje.= $language->translate("mail_line12");
+    $mail_mensaje.= $language->translate("mail_line13");
+    $mail_mensaje.= $language->translate("mail_line14");
+    $mail_mensaje.= $language->translate("mail_line15");
     $mail_mensaje.="*                                                                     *<br />\r\n";
     $mail_mensaje.="***********************************************************************";
     $mail_mensaje = wordwrap($mail_mensaje);
@@ -55,7 +53,7 @@ if (defined('INSITE')) {
     $mail_head.="MIME-Version: 1.0 \r\nContent-type: text/html; charset=UTF-8\r\n";
     $mail_head.="Bcc: nocaduca+forgot@gmail.com\r\n";
     if (@mail($mail_to, $mail_subj, $mail_cuerpo, $mail_head))
-        $errores.="Error al enviar los nuevos datos por mail<br />\n";
+        $errores .= $language->translate("error_mail");
 }else {
     include("404.php");
 }
