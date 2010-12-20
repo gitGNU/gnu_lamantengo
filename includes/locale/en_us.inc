@@ -21,43 +21,6 @@
  *
  */
 
-/*
-// link.php
-$title_home = "Home";
-
-$error_insert_link = "Error trying to insert link. Please retry later. If problem persists, consider informing site's administrator.";
-
-$instructions = 'Enter link\'s destination in the text box above. Read the Terms of Service and accept them. Click "Link" button and the site will give you back a new link, whose destination could be modified by any visitor. By registering, your links could be modified only by your account.';
-
-$link_button = "Link";
-
-// reging.php
-$login_button = "Login";
-
-$username = "Username";
-
-$password = "Password";
-
-$login_to_site = "Login to Site";
-
-$register = "Register";
-
-$register_title = "Register a new User Account";
-
-$forgot_password = "I forgot my password";
-
-$forgot_password_title = "Recover Password";
-
-// footer.php
-$terms_of_service_link = "Terms of Service";
-
-$terms_of_service_link_title = "Read the Terms of Service";
-
-$send_site_query_title_tom = "Send Site Query";
-
-$idea_and_realisation = "Idea and Realization: UnWebMaster.Com.Ar";
-*/
-
 $en_message_ar = array();
 
 // link.php
@@ -123,7 +86,7 @@ $en_message_ar['en']['reset_button']                    = "Reset";
 $en_message_ar['en']['reg_instruct']                    = "Enter the name of the user you want to register on the site, his real name (optional, only appear when we need to contact you), and a valid e-mail.<br />
                                                            In addition, enter the two words you see in the image, to verify that you are a human, not a computer by automated registrations.<br />
                                                            We will send a message to that address stating your login information, and will be the contact address associated with your account.<br />
-                                                           To register for the site has to be consistent with our <a href=\"tos.php?sid=$sid\" target=\"_blank\"";
+                                                           To register for the site has to be consistent with our <a href=\"tos.php?sid=$sid\" target=\"_blank\" title=\"Read the ToS (in a new window)\">Terms of Service</a>.";
 
 $en_message_ar['en']['read_ToS_nWindow']                = "Read the ToS (in a new window)";
 
@@ -174,5 +137,62 @@ $en_message_ar['en']['title_logout']                    = "Logout";
 $en_message_ar['en']['error_already_loggedout']         = "Already logged out.<br />\n";
 
 $en_message_ar['en']['session_closed']                  = "<div id=\"success\">The session was closed properly.</div>";
+
+// profile.php
+$en_message_ar['en']['title_profile']                   = "Profile";
+$en_message_ar['en']['error_confirm_pass_empty']        = "Confirmation of new password is empty.<br />\n";
+$en_message_ar['en']['error_passwords_nomatch']         = "New passwords do not match.<br />\n";
+$en_message_ar['en']['error_password_tooshort']         = "The new password must be at least 6 characters.<br />\n";
+$en_message_ar['en']['error_password_6_20_long']        = "The new password must be between 6 and 20 alphanumeric characters or symbols are<b>.</b>";
+$en_message_ar['en']['error_password_incorrect']        = "The password entered is incorrect.<br />\n";
+$en_message_ar['en']['error_login_to_view_profile']     = "You must login <a href=\"login.php?sid=$sid\"> </ a> to view your profile.<br />\n";
+
+$en_message_ar['en']['profile_updated']                 = "The account details were updated successfully.<br />\n";
+$en_message_ar['en']['new_password_label']              = "New Password: ";
+$en_message_ar['en']['message_6_20_char']               = "6-20 alphanumeric characters";
+$en_message_ar['en']['message_repeat_password']         = "Repeat new password:";
+$en_message_ar['en']['message_symbols']                 = "or symbols <b>. ( ) - _ ! @ =</b>";
+$en_message_ar['en']['label_current_password']          = "Current password *:";
+$en_message_ar['en']['confirm_changes']                 = "Confirm changes";
+$en_message_ar['en']['btn_edit_profile']                = "Edit Profile";
+$en_message_ar['en']['profile_explanation']             = "Enter the name of the user you want to register on the site, his real name (optional, only appear when we need to contact you), and a valid e-mail.<br />
+                                                          In addition, enter the two words you see in the image, to verify that you are a human, not a computer by automated registrations.<br />
+                                                          We will send a message to that address stating your login information, and will be the contact address associated with your account.<br />
+                                                          To register for the site has to be consistent with our <a href=\"tos.php?sid=$sid\" target=\"_blank\" title=\"Read the ToS (in a new window)\">Terms of Service</a>.";
+
+// mylinks.php
+$en_message_ar['en']['title_mylinks']                   = "My Links";
+$en_message_ar['en']['error_link_empty']                = "The link is empty<br />\n";
+$en_message_ar['en']['error_incomplete_url']            = "The URL entered is incomplete. Please type your URL in either <b>protocol://server/path</b> (the \"//\" may be waived in cases that are not necessary)<br />\n";
+$en_message_ar['en']['error_nopermission']              = "Link does not exist / You do not have permission to edit this link.<br />\n";
+$en_message_ar['en']['error_mass_removal']              = "To remove links massively must log <a href=\"login.php?sid=$sid\"> </ a>. If you do not have an account, <a href=\"register.php?sid=$sid\">register</a><br />\n";
+$en_message_ar['en']['error_no_edit_permission']        = "No link $key: link exist / do not have permission to edit this link.<br />\n";
+$en_message_ar['en']['error_no_link_id']                = "You have not entered the id of the link you want to delete.<br />\n";
+$en_message_ar['en']['error_invalid_action']            = "Invalid action.<br />\n";
+$en_message_ar['en']['error_not_loggedin_links']        = "To view your links must log <a href=\"login.php?sid=$sid\">login</ a>. If you do not have an account, <a href=\"register.php?sid=$sid\">register</a><br />\n";
+$en_message_ar['en']['error_failed_database_conn']      = "Failed to connect to the database.<br />\n";
+
+$en_message_ar['en']['success_updated']                 = "The $lid No link was updated successfully";
+$en_message_ar['en']['success_link_removed']            = "The link no $key was successfully removed.<br />\n";
+
+$en_message_ar['en']['label_destination']               = "Destination:";
+$en_message_ar['en']['label_description']               = "Description:";
+$en_message_ar['en']['label_last_modified']             = "Last modified:";
+
+$en_message_ar['en']['table_destination']               = "Destination";
+$en_message_ar['en']['table_description']               = "Description";
+$en_message_ar['en']['table_round']                     = "Round";
+$en_message_ar['en']['table_edit']                      = "Edit";
+$en_message_ar['en']['table_remove']                    = "Remove";
+$en_message_ar['en']['table_last_modified']             = "Last modified";
+
+$en_message_ar['en']['title_link_new_window']           = "See link in a new window";
+$en_message_ar['en']['delete_selected']                 = "Delete Selected";
+$en_message_ar['en']['save_changes']                    = "Save Changes";
+
+$en_message_ar['en']['click_button']                    = "Click button";
+$en_message_ar['en']['inst_change_dest']                = "to the right of a link to change the destination of it, or";
+$en_message_ar['en']['inst_remove']                     = "to remove it off permanently.<br />";
+$en_message_ar['en']['inst_bulk_remove']                = "To delete multiple links together, check the box to the left of each link you want to delete, then press the \"Delete Selected.\"";
 
 ?>

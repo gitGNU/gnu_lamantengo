@@ -22,45 +22,6 @@
  *
  */
 
-/*
-// link.php
-$title_home = "Inicio";
-
-$error_insert_link = "Error al agregar el link a la base de datos. Por favor, intente m&aacute;s tarde. Si el problema persiste, considere informar al WebMaster.<br />\n";
-
-$instructions = 'Ingrese el destino al que quiere linkear en la caja de texto de arriba. Lea las Condiciones del Servicio y acéptelas.
-                Clickee el botón "Linkear" y el sitio le devolverá un nuevo enlace, cuyo destino podrá ser modificado por cualquier visitante.
-                Registrándose, los links que cree podrán ser modificados por su cuenta de usuario únicamente.';
-
-$link_button = "Linkear";
-
-// reging.php
-
-$login_button = "Entrar";
-
-$username = "Nombre de usuario";
-
-$password = "Contrase&ntilde;a de usuario";
-
-$login_to_site = "Ingresar al sitio";
-
-$register = "Registrarse";
-
-$register_title = "Registrar una nueva cuenta de usuario";
-
-$forgot_password = "Olvid&eacute; mi password";
-
-$forgot_password_title = "Recuperar contrase&ntilde;a de usuario";
-
-$terms_of_service_link = "Condiciones del servicio";
-
-$terms_of_service_link_title = "Leer las Condiciones del servicio";
-
-$send_site_query_title_tom = "Envío de consulta de la web";
-
-$idea_and_realisation = "Idea y realizaci&oacute;n: UnWebMaster.Com.Ar";
-*/
-
 $es_message_ar = array();
 
 // link.php
@@ -171,6 +132,63 @@ $es_message_ar['es']['login_redirect']                  = "Si tras 3 segundos no
 $es_message_ar['es']['title_logout']                    = "Cerrar sesi&oacute;n";
 $es_message_ar['es']['error_already_loggedout']         = "Ya est&aacute; desloggeado.<br />\n";
 $es_message_ar['es']['session_closed']                  = "<div id=\"success\">La sesi&oacute;n fue cerrada correctamente.</div>";
+
+// profile.php
+$es_message_ar['es']['title_profile']                   = "Perfil";
+$es_message_ar['es']['error_confirm_pass_empty']        = "La confirmaci&oacute;n de nueva contrase&ntilde;a est&aacute; vac&iacute;a<br />\n";
+$es_message_ar['es']['error_passwords_nomatch']         = "Las nuevas contrase&ntilde;as no coinciden<br />\n";
+$es_message_ar['es']['error_password_tooshort']         = "La nueva contrase&ntilde;a debe tener al menos 6 caracteres<br />\n";
+$es_message_ar['es']['error_password_6_20_long']        = "La nueva contrase&ntilde;a debe tener entre 6 y 20 caracteres que sean alfanum&eacute;ricos o los s&iacute;mbolos <b>.</b>";
+$es_message_ar['es']['error_password_incorrect']        = "La contrase&ntilde;a ingresada es incorrecta<br />\n";
+$es_message_ar['es']['error_login_to_view_profile']     = "Debe <a href=\"login.php?sid=$sid\">iniciar sesi&oacute;n</a> para ver su perfil.<br />\n";
+
+$es_message_ar['es']['profile_updated']                 = "Los datos de la cuenta fueron actualizados exitosamente.<br />\n";
+$es_message_ar['es']['new_password_label']              = "Nuevo Password: ";
+$es_message_ar['es']['message_6_20_char']               = "6-20 caracteres alfanumericos";
+$es_message_ar['es']['message_repeat_password']         = "Repite nuevo password:";
+$es_message_ar['es']['message_symbols']                 = "o los s&iacute;mbolos <b>. ( ) - _ ! @ =</b>";
+$es_message_ar['es']['label_current_password']          = "Contrase&ntilde;a actual*:";
+$es_message_ar['es']['confirm_changes']                 = "Confirma los cambios";
+$es_message_ar['es']['btn_edit_profile']                = "Modificar perfil";
+$es_message_ar['es']['profile_explanation']             = "Ingrese el nombre de usuario con el que quiere registrarse en el sitio, su nombre real (opcional, solamente figurar&aacute; cuando debamos contactarnos con usted), y un e-mail v&aacute;lido.<br />
+                                                           Adem&aacute;s, ingrese las dos palabras que ve en la imagen, para verificar que usted es un humano, y no una computadora haciendo registros autom&aacute;ticos.<br />
+                                                           Se enviar&aacute; un mensaje a esa direcci&oacute;n indicando sus datos de inicio de sesi&oacute;n, y ser&aacute; la direcci&oacute;n de contacto asociada a su cuenta.<br />
+                                                           Para registrarse en el sitio tiene que estar de acuerdo con nuestros <a href=\"tos.php?sid=<?php echo $sid; ?>\" target=\"_blank\" title=\"Leer los ToS (en una ventana nueva)\">T&eacute;rminos del Servicio</a>.";
+
+// mylinks.php
+$es_message_ar['es']['title_mylinks']                   = "Mis links";
+$es_message_ar['es']['error_link_empty']                = "El id de link est&aacute; vac&iacute;o<br />\n";
+$es_message_ar['es']['error_incomplete_url']            = "La URL ingresada est&aacute; incompleta. Por favor, escriba su URL en formato <b>protocolo://servidor/ruta</b> (las &quot;//&quot; pueden obviarse en los casos en que no sean necesarias)<br />\n";
+$es_message_ar['es']['error_nopermission']              = "Link inexistente / No tienes permiso para editar este link<br />\n";
+$es_message_ar['es']['error_mass_removal']              = "Para eliminar enlaces masivamente tiene que <a href=\"login.php?sid=$sid\">iniciar sesi&oacute;n</a>. Si no tiene una cuenta, <a href=\"register.php?sid=$sid\">reg&iacute;strese</a><br />\n";
+$es_message_ar['es']['error_no_edit_permission']        = "Link n&ordm;$key: link inexistente / No tienes permiso para editar este link.<br />\n";
+$es_message_ar['es']['error_no_link_id']                = "No se ha ingresado el id del link que se quiere eliminar<br />\n";
+$es_message_ar['es']['error_invalid_action']            = "Acci&oacute;n inv&aacute;lida.<br />\n";
+$es_message_ar['es']['error_not_loggedin_links']        = "Para ver sus enlaces tiene que <a href=\"login.php?sid=$sid\">iniciar sesi&oacute;n</a>. Si no tiene una cuenta, <a href=\"register.php?sid=$sid\">reg&iacute;strese</a><br />\n";
+$es_message_ar['es']['error_failed_database_conn']      = "Error al conectar con la base de datos.<br />\n";
+
+$es_message_ar['es']['success_updated']                 = "El link n&ordm; $lid fue actualizado con &eacute;xito";
+$es_message_ar['es']['success_link_removed']            = "El link n&ordm;$key fue eliminado correctamente<br />\n";
+
+$es_message_ar['es']['label_destination']               = "Destino:";
+$es_message_ar['es']['label_description']               = "Descripci&oacute;n:";
+$es_message_ar['es']['label_last_modified']             = "&Uacute;ltima modificaci&oacute;n:";
+
+$es_message_ar['es']['table_destination']               = "Destino";
+$es_message_ar['es']['table_description']               = "Descripci&oacute;n";
+$es_message_ar['es']['table_round']                     = "Visitas";
+$es_message_ar['es']['table_edit']                      = "Editar";
+$es_message_ar['es']['table_remove']                    = "Eliminar";
+$es_message_ar['es']['table_last_modified']             = "&Uacute;ltima modificaci&oacute;n";
+
+$es_message_ar['es']['title_link_new_window']           = "Ver enlace en otra ventana";
+$es_message_ar['es']['delete_selected']                 = "Eliminar seleccionados";
+$es_message_ar['es']['save_changes']                    = "Guardar cambios";
+
+$es_message_ar['es']['click_button']                    = "Clickee el bot&oacute;n";
+$es_message_ar['es']['inst_change_dest']                = "a la derecha de un link para cambiar el destino del mismo, o bien";
+$es_message_ar['es']['inst_remove']                     = "para desactivarlo permanentemente.<br />";
+$es_message_ar['es']['inst_bulk_remove']                = "Para eliminar m&uacute;ltiples links juntos, tilde la casilla a la izquierda de cada link que quiera eliminar, y luego presione el bot&oacute;n &quot;Eliminar seleccionados&quot;.";
 
 
 ?>

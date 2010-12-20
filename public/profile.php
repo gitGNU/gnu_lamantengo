@@ -22,13 +22,16 @@
  * 
  */
 define('INSITE', 1);
-$title = "Perfil";
+
 require_once("../includes/initialise.php");
 include('get_sid.php');
-$errores = ""; //vacio errores
+
+$title = $language->translate("title_profile");
+
+$errores = ""; // void error
 $muestro_formulario = 1;
-if ($uid) { //loggeado
-    if ($_POST) { //Proceso datos del formulario
+if ($uid) { // logged out
+    if ($_POST) { // Process form data
         $realname = $_POST['realname'];
         $new_pass = $_POST['new_pass'];
         $_POST['new_pass'] = "";
@@ -36,22 +39,22 @@ if ($uid) { //loggeado
         $_POST['new_pass2'] = "";
         $password = md5($_POST['password']);
         $_POST['password'] = "";
-        //busco errores y los meto como lista en $errores
+        // look for errors and methodological errors as listed in $errores
         if ($new_pass != "") {
             if ($new_pass2 == "")
-                $errores.="La confirmaci&oacute;n de nueva contrase&ntilde;a est&aacute; vac&iacute;a<br />\n";
+                $errores .= $language->translate("error_confirm_pass_empty");
             else
             if ($new_pass != $new_pass2)
-                $errores.="Las nuevas contrase&ntilde;as no coinciden<br />\n";
+                $errores .= $language->translate("error_passwords_nomatch");
             else {
                 $new_pass2 = "";
                 if (strlen($new_pass) < 6)
-                    $errores.="La nueva contrase&ntilde;a debe tener al menos 6 caracteres<br />\n";
+                    $errores .= $language->translate("error_password_tooshort");
                 else
                 if (!(preg_match('/^[a-zA-Z0-9\.\(\)\-\_\!\@\=]{6,20}/', $new_pass))) {
-                    $errores.="La nueva contrase&ntilde;a debe tener entre 6 y 20 caracteres que sean alfanum&eacute;ricos o los s&iacute;mbolos <b>.</b> ";
-                    $errores.="<b>(</b> <b>)</b> <b>-</b> <b>_</b> <b>!</b> <b>@</b> <b>=</b><br />\n";
-                } else { //no hay errores de password
+                    $errores .= $language->translate("error_password_6_20_long");
+                    $errores .= "<b>(</b> <b>)</b> <b>-</b> <b>_</b> <b>!</b> <b>@</b> <b>=</b><br />\n";
+                } else { // no password error
                     $new_pass = md5($new_pass);
                 }
             }
@@ -60,27 +63,27 @@ if ($uid) { //loggeado
             $query = "SELECT `active` FROM `users` WHERE `uid`='$uid' AND `password`='$password';";
             $rs = mysql_query($query);
             if (!($fila = mysql_fetch_object($rs)))
-                $errores.="La contrase&ntilde;a ingresada es incorrecta<br />\n";
+                $errores .= $language->translate("error_password_incorrect");
             else {
                 if (!($fila->active))
-                    $errores.="El usuario fue desactivado por la administraci&oacute;n<br />\n";
+                    $errores .= $language->translate("error_user_disabled");
             }
             if (!$errores) {
-                //actualizo los datos
+                // update data
                 $query = "UPDATE `users` SET ";
                 if ($new_pass)
                     $query.="`password`='$new_pass', ";
                 $query.="`realname`='$realname' WHERE `uid`='$uid';";
                 $rs = mysql_query($query);
-                $success = "Los datos de la cuenta fueron actualizados exitosamente";
+                $success = $language->translate("profile_updated");
             }
         }
-    } //FIN POST
-}else { //Usuario no loggeado, lo echo
-    $errores.="Debe <a href=\"login.php?sid=$sid\">iniciar sesi&oacute;n</a> para ver su perfil<br />\n";
+    } // END POST
+}else { // User not logged
+    $errores .= $language->translate("error_login_to_view_profile");
     $muestro_formulario = 0;
 }
-//Muestro la pagina, con errores o success segun corresponda
+// Show page with errors or success whichever is applicable
 include('header.php');
 ?>
 <div id="contenido">
@@ -111,19 +114,19 @@ include('header.php');
                         <td id="td_reg2">&nbsp;</td>
                     </tr>
                     <tr id="tr_reg">
-                        <td id="td_reg1">Nombre:</td>
+                        <td id="td_reg1"><?php echo $language->translate("first_name_label"); ?></td>
                         <td id="td_reg"><input id="text_reg" type="text" name="realname" value="<?php echo $realname; ?>" /></td>
-                        <td id="td_reg2">Para usar en caso de contacto</td>
+                        <td id="td_reg2"><?php echo $language->translate("first_name_message"); ?></td>
                     </tr>
                     <tr id="tr_reg">
-                        <td id="td_reg1">Nuevo Password:</td>
+                        <td id="td_reg1"><?php echo $language->translate("new_password_label"); ?></td>
                         <td id="td_reg"><input id="pass_reg" type="password" name="new_pass" value="" /></td>
-                        <td id="td_reg2">6-20 caracteres alfanumericos </td>
+                        <td id="td_reg2"><?php echo $language->translate("message_6_20_char"); ?></td>
                     </tr>
                     <tr id="tr_reg">
-                        <td id="td_reg1">Repite nuevo password:</td>
+                        <td id="td_reg1"><?php echo $language->translate("message_repeat_password"); ?></td>
                         <td id="td_reg"><input id="pass_reg" type="password" name="new_pass2" value="" /></td>
-                        <td id="td_reg2">o los s&iacute;mbolos <b>. ( ) - _ ! @ =</b></td>
+                        <td id="td_reg2"><?php echo $language->translate("message_symbols"); ?></td>
                     </tr>
                     <tr>
                         <td colspan="3">
@@ -131,14 +134,14 @@ include('header.php');
                         </td>
                     </tr>
                     <tr id="tr_reg">
-                        <td id="td_reg1">Contrase&ntilde;a actual*:</td>
+                        <td id="td_reg1"><?php echo $language->translate("label_current_password"); ?></td>
                         <td id="td_reg"><input id="pass_reg" type="password" name="password" value="" /></td>
-                        <td id="td_reg2">Confirma los cambios</td>
+                        <td id="td_reg2"><?php echo $language->translate("confirm_changes"); ?></td>
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <input type="submit" id="submit_reg" value="Modificar perfil" />
-                            <input type="reset" id="reset_reg" value="Resetear" />
+                            <input type="submit" id="submit_reg" value="<?php echo $language->translate("btn_edit_profile"); ?>" />
+                            <input type="reset" id="reset_reg" value="<?php echo $language->translate("reset_button"); ?>" />
                         </td>
                     </tr>
                 </table>
@@ -147,10 +150,9 @@ include('header.php');
     <?php } ?>
 </div>
 <div id="explanation">
-			Ingrese el nombre de usuario con el que quiere registrarse en el sitio, su nombre real (opcional, solamente figurar&aacute; cuando debamos contactarnos con usted), y un e-mail v&aacute;lido.<br />
-			Adem&aacute;s, ingrese las dos palabras que ve en la imagen, para verificar que usted es un humano, y no una computadora haciendo registros autom&aacute;ticos.<br />
-			Se enviar&aacute; un mensaje a esa direcci&oacute;n indicando sus datos de inicio de sesi&oacute;n, y ser&aacute; la direcci&oacute;n de contacto asociada a su cuenta.<br />
-			Para registrarse en el sitio tiene que estar de acuerdo con nuestros <a href="tos.php?sid=<?php echo $sid; ?>" target="_blank" title="Leer los ToS (en una ventana nueva)">T&eacute;rminos del Servicio</a>.
+    <?php
+    echo $language->translate("profile_explanation");
+    ?>
 </div>
 <?php
     include("footer.php");
