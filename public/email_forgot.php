@@ -37,13 +37,13 @@ if (defined('INSITE')) {
         $mail_nombre = $username;
     }
     $mail_to = $mail_nombre . ' <' . $email . '>';
-    $mail_subj = "Nuevos datos en LaMantengo.Com.Ar";
+    $mail_subj = $language->translate("new_data");
 
-    $mail_cuerpo = "Tus nuevos datos de inicio de sesi&oacute;n son:<br />\r\n";
-    $mail_cuerpo.="Usuario: <b>$username</b><br />\r\n";
-    $mail_cuerpo.="Contrase&ntilde;a: <b>$password</b><br />\r\n";
-    $mail_cuerpo.="<br />\r\n";
-    $mail_cuerpo.="Recuerda que puedes iniciar sesi�n desde <a href=\"http://www.lamantengo.com.ar/login.php\">http://www.lamantengo.com.ar/login.php</a><br />\r\n";
+    $mail_cuerpo = $language->translate("new_login_data");
+    $mail_cuerpo .= $language->translate("mail_username")."<b>$username</b><br />\r\n";
+    $mail_cuerpo .= $language->translate("mail_password")."<b>$password</b><br />\r\n";
+    $mail_cuerpo .= "<br />\r\n";
+    $mail_cuerpo .= $language->translate("login_reminder")." <a href=\"http://www.lamantengo.com.ar/login.php\">http://www.lamantengo.com.ar/login.php</a><br />\r\n";
 
     include('enviar_email.php');
 } else {

@@ -33,12 +33,12 @@ if (defined('INSITE')) {
      * ************************************************** */
     $mail_nombre = $realname;
     $mail_to = $mail_nombre . ' <' . $email . '>';
-    $mail_subj = "Verificar tu reporte en LaMantengo.Com.Ar";
+    $mail_subj = $language->translate("check_report");
 
-    $mail_cuerpo.="Para verificar tu cuenta y habilitar el env&iacute;o de tu reporte, por favor visita el siguiente enlace:<br />\r\n";
-    $mail_cuerpo.="<a href=\"http://www.lamantengo.com.ar/report.php?action=confirm&id=$rid&key=$key\">http://www.lamantengo.com.ar/report.php?action=confirm&id=$rid&key=$key</a><br />\r\n";
-    $mail_cuerpo.="<br />\r\n";
-    $mail_cuerpo.="Si el link falla, copia y pega http://www.lamantengo.com.ar/report.php?action=confirm&id=$rid&key=$key en tu navegador.<br />\r\n";
+    $mail_cuerpo .= $language->translate("check_report_link");
+    $mail_cuerpo .= "<a href=\"http://www.lamantengo.com.ar/report.php?action=confirm&id=$rid&key=$key\">http://www.lamantengo.com.ar/report.php?action=confirm&id=$rid&key=$key</a><br />\r\n";
+    $mail_cuerpo .= "<br />\r\n";
+    $mail_cuerpo .= $language->translate("mail_link_fails") . " http://www.lamantengo.com.ar/report.php?action=confirm&id=$rid&key=$key " . $language->translate("mail_browser");
 
     include('enviar_email.php');
 } else {

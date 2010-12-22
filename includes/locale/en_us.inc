@@ -213,6 +213,74 @@ $en_message_ar['en']['tos_text']                        = "Here will go all the 
 $en_message_ar['en']['full_text']                       = "Full Text";
 $en_message_ar['en']['pending']                         = "Pending...";
 
+// email_forgot.php
+$en_message_ar['en']['new_data']                        = "New data in LaMantengo.Com.Ar";
+$en_message_ar['en']['new_login_data']                  = "Your new login data:<br />\r\n";
+$en_message_ar['en']['login_reminder']                  = "Remember that you can to login from";
+
+// forgot.php
+$en_message_ar['en']['title_forgot']                    = "Recover password";
+$en_message_ar['en']['error_already_loggedin']          = "You are already logged in.";
+$en_message_ar['en']['error_email_nomatch']             = "The e-mail user and entered do not match. Try again.<br />\n";
+
+$en_message_ar['en']['password_updated']                = "Your password was successfully updated. Check your email (<b>$email</b>) for its new data input.";
+$en_message_ar['en']['reset_password']                  = "Reset Password";
+$en_message_ar['en']['reset_explanation']               = "To reset your password, enter your username and e-mail associated with your account.<br />
+                                                          In addition, enter the two words you see in the image, to verify that you are a human, not a computer by automated registrations.<br />
+                                                          The new password will be sent to that address.";
+
+// email_forgot_confirm.php
+$en_message_ar['en']['mail_subject_lost_pass']          = "Lost your password for LaMantengo.Com.Ar";
+$en_message_ar['en']['mail_lost_pass_message']          = "You are receiving this e-mail because you requested your login details for LaMantengo. If this is not so, simply ignore this message.<br />\r\n";
+$en_message_ar['en']['mail_rebuild_login']              = "To rebuild your login, visit the following link:<br />\r\n";
+$en_message_ar['en']['mail_link_fails']                 = "If the link fails, copy and paste ";
+$en_message_ar['en']['mail_browser']                    = "in your browser.<br />\r\n";
+$en_message_ar['en']['mail_receive_email']              = "You will receive another e-mail with your new data after a visit.<br />\r\n";
+
+// email_report.php
+$en_message_ar['en']['report_link']                     = "Report your link on LaMantengo.Com.Ar";
+$en_message_ar['en']['visitors']                        = "Visitors: ";
+$en_message_ar['en']['link_reported']                   = "your link has been reported";
+$en_message_ar['en']['suggesting']                      = ", Suggesting";
+$en_message_ar['en']['new_destination']                 = "as a new destination";
+$en_message_ar['en']['his_message']                     = "His message was:<br />\r\n";
+$en_message_ar['en']['you_can_contact']                 = "You can contact";
+$en_message_ar['en']['at']                              = "at";
+
+
+// email_report_confirm.php
+$en_message_ar['en']['check_report']                    = "Check your report in LaMantengo.Com.Ar";
+$en_message_ar['en']['check_report_link']               = "To check your account and allow submission of your report, please visit the following link:<br />\r\n";
+
+// report.php
+$en_message_ar['en']['title_report']                    = "Report Link";
+$en_message_ar['en']['error_link_not_exist']            = "The selected link does not exist or was disabled.<br />\n";
+$en_message_ar['en']['error_link_public']               = "The selected link is public or yours. ";
+$en_message_ar['en']['error_click_here']                = "Click here to edit</a><br />\n";
+$en_message_ar['en']['error_must_enter_name']           = "You must enter your name.<br />\n";
+$en_message_ar['en']['error_must_enter_email']          = "You must enter your email.<br />\n";
+$en_message_ar['en']['error_link_id_empty']             = "The id of the link to report is empty.<br />\n";
+$en_message_ar['en']['error_key_invalid']               = "The key entered is invalid, or the report has already been confirmed and shipped.<br />\n";
+$en_message_ar['en']['error_modify_report']             = "Attempt to update the report in the database.<br />\n";
+$en_message_ar['en']['error_empty_report']              = "The identifier and / or password are empty report.<br />\n";
+$en_message_ar['en']['error_nothing_to_do']             = "There was no indication any action to perform.<br />\n";
+
+$en_message_ar['en']['email_verify']                    = "You were sent an e-mail to <b>" . $_POST['Email'] . "</b> to verify the address. Otherwise, the report not be sent.<br />\n";
+$en_message_ar['en']['report_sent']                     = "The report was confirmed and successfully sent to the owner of the reported link.";
+
+$en_message_ar['en']['suggested_target']                = "Suggested target:";
+$en_message_ar['en']['comment']                         = "Comment:";
+
+// visit.php
+$en_message_ar['en']['title_visit']                     = "Visit Site";
+$en_message_ar['en']['go_to']                           = "Go to LaMantengo.Com.Ar";
+$en_message_ar['en']['remove_frame']                    = "Remove Frame";
+$en_message_ar['en']['title_edit_link']                 = "Edit the Link";
+$en_message_ar['en']['title_remove_link']               = "Remove Link";
+$en_message_ar['en']['report_link_expired']             = "Report link expired / invalid";
+$en_message_ar['en']['report']                          = "Report";
+
+$en_message_ar['en']['no_definitions_found']            = "No definitions found:";
 
 
 ?>

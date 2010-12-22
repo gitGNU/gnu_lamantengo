@@ -5,6 +5,14 @@
 2010-12-22 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Translated tos.php
     * Translated view.php
+    * Translated email_forgot.php
+    * Translated forgot.php
+    * Translated email_forgot_confirm.php
+    * Translated email_report.php
+    * Translated email_report_confirm.php
+    * Translated comments in get_sid.php
+    * Translated report.php
+    * Translated visit.php
 
 2010-12-21 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Translated comments in report.php

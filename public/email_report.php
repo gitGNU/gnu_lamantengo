@@ -37,21 +37,21 @@ if (defined('INSITE')) {
         $mail_nombre = $username;
     }
     $mail_to = $mail_nombre . ' <' . $mail_enviar_a . '>';
-    $mail_subj = "Reporte de tu link en LaMantengo.Com.Ar";
+    $mail_subj = $language->translate("report_link");
 
     if ($mail_es_usuario)
-        $mail_cuerpo = "El usuario $username";
+        $mail_cuerpo = $language->translate("mail_username") . $username;
     else
-        $mail_cuerpo="El visitante $realname";
-    $mail_cuerpo.=" ha reportado tu link <a href=\"http://www.lamantengo.com.ar/view.php?id=$id_link\">http://www.lamantengo.com.ar/view.php?id=$id_link</a>";
+        $mail_cuerpo = $language->translate("visitors") . $realname;
+    $mail_cuerpo .= $language->translate("link_reported") . " <a href=\"http://www.lamantengo.com.ar/view.php?id=$id_link\">http://www.lamantengo.com.ar/view.php?id=$id_link</a>";
     if ($mail_destination)
-        $mail_cuerpo.=", sugiriendo <b>$mail_destination</b> como nuevo destino";
-    $mail_cuerpo.=".<br />\r\n";
-    $mail_cuerpo.="Su mensaje fue:<br />\r\n";
-    $mail_cuerpo.="<br />\r\n";
-    $mail_cuerpo.="<i>&quot;" . $mail_dice . "&quot;</i>";
-    $mail_cuerpo.="<br />\r\n";
-    $mail_cuerpo.="Puedes contactar a $mail_nombre en $mail_enviar_a.<br />\r\n";
+        $mail_cuerpo .= $language->translate("suggesting") . " <b>$mail_destination</b> " . $language->translate("new_destination");
+    $mail_cuerpo .= ".<br />\r\n";
+    $mail_cuerpo .= $language->translate("his_message");
+    $mail_cuerpo .= "<br />\r\n";
+    $mail_cuerpo .= "<i>&quot;" . $mail_dice . "&quot;</i>";
+    $mail_cuerpo .= "<br />\r\n";
+    $mail_cuerpo .= $language->translate("you_can_contact") . $mail_nombre . $language->translate("at") . $mail_enviar_a . "<br />\r\n";
 
     include('enviar_email.php');
 }else {

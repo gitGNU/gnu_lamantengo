@@ -37,16 +37,16 @@ if (defined('INSITE')) {
         $mail_nombre = $username;
     }
     $mail_to = $mail_nombre . ' <' . $email . '>';
-    $mail_subj = "Recuperar tu password en LaMantengo.Com.Ar";
+    $mail_subj = $language->translate("mail_subject_lost_pass");
 
-    $mail_cuerpo = "Est&aacute;s recibiendo este e-mail porque solicitaste recuperar tus datos de inicio de sesi&oacute;n en LaMantengo. Si esto no es as&iacute;, simplemente ignora este mensaje.<br />\r\n";
-    $mail_cuerpo.="<br />\r\n";
-    $mail_cuerpo.="Para volver a generar tus datos de login, visita el siguiente link:<br />\r\n";
-    $mail_cuerpo.="<a href=\"http://www.lamantengo.com.ar/forgot.php?action=confirm&id=$uid&key=$key\">http://www.lamantengo.com.ar/forgot.php?action=confirm&id=$uid&key=$key</a><br />\r\n";
-    $mail_cuerpo.="<br />\r\n";
-    $mail_cuerpo.="Si el link falla, copia y pega http://www.lamantengo.com.ar/forgot.php?action=confirm&id=$uid&key=$key en tu navegador.<br />\r\n";
-    $mail_cuerpo.="<br />\r\n";
-    $mail_cuerpo.="Recibir&aacute;s otro e-mail con tus nuevos datos despu&eacute;s de visitarlo.<br />\r\n";
+    $mail_cuerpo = $language->translate("mail_lost_pass_message");
+    $mail_cuerpo .= "<br />\r\n";
+    $mail_cuerpo .= $language->translate("mail_rebuild_login");
+    $mail_cuerpo .= "<a href=\"http://www.lamantengo.com.ar/forgot.php?action=confirm&id=$uid&key=$key\">http://www.lamantengo.com.ar/forgot.php?action=confirm&id=$uid&key=$key</a><br />\r\n";
+    $mail_cuerpo .= "<br />\r\n";
+    $mail_cuerpo .= $language->translate("mail_link_fails") . " http://www.lamantengo.com.ar/forgot.php?action=confirm&id=$uid&key=$key" . $language->translate("mail_browser");
+    $mail_cuerpo .= "<br />\r\n";
+    $mail_cuerpo .= $language->translate("mail_receive_email");
 
     include('enviar_email.php');
 } else {

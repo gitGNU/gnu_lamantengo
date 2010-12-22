@@ -198,8 +198,8 @@ $es_message_ar['es']['error_link_noexistent']           = "Link inexistente/desa
 
 $es_message_ar['es']['success_link_added']              = "El link fue agregado con &eacute;xito.";
 $es_message_ar['es']['view_explanation']                = "Utilize esta ventana para saber a qu&eacute; p&aacute;gina apunta un link. Clickeando en la direcci&oacute;n destino podr&aacute; visitar el sitio.<br />
-                                                          Si usted es el propietario del link, o bien si es un link p&uacute;blico, tambi&eacute;n encontrar&aacute; la posibilidad de editar el link, o bien darlo de baja.
-                                                          Para ello, pulse los botones <img src=\"IMAGE_PATH . DS . edit.png\" alt=\"Editar\" title=\"Editar\"> o <img src=\"IMAGE_PATH . DS . delete.png\" alt=\"Eliminar\" title=\"Eliminar\" />, respectivamente.";
+                                                           Si usted es el propietario del link, o bien si es un link p&uacute;blico, tambi&eacute;n encontrar&aacute; la posibilidad de editar el link, o bien darlo de baja.
+                                                           Para ello, pulse los botones <img src=\"IMAGE_PATH . DS . edit.png\" alt=\"Editar\" title=\"Editar\"> o <img src=\"IMAGE_PATH . DS . delete.png\" alt=\"Eliminar\" title=\"Eliminar\" />, respectivamente.";
 
 // tos.php
 $es_message_ar['es']['terms_and_conditions']            = "T&eacute;rminos y condiciones del servicio";
@@ -208,8 +208,73 @@ $es_message_ar['es']['tos_text']                        = "Here will go all the 
 $es_message_ar['es']['full_text']                       = "Texto completo";
 $es_message_ar['es']['pending']                         = "Pendiente...";
 
+// email_forgot.php
+$es_message_ar['es']['new_data']                        = "Nuevos datos en LaMantengo.Com.Ar";
+$es_message_ar['es']['new_login_data']                  = "Tus nuevos datos de inicio de sesi&oacute;n son:<br />\r\n";
+$es_message_ar['es']['login_reminder']                  = "Recuerda que puedes iniciar sesi�n desde";
 
+// forgot.php
+$es_message_ar['es']['title_forgot']                    = "Recuperar password";
+$es_message_ar['es']['error_already_loggedin']          = "El usuario ya est&aacute; loggeado.";
+$es_message_ar['es']['error_email_nomatch']             = "El usuario y e-mail ingresados no corresponden. Intente de nuevo.<br />\n";
 
+$es_message_ar['es']['password_updated']                = "Su password fue actualizado correctamente. Revise su email (<b>$email</b>) para obtener sus nuevos datos de ingreso.";
+$es_message_ar['es']['reset_password']                  = "Reestablecer Password";
+$es_message_ar['es']['reset_explanation']               = "Para reestablecer su contrase&ntilde;a, indique su nombre de usuario y el e-mail asociado a su cuenta.<br />
+                                                           Adem&aacute;s, ingrese las dos palabras que ve en la imagen, para verificar que usted es un humano, y no una computadora haciendo registros autom&aacute;ticos.<br />
+                                                           El nuevo password ser&aacute; enviado a esa direcci&oacute;n.";
+
+// email_forgot_confirm.php
+$es_message_ar['es']['mail_subject_lost_pass']          = "Recuperar tu password en LaMantengo.Com.Ar";
+$es_message_ar['es']['mail_lost_pass_message']          = "Est&aacute;s recibiendo este e-mail porque solicitaste recuperar tus datos de inicio de sesi&oacute;n en LaMantengo. Si esto no es as&iacute;, simplemente ignora este mensaje.<br />\r\n";
+$es_message_ar['es']['mail_rebuild_login']              = "Para volver a generar tus datos de login, visita el siguiente link:<br />\r\n";
+$es_message_ar['es']['mail_link_fails']                 = "If the link fails, copy and paste ";
+$es_message_ar['es']['mail_browser']                    = "en tu navegador.<br />\r\n";
+$es_message_ar['es']['mail_receive_email']              = "Recibir&aacute;s otro e-mail con tus nuevos datos despu&eacute;s de visitarlo.<br />\r\n";
+
+// email_report.php
+$es_message_ar['es']['report_link']                     = "Reporte de tu link en LaMantengo.Com.Ar";
+$es_message_ar['es']['visitors']                        = "El visitante: ";
+$es_message_ar['es']['link_reported']                   = "ha reportado tu link";
+$es_message_ar['es']['suggesting']                      = ", sugiriendo";
+$es_message_ar['es']['new_destination']                 = "como nuevo destino";
+$es_message_ar['es']['his_message']                     = "Su mensaje fue:<br />\r\n";
+$es_message_ar['es']['you_can_contact']                 = "Puedes contactar a";
+$es_message_ar['es']['at']                              = "an";
+
+// email_report_confirm.php
+$es_message_ar['es']['check_report']                    = "Verificar tu reporte en LaMantengo.Com.Ar";
+$es_message_ar['es']['check_report_link']               = "Para verificar tu cuenta y habilitar el env&iacute;o de tu reporte, por favor visita el siguiente enlace:<br />\r\n";
+
+// report.php
+$es_message_ar['es']['title_report']                    = "Reportar Link";
+$es_message_ar['es']['error_link_not_exist']            = "El link seleccionado no existe o bien fue desactivado.<br />\n";
+$es_message_ar['es']['error_link_public']               = "El link seleccionado es p&uacute;blico o te pertenece. ";
+$es_message_ar['es']['error_click_here']                = "Click ac&aacute; para editarlo</a><br />\n";
+$es_message_ar['es']['error_must_enter_name']           = "Debe ingresar su nombre.<br />\n";
+$es_message_ar['es']['error_must_enter_email']          = "Debe ingresar su email.<br />\n";
+$es_message_ar['es']['error_link_id_empty']             = "El id del link a reportar est&aacute; vac&iacute;o.<br />\n";
+$es_message_ar['es']['error_key_invalid']               = "La clave ingresada es inv&aacute;lida, o el reporte ya fue confirmado y enviado.<br />\n";
+$es_message_ar['es']['error_modify_report']             = "Error al intentar actualizar el reporte en la base de datos.<br />\n";
+$es_message_ar['es']['error_empty_report']              = "El identificador y/o la clave de reporte est&aacute;n vac&iacute;os.<br />\n";
+$es_message_ar['es']['error_nothing_to_do']             = "No se indic&oacute; ninguna acci&oacute;n para realizar.<br />\n";
+
+$es_message_ar['es']['email_verify']                    = "Se envi&oacute; un e-mail a <b>" . $_POST['email'] . "</b> para verificar la direcci&oacute;n. De no hacerlo, el reporte no ser&aacute; enviado.<br />\n";
+$es_message_ar['es']['report_sent']                     = "El reporte fue confirmado y enviado correctamente al propietario del link reportado.";
+
+$es_message_ar['es']['suggested_target']                = "Destino sugerido:";
+$es_message_ar['es']['comment']                         = "Comentario::";
+
+// visit.php
+$es_message_ar['es']['title_visit']                     = "Visitar sitio";
+$es_message_ar['es']['go_to']                           = "Ir a LaMantengo.Com.Ar";
+$es_message_ar['es']['remove_frame']                    = "Quitar marco";
+$es_message_ar['es']['title_edit_link']                 = "Editar destino del link";
+$es_message_ar['es']['title_remove_link']               = "Eliminar link";
+$es_message_ar['es']['report_link_expired']             = "Reportar link caducado/invalido";
+$es_message_ar['es']['report']                          = "Reportar";
+
+$es_message_ar['es']['no_definitions_found']            = "Link NoHuyas:";
 
 
 ?>
