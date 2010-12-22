@@ -173,6 +173,7 @@ $es_message_ar['es']['success_link_removed']            = "El link n&ordm;$key f
 $es_message_ar['es']['label_destination']               = "Destino:";
 $es_message_ar['es']['label_description']               = "Descripci&oacute;n:";
 $es_message_ar['es']['label_last_modified']             = "&Uacute;ltima modificaci&oacute;n:";
+$es_message_ar['es']['label_round']                     = "Visitas:";
 
 $es_message_ar['es']['table_destination']               = "Destino";
 $es_message_ar['es']['table_description']               = "Descripci&oacute;n";
@@ -189,6 +190,26 @@ $es_message_ar['es']['click_button']                    = "Clickee el bot&oacute
 $es_message_ar['es']['inst_change_dest']                = "a la derecha de un link para cambiar el destino del mismo, o bien";
 $es_message_ar['es']['inst_remove']                     = "para desactivarlo permanentemente.<br />";
 $es_message_ar['es']['inst_bulk_remove']                = "Para eliminar m&uacute;ltiples links juntos, tilde la casilla a la izquierda de cada link que quiera eliminar, y luego presione el bot&oacute;n &quot;Eliminar seleccionados&quot;.";
+
+// view.php
+$es_message_ar['es']['title_view']                      = "Ver link";
+$es_message_ar['es']['error_no_link_id']                = "No hay id del link (URL inv&aacute;lida).<br />\n";
+$es_message_ar['es']['error_link_noexistent']           = "Link inexistente/desactivado.<br />\n";
+
+$es_message_ar['es']['success_link_added']              = "El link fue agregado con &eacute;xito.";
+$es_message_ar['es']['view_explanation']                = "Utilize esta ventana para saber a qu&eacute; p&aacute;gina apunta un link. Clickeando en la direcci&oacute;n destino podr&aacute; visitar el sitio.<br />
+                                                          Si usted es el propietario del link, o bien si es un link p&uacute;blico, tambi&eacute;n encontrar&aacute; la posibilidad de editar el link, o bien darlo de baja.
+                                                          Para ello, pulse los botones <img src=\"IMAGE_PATH . DS . edit.png\" alt=\"Editar\" title=\"Editar\"> o <img src=\"IMAGE_PATH . DS . delete.png\" alt=\"Eliminar\" title=\"Eliminar\" />, respectivamente.";
+
+// tos.php
+$es_message_ar['es']['terms_and_conditions']            = "T&eacute;rminos y condiciones del servicio";
+$es_message_ar['es']['introduction']                    = "Introducci&oacute;n";
+$es_message_ar['es']['tos_text']                        = "Here will go all the legal terms of service LaMantengo.Com.Ar where, as usual, will say that we are not responsible for the use you give to this service except for compelling us law.";
+$es_message_ar['es']['full_text']                       = "Texto completo";
+$es_message_ar['es']['pending']                         = "Pendiente...";
+
+
+
 
 
 ?>

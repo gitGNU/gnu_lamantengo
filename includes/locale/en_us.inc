@@ -178,6 +178,7 @@ $en_message_ar['en']['success_link_removed']            = "The link no $key was 
 $en_message_ar['en']['label_destination']               = "Destination:";
 $en_message_ar['en']['label_description']               = "Description:";
 $en_message_ar['en']['label_last_modified']             = "Last modified:";
+$en_message_ar['en']['label_round']                     = "Round:";
 
 $en_message_ar['en']['table_destination']               = "Destination";
 $en_message_ar['en']['table_description']               = "Description";
@@ -194,5 +195,24 @@ $en_message_ar['en']['click_button']                    = "Click button";
 $en_message_ar['en']['inst_change_dest']                = "to the right of a link to change the destination of it, or";
 $en_message_ar['en']['inst_remove']                     = "to remove it off permanently.<br />";
 $en_message_ar['en']['inst_bulk_remove']                = "To delete multiple links together, check the box to the left of each link you want to delete, then press the \"Delete Selected.\"";
+
+// view.php
+$en_message_ar['en']['title_view']                      = "View Link";
+$en_message_ar['en']['error_no_link_id']                = "No link id (Invalid URL).<br />\n";
+$en_message_ar['en']['error_link_noexistent']           = "Link nonexistent / off.<br />\n";
+
+$en_message_ar['en']['success_link_added']              = "The link was successfully added.";
+$en_message_ar['en']['view_explanation']                = "Use this window to know which points to a link page. By clicking on the destination address can visit the site.<br />
+                                                          If you are the owner of the link, or if a link is public, you will also find the ability to edit the link, or scrapped.
+                                                          To do this, press the <img src=\"IMAGE_PATH . DS . edit.png\" alt=\"Edit\" title=\"Edit\"> or <img src=\"IMAGE_PATH . DS . delete.png\" alt=\"Remove\" title=\"Remove\" />, respectively.";
+
+// tos.php
+$en_message_ar['en']['terms_and_conditions']            = "Terms and Conditions of Service";
+$en_message_ar['en']['introduction']                    = "Introduction";
+$en_message_ar['en']['tos_text']                        = "Here will go all the legal terms of service LaMantengo.Com.Ar where, as usual, will say that we are not responsible for the use you give to this service except for compelling us law.";
+$en_message_ar['en']['full_text']                       = "Full Text";
+$en_message_ar['en']['pending']                         = "Pending...";
+
+
 
 ?>

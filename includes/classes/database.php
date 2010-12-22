@@ -3,7 +3,7 @@
     /**
      * @License(name="GNU General Public License", version="3.0")
      *
-     * Copyright (C) 2010 Tom Kaczocha <tom_kaczocha@yahoo.com.au>
+     * Copyright (C) 2010 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * This file is part of LaMantengo.
      *
@@ -28,7 +28,7 @@
      * Copyright 	(c) 2010 Tom Kaczocha
      *
      * @package		
-     * @author		Tom Kaczocha <tomk@resultsfocus.com.au>
+     * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @copyright	2010 Tom Kaczocha
      * @licence		
      * @version 	2.0

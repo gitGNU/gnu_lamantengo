@@ -41,20 +41,20 @@
 		}
 	if($_GET['action']){
 		if($_GET['action']=='report'){
-		//viene a reportar
+		// is to report
 			if($lid=$_GET['id']){
-			//hay LID, todo bien
+			// LID there, so good
 				$query="SELECT `uid`,`destination` FROM `links` WHERE `lid`='$lid' AND `active`='1' LIMIT 1;";
 				$rs = mysql_query ($query);
 				if(($temp=mysql_fetch_object($rs))==null){
-				//no existe el link/esta inactivo
+				// there is no link / is inactive
 					$errores.="El link seleccionado no existe o bien fue desactivado.<br />\n";
 				}else{
 					if(($uid==$temp->uid)||($temp->uid == 0)){
 						$errores.="El link seleccionado es p&uacute;blico o te pertenece. <a href=\"mylinks.php?action=edit&lid=$lid&sid=$sid\">Click ac&aacute; para editarlo</a><br />\n";
 					}else{
 						if($_POST){
-						//Hay POST, ya envio el reporte. chequeo que sea correcto
+						// There POST, and sent the report. check it is correct
 							if($_POST['destination']!=null){
 								$parts=@parse_url($_POST['destination']);
 								if($parts['scheme']=='')
@@ -73,10 +73,10 @@
 								}
 							}
 							$report=$_POST['report'];
-							if($errores==null){//reporte correcto, lo envio/pongo pendiente
+							if($errores==null){// correct report, sent it / put pending
 								if($uid){
-								//esta loggeado, mando el mail
-									/** @TODO: agarro datos de destinatario y reportador, preparo el mail, y lo mando **/
+								// is logged, the mail command
+									/** @TODO: grab recipient data and report, prepare the mail message, and send it **/
 									
 									/**$query="SELECT uid,username,email,realname,active FROM users WHERE uid = $uid AND active = 1 LIMIT 1'";
 									$rs = mysql_query ($query);
@@ -91,14 +91,14 @@
 										$errores.="Usuario incorrecto<br />";
 									}*/
 								}else{
-								//no esta loggeado, pongo pendiente y mando verificacion
-									//Preparo la key
+								// not logged in, put pending verification and control
+									// Prepare the key
 									list($usec, $sec) = explode(' ', microtime());
 									$seed = (float) $sec + ((float) $usec * 100000);
 									srand($seed);
 									$key = md5(uniqid(rand(), 1));
 									$seed=null;
-									//Fin Preparo la key
+									// Order to prepare the key
 									$query="INSERT INTO `reports` (`key`,`realname`,`email`,`lid`,`destination`,`comment`,`active`) VALUES ('$key','".$_POST['realname']."','".$_POST['email']."','$lid','".$_POST['destination']."','".$_POST['report']."','1');";
 									$rs = mysql_query ($query);
 									$rid = mysql_insert_id();
@@ -107,21 +107,21 @@
 									$success="Se envi&oacute; un e-mail a <b>".$_POST['email']."</b> para verificar la direcci&oacute;n. De no hacerlo, el reporte no ser&aacute; enviado.<br />\n";
 								}
 							}else{
-								//reporte invalido, hubo errores. pido mostrar formulario de reporte
+								// Invalid report, there were errors. ask show report form
 								$formreport=1;
 							}
 						}else{
-							//no hay post, pido mostrar formulario para que usuario ingrese el reporte
+							// no post, I show user form to enter report
 							$formreport=1;
 						}
 					}
 				}
 			}else{
-				//No hay lid. tiro error
+				// No lid. throw error
 				$errores.="El id del link a reportar est&aacute; vac&iacute;o.<br />\n";
 			}
 		}else{
-		//action no es "report"
+		// action is not "report"
 			if($_GET['action']=='confirm'){
 			//usuario viene a confirmar un reporte
 				if((($key=$_GET['key'])!="") && (($rid=$_GET['id'])!="")){

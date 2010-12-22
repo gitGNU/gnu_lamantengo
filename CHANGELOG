@@ -2,12 +2,19 @@
                                CHANGELOG
 ================================================================================
 
+2010-12-22 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Translated tos.php
+    * Translated view.php
+
+2010-12-21 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Translated comments in report.php
+
 2010-12-20 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Translated mylinks.php
+    * Added Labels to link.php form
 
 2010-12-19 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Translated profile.php
-
 
 2010-12-18 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Translated link.php
@@ -49,7 +56,6 @@
 
     * Internationalised the home page.
     * TODO - Both Spanish/English messages need more work on the home page.
-
 
 2010-12-11 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added "CHANGELOG" to help document the site and its development.

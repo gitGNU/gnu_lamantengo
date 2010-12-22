@@ -31,8 +31,12 @@ $title = $language->translate("title_home");
 
 $errores = "";
 if ($_POST) {
+    // print_r($_POST);
     $parts = @parse_url($_POST['destination']);
     if ($parts['scheme'] == '')
+        // problem here... if print_r below is commented out... new links
+        // aren't being added
+        print_r($parts);
         if (!$errores) {
             if ($uid)
                 $uuid = $uid;
@@ -72,9 +76,11 @@ include("header.php");
     <div align="center">
         <form action="link.php<?php if ($sid)
         echo "?sid=$sid"; ?>" method="post">
-            <input type="text" name="destination" size="35" id="dest_text" value="<?php if ($_POST['destination'] != "")
+            <?php echo $language->translate("label_destination"); ?>
+        <input type="text" name="destination" size="35" id="dest_text" value="<?php if ($_POST['destination'] != "")
                   echo $_POST['destination']; ?>" />
             <input type="submit" value="<?php echo $language->translate("link_button"); ?>" id="link_button" /><br />
+            <?php echo $language->translate("label_description"); ?>
             <input type="text" name="description" size="83" maxlength="120" id="desc_text" value="<?php if ($_POST['description'] != "")
                        echo $_POST['description']; ?>" />&nbsp;
         </form>
