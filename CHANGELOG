@@ -4,6 +4,9 @@
 
 2010-12-30 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added .gitignore file
+    * Modified permissions to CHANGELOG, COPYRIGHT GNU_Standards.pdf,
+      INSTALL & lamantengo-estructura.sql
+    * Edited link.php - found addition of new links to be working
 
 2010-12-22 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Translated tos.php

@@ -31,7 +31,7 @@ $title = $language->translate("title_home");
 
 $errores = "";
 if ($_POST) {
-    // print_r($_POST);
+    
     $parts = @parse_url($_POST['destination']);
     if ($parts['scheme'] == '')
         // problem here... if print_r below is commented out... new links
