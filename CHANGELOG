@@ -2,6 +2,9 @@
                                CHANGELOG
 ================================================================================
 
+2010-12-30 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Added .gitignore file
+
 2010-12-22 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Translated tos.php
     * Translated view.php
