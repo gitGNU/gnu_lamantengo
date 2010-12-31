@@ -20,6 +20,8 @@
  * along with LaMantengo.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+ 
+require_once("../includes/initialise.php");
 
 $en_message_ar = array();
 
@@ -129,7 +131,7 @@ $en_message_ar['en']['error_password_empty']            = "The password is empty
 $en_message_ar['en']['error_user_disabled']             = "This user was disabled by admin.<br />\n";
 $en_message_ar['en']['error_unknown_user']              = "Username/password combination unknown. Try again.<br />\n";
 
-$en_message_ar['en']['login_welcome']                   = "Welcome, <b>$user</b>. You will shortly be redirected to the home page.<br />";
+$en_message_ar['en']['login_welcome']                   = "Welcome, <b>$username</b>. You will shortly be redirected to the home page.<br />";
 $en_message_ar['en']['login_redirect']                  = "If you are not redirected after 3 seconds, click <a href=\"index.php?sid=$sid\">here</ a>.";
 
 // logout.php
@@ -164,7 +166,7 @@ $en_message_ar['en']['profile_explanation']             = "Enter the name of the
 $en_message_ar['en']['title_mylinks']                   = "My Links";
 $en_message_ar['en']['error_link_empty']                = "The link is empty<br />\n";
 $en_message_ar['en']['error_incomplete_url']            = "The URL entered is incomplete. Please type your URL in either <b>protocol://server/path</b> (the \"//\" may be waived in cases that are not necessary)<br />\n";
-$en_message_ar['en']['error_nopermission']              = "Link does not exist / You do not have permission to edit this link.<br />\n";
+$en_message_ar['en']['error_nopermission']              = "Link does does not exist / You do not have permission to edit this link.<br />\n";
 $en_message_ar['en']['error_mass_removal']              = "To remove links massively must log <a href=\"login.php?sid=$sid\"> </ a>. If you do not have an account, <a href=\"register.php?sid=$sid\">register</a><br />\n";
 $en_message_ar['en']['error_no_edit_permission']        = "No link $key: link exist / do not have permission to edit this link.<br />\n";
 $en_message_ar['en']['error_no_link_id']                = "You have not entered the id of the link you want to delete.<br />\n";
@@ -172,8 +174,8 @@ $en_message_ar['en']['error_invalid_action']            = "Invalid action.<br />
 $en_message_ar['en']['error_not_loggedin_links']        = "To view your links must log <a href=\"login.php?sid=$sid\">login</ a>. If you do not have an account, <a href=\"register.php?sid=$sid\">register</a><br />\n";
 $en_message_ar['en']['error_failed_database_conn']      = "Failed to connect to the database.<br />\n";
 
-$en_message_ar['en']['success_updated']                 = "The $lid No link was updated successfully";
-$en_message_ar['en']['success_link_removed']            = "The link no $key was successfully removed.<br />\n";
+$en_message_ar['en']['success_updated']                 = "The $lid No. link was updated successfully";
+$en_message_ar['en']['success_link_removed']            = "The link No. $key was successfully removed.<br />\n";
 
 $en_message_ar['en']['label_destination']               = "Destination:";
 $en_message_ar['en']['label_description']               = "Description:";

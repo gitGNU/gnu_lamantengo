@@ -1,4 +1,5 @@
 <?php
+
     /**
      * @License(name="GNU General Public License", version="3.0")
      *
@@ -21,6 +22,7 @@
      *
      */
     if (defined('INSITE')) {
+
 ?>
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es-ar" xml:lang="es-ar">
@@ -40,9 +42,11 @@
             <body class="cuerpo" bgcolor="#DDFFDD">
                 <div id="logo"><a href="index.php
             <?php
+
                 if ($sid) {
                     echo "?sid=" . $sid;
                 }
+
             ?>
                               " id="logo" title="NoHuyas.Com.Ar"><img src="<?php echo IMAGE_PATH . DS; ?>logo.png" alt="NoHuyas.Com.Ar" /></a>
             </div>
@@ -50,8 +54,10 @@
 
             <div id="reging"><?php include("reging.php"); ?></div>
         <?php
+
             }
             else {
                 include("404.php");
             }
+
         ?>

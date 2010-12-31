@@ -1,2 +1,4 @@
 # Files to ignore #
 nbproject/
+.project
+.settings/

@@ -25,8 +25,7 @@
     define('INSITE', 1);
 
     require_once("../includes/initialise.php");
-    include('get_sid.php');
-
+    
     $title = $language->translate("title_forgot");
 
     $errores = "";
@@ -126,7 +125,7 @@
                     </tr>
                     <!--<tr id="tr_reg">
                             <td colspan="3"><?php include('recaptcha_form.php'); ?></td>
-        							</tr>!-->
+            							</tr>!-->
                     <tr>
                         <td colspan="3">
                             <input type="submit" id="submit_reg" value="<?php echo $language->translate("reset_password"); ?>" />

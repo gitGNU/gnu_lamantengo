@@ -24,10 +24,9 @@
      */
     define('INSITE', 1);
     require_once("../includes/initialise.php");
-    
+
     $title = $language->translate("title_report");
 
-    include('get_sid.php');
     $errores = "";
     $success = "";
     $formreport = 0;
@@ -181,80 +180,80 @@
 
 ?>
 <div id="contenido">
-                <?php
+    <?php
 
-                    if ($success) {
+        if ($success) {
 
-                ?>
+    ?>
             <div id="success"><?php echo $success; ?></div>
-<?php
+    <?php
 
-                    }
-                    if ($errores) {
+        }
+        if ($errores) {
 
-?>
+    ?>
             <div id="errores"><?php echo $errores; ?></div>
-<?php
+    <?php
 
-                    }
-                    if ($formreport) {
+        }
+        if ($formreport) {
 
-?>
+    ?>
             <div id="form_reg">
                 <form action="?action=report&id=<?php echo $lid; ?>&sid=<?php echo $sid; ?>" method="POST">
                     <table id="table_reg">
-<?php
+                <?php
 
-                        if (!$uid) {
+                    if (!$uid) {
 
-?>
-                            <tr id="tr_reg">
-                                <td id="td_reg1"><?php echo $language->translate("first_name_label"); ?></td>
-                                <td id="td_reg2"><input type="text" name="realname" size="35" value="<?php echo $_POST['realname']; ?>" /></td>
-                            </tr>
-                            <tr id="tr_reg">
-                                <td id="td_reg1">E-Mail:</td>
-                                <td id="td_reg2"><input type="text" name="email" size="35" value="<?php echo $_POST['email']; ?>" /></td>
-                            </tr>
-<?php
-
-                        }
-
-?>
+                ?>
                         <tr id="tr_reg">
-                            <td id="td_reg1">Link LaMantengo:</td>
-                            <td id="td_reg2"><a href="visit.php?id=<?php echo $lid . "&sid=$sid"; ?>">http://www.lamantengo.com.ar/visit.php?id=<?php echo $lid; ?></a></td>
-                                    </tr>
-                                    <tr id="tr_reg">
-                                        <td id="td_reg1"><?php echo $language->translate("suggested_target"); ?></td>
-                                        <td id="td_reg2"><input type="text" name="destination" size="35" value="<?php echo $_POST['destination']; ?>" /></td>
-                                    </tr>
-                                    <tr id="tr_reg">
-                                        <td id="td_reg1"><?php echo $language->translate("comment"); ?></td>
-                                        <td id="td_reg2"><textarea name="report" cols="40" rows="10"><?php echo $_POST['report']; ?></textarea></td>
-                                    </tr>
-<?php
-
-                        if (!$uid) {
-
-?>
-                                        <tr id="tr_reg">
-                                            <td colspan="2"><?php include('recaptcha_form.php'); ?></td>
-                                        </tr>
-<?php
-
-                        }
-
-?>
-                                    <tr id="tr_reg">
-                                        <td colspan="2"><input type="submit" value="Enviar" /></td>
-                                    </tr>
-                                </table>
-                            </form>
-                        </div>
-<?php
+                            <td id="td_reg1"><?php echo $language->translate("first_name_label"); ?></td>
+                            <td id="td_reg2"><input type="text" name="realname" size="35" value="<?php echo $_POST['realname']; ?>" /></td>
+                        </tr>
+                        <tr id="tr_reg">
+                            <td id="td_reg1">E-Mail:</td>
+                            <td id="td_reg2"><input type="text" name="email" size="35" value="<?php echo $_POST['email']; ?>" /></td>
+                        </tr>
+                <?php
 
                     }
-                    include('footer.php');
 
-?>
+                ?>
+                    <tr id="tr_reg">
+                        <td id="td_reg1">Link LaMantengo:</td>
+                        <td id="td_reg2"><a href="visit.php?id=<?php echo $lid . "&sid=$sid"; ?>">http://www.lamantengo.com.ar/visit.php?id=<?php echo $lid; ?></a></td>
+                    </tr>
+                    <tr id="tr_reg">
+                        <td id="td_reg1"><?php echo $language->translate("suggested_target"); ?></td>
+                        <td id="td_reg2"><input type="text" name="destination" size="35" value="<?php echo $_POST['destination']; ?>" /></td>
+                    </tr>
+                    <tr id="tr_reg">
+                        <td id="td_reg1"><?php echo $language->translate("comment"); ?></td>
+                        <td id="td_reg2"><textarea name="report" cols="40" rows="10"><?php echo $_POST['report']; ?></textarea></td>
+                    </tr>
+                <?php
+
+                    if (!$uid) {
+
+                ?>
+                        <tr id="tr_reg">
+                            <td colspan="2"><?php include('recaptcha_form.php'); ?></td>
+                        </tr>
+                <?php
+
+                    }
+
+                ?>
+                    <tr id="tr_reg">
+                        <td colspan="2"><input type="submit" value="Enviar" /></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    <?php
+
+                }
+                include('footer.php');
+
+    ?>

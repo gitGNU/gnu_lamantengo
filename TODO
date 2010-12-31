@@ -9,7 +9,6 @@
     * Cookie to store username & language.
     * Destroy cookie and session on logout.
     * Username not displaying next to logout link.
-    * Shouldn't pass session id in url... looks bad and could be a security
+    * Shouldn't pass session id in url(?????)... looks bad and could be a security
       concern.
     * 
-

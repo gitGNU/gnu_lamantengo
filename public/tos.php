@@ -22,22 +22,20 @@
      * along with LaMantengo.  If not, see <http://www.gnu.org/licenses/>.
      *
      */
-    define('INSITE', 1);
-
+    
     require_once("../includes/initialise.php");
 
     $title = $language->translate("terms_of_service_link");
 
-    include('get_sid.php');
     include('header.php');
 
 ?>
-<div id="contenido">
+<div id="contenido">    
         <div id="tos">
             <h2><?php echo $language->translate("terms_and_conditions"); ?></h2>
             <h3><?php echo $language->translate("introduction"); ?></h3>
             <p>
-                <?php echo $language->translate("tos_text"); ?>
+            <?php echo $language->translate("tos_text"); ?>
             </p>
             <h3><?php echo $language->translate("full_text"); ?></h3>
             <p><?php echo $language->translate("pending"); ?></p>
@@ -45,6 +43,6 @@
 </div>
 <?php
 
-    include("footer.php");
+                include("footer.php");
 
 ?>

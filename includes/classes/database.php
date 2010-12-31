@@ -1,7 +1,6 @@
 <?php
 
     /**
-     * @License(name="GNU General Public License", version="3.0")
      *
      * Copyright (C) 2010 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
@@ -30,7 +29,7 @@
      * @package		
      * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @copyright	2010 Tom Kaczocha
-     * @licence		
+     * @license     GNU General Public License, version 3.0
      * @version 	2.0
      * @access		public
      */
@@ -78,6 +77,7 @@
             $this->openConnection();
             $this->_mMagicQuotesActive = get_magic_quotes_gpc();
             $this->_mRealEscapeStringExists = function_exists("mysql_real_escape_string");
+
         }
 
         /**
@@ -103,6 +103,7 @@
                     die('Could not select the database: ' . mysql_error());
                 }
             }
+
         }
 
         /**
@@ -119,6 +120,7 @@
             $result = mysql_query($query, $this->_mConnection);
             $this->confirmQuery($result);
             return $result;
+
         }
 
         /**
@@ -135,6 +137,7 @@
                 mysql_close($this->_mConnection);
                 unset($this->_mConnection);
             }
+
         }
 
         /**
@@ -161,7 +164,8 @@
                 }
                 // if magic quotes are active, then the slashes already exist
             }
-            return $value;
+            return trim($value);
+
         }
 
         /**
@@ -175,6 +179,7 @@
          */
         public function fetchArray($result) {
             return mysql_fetch_array($result);
+
         }
 
         /**
@@ -188,6 +193,7 @@
          */
         public function numRows($result_set) {
             return mysql_num_rows($result_set);
+
         }
 
         /**
@@ -201,6 +207,7 @@
          */
         public function affectedRows() {
             return mysql_affected_rows($this->_mConnection);
+
         }
 
         /**
@@ -218,9 +225,16 @@
                 $output .= 'Last SQL query: ' . $this->mLastquery; // debugging message
                 die($output);
             }
+
+        }
+
+        public function get_last_id() {
+            return mysql_insert_id();
+
         }
 
     }
 
     $database = new My_Sql_Database();
+
 ?>

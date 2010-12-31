@@ -1,12 +1,64 @@
+/**
+     * @License(name="GNU General Public License", version="3.0")
+     * 
+     * Copyright (C) 2010 UnWebmaster.Com.Ar
+     * Copyright (C) 2010 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * 
+     * This file is part of LaMantengo.
+     * 
+     * LaMantengo is free software: you can redistribute it and/or modify
+     * it under the terms of the GNU General Public License as published by
+     * the Free Software Foundation, either version 3 of the License, or
+     * (at your option) any later version.
+     * 
+     * LaMantengo is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     * GNU General Public License for more details.
+     * 
+     * You should have received a copy of the GNU General Public License
+     * along with LaMantengo.  If not, see <http://www.gnu.org/licenses/>.
+     * 
+     */
+     
 ================================================================================
                                CHANGELOG
 ================================================================================
+
+2010-12-31 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Edited database.php file
+    * Added get_last_id() function to Database class
+    * Edited language.php file
+    * Added session_start() function to Session class
+    * Added checkForSession() function to Session class
+    * Addded setNewSession() function to Session class
+    * Added updateSession() function to Session class
+    * Added userIsLoggedIn flag to User class
+    * Added initUser() function to User class
+    * Reaarranged initialise.php imports
+    * Implemented User/Session classes for login
+    * Implemented User/Session classes for logout
+    * mylinks.php uses User class to verify login
+    * profile.php uses User class to verify login
+    * reging.php uses User class to verify login
+    * register.php uses User class to verify login
+    * Edited visit.php
+    * Removed get_sid.php
 
 2010-12-30 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added .gitignore file
     * Modified permissions to CHANGELOG, COPYRIGHT GNU_Standards.pdf,
       INSTALL & lamantengo-estructura.sql
     * Edited link.php - found addition of new links to be working
+    * Added Link class to classes/ directory
+    * Added User class to classes/ directory
+    * Added Session class to classes/ directory
+    * Edited english messages
+    * Link class now implements addition of new links
+    * Renamed link.php to new_link.php to avoid confusion with
+      Link class
+    * Edited index.php
+    * Edited include URL in fillArray() function
 
 2010-12-22 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Translated tos.php
