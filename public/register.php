@@ -24,35 +24,18 @@
      */
     require_once("../includes/initialise.php");
 
-    include('generar_password.php');
-
     $title = $language->translate("title_register");
     $errores = "";
 
-// clear errors
-    function comprobar_email($address) {
-        if (function_exists('filter_var')) {
-            if (filter_var($address, FILTER_VALIDATE_EMAIL) === FALSE) {
-                return false;
-            }
-            else {
-                return true;
-            }
-        }
-        else {
-            return preg_match('/^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9_](?:[a-zA-Z0-9_\-](?!\.)){0,61}[a-zA-Z0-9_-]?\.)+[a-zA-Z0-9_](?:[a-zA-Z0-9_\-](?!$)){0,61}[a-zA-Z0-9_]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/', $address);
-        }
-
-    }
-
     if (!$user->isUserLoggedIn()) { // not logged in
-        if ($_POST) { //Proceso datos del registro
-            $username = $_POST['username'];
-            $realname = $_POST['realname'];
-            $email = $_POST['email'];
-            $email2 = $_POST['email2'];
-            $agree = $_POST['agree'];
-            //busco errores y los meto como lista en $errores
+        if ($_POST) { // Process form data
+            $username = $database->escapeValue($_POST['username']);
+            $realname = $database->escapeValue($_POST['realname']);
+            $email = $database->escapeValue($_POST['email']);
+            $email2 = $database->escapeValue($_POST['email2']);
+            $agree = $database->escapeValue($_POST['agree']);
+
+            // look for errors and methodological errors as listed in $errores
             if (!($agree))
                 $errores .= $language->translate("error_agree");
             if ($username == "")
@@ -68,13 +51,13 @@
                 if ($email != $email2)
                     $errores .= $language->translate("error_email_nomatch");
                 else
-                if (!(comprobar_email($email)))
+                if (!($user->validate_email($email)))
                     $errores .= $language->translate("error_email_invalid");
             }
             /*             * *********************** chequeo recaptcha **************************************
               include('recaptcha_check.php');
               /**********************fin chequeo recaptcha ************************************* */
-            if (!$errores) { // no errors ==> registration, verification and control succes show (except q fails SQL)
+            if (!$errores) { // no errors
                 /*                 * ***********************************************************************************
                  * * NO USO ESTO. VERIFICO EL EMAIL MEDIANTE EL ENVIO DEL PASSWORD
                  * * //Genero un activation_key completamente random (Sacado de Coppermine 1.4.19 - register.php:261-264)
@@ -84,20 +67,23 @@
                  * * $act_key = md5(uniqid(rand(), 1));
                   //Fin Genero activation_key
                  * ************************************************************************************* */
-                $password = generar_pass();
+                $password = $user->generatePassword();
                 $pass_hash = md5($password);
-                $query = "INSERT INTO `users` (`username`,`username_clean` ,`realname` ,`email` ,`password` ,`active`)
-						VALUES ( '$username', '" . strtolower($username) . "', '$realname', '$email', '$pass_hash', '1');";
-                $rs = mysql_query($query);
+
+                $result = $user->registerUser($username, $realname, $email, $pass_hash);
+
                 if (mysql_errno() == 1062)
                     $errores .= $language->translate("error_already_registered");
                 if (!$errores) {
-                    // activation and concatenate shipping errors
-                    $query = "SELECT `uid` FROM `users` ORDER BY `uid` DESC LIMIT 0 , 1;";
-                    $rs = mysql_query($query);
-                    $temp = mysql_fetch_object($rs);
-                    $uid = $temp->uid;
+
+//                    // activation and concatenate shipping errors
+//                    $query = "SELECT `uid` FROM `users` ORDER BY `uid` DESC LIMIT 0 , 1;";
+//                    $rs = mysql_query($query);
+//                    $temp = mysql_fetch_object($rs);
+//                    $uid = $temp->uid;
+
                     include("email_register.php");
+
                     $password = "";
                     $uid = "";
                     if (!$errores) {
@@ -110,10 +96,11 @@
             }
         } // END POST
     }
-    else { // User logged in, threw him
+    else { // User logged in
         $errores .= $language->translate("error_already_reg");
     }
-// show page
+
+    // show page
     require_once('header.php');
 
 ?>
@@ -124,18 +111,18 @@
 
     ?>
             <div id="errores"><?php echo $errores; ?></div>
-<?php
+    <?php
 
         }
         if ($success) {
 
-?>
+    ?>
             <div id="success"><?php echo $success; ?></div>
-<?php
+    <?php
 
         }
 
-?>
+    ?>
         <div id="form_reg">
             <form action="<?php echo $_SERVER['PHP_SELF'] . '?language=es&country=ar'; ?>" method="POST">
                 <table id="table_reg">
@@ -148,17 +135,17 @@
                         <td id="td_reg1"><?php echo $language->translate("first_name_label"); ?></td>
                         <td id="td_reg"><input id="text_reg" type="text" name="realname" value="<?php echo $_POST['realname']; ?>" /></td>
                         <td id="td_reg2"><?php echo $language->translate("first_name_message"); ?></td>
-                </tr>
-                <tr id="tr_reg">
-                    <td id="td_reg1">Email*:</td>
-                    <td id="td_reg"><input id="text_reg" type="text" name="email" value="<?php echo $_POST['email']; ?>" /></td>
-                    <td id="td_reg2"><?php echo $language->translate("email_message"); ?></td>
-                </tr>
-                <tr id="tr_reg">
-                    <td id="td_reg1"><?php echo $language->translate("email_repeat_label"); ?></td>
-                    <td id="td_reg"><input id="text_reg" type="text" name="email2" value="<?php echo $_POST['email2']; ?>" /></td>
-                    <td id="td_reg2"><?php echo $language->translate("email_repeat_message"); ?></td>
-                </tr>
+                    </tr>
+                    <tr id="tr_reg">
+                        <td id="td_reg1">Email*:</td>
+                        <td id="td_reg"><input id="text_reg" type="text" name="email" value="<?php echo $_POST['email']; ?>" /></td>
+                        <td id="td_reg2"><?php echo $language->translate("email_message"); ?></td>
+                    </tr>
+                    <tr id="tr_reg">
+                        <td id="td_reg1"><?php echo $language->translate("email_repeat_label"); ?></td>
+                        <td id="td_reg"><input id="text_reg" type="text" name="email2" value="<?php echo $_POST['email2']; ?>" /></td>
+                        <td id="td_reg2"><?php echo $language->translate("email_repeat_message"); ?></td>
+                    </tr>
                 <?php /* <tr id="tr_reg">
                       <td id="td_reg1">Password*:</td>
                       <td id="td_reg"><input id="pass_reg" type="password" name="password" value="" /></td>
@@ -181,16 +168,16 @@
                     <tr>
                         <td colspan="3">
                             <input type="submit" id="submit_reg" value="<?php echo $language->translate("register_button"); ?>" />
-                                            <input type="reset" id="reset_reg" value="<?php echo $language->translate("reset_button"); ?>" />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </form>
-                        </div>
-                    </div>
-                    <div id="explanation">
-<?php echo $language->translate("reg_instruct"); ?> title="<?php echo $language->translate("read_ToS_nWindow"); ?>"><?php echo $language->translate("terms_of_service_link"); ?></a>.
-                    </div>
+                            <input type="reset" id="reset_reg" value="<?php echo $language->translate("reset_button"); ?>" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+</div>
+<div id="explanation">
+    <?php echo $language->translate("reg_instruct"); ?> title="<?php echo $language->translate("read_ToS_nWindow"); ?>"><?php echo $language->translate("terms_of_service_link"); ?></a>.
+                </div>
 <?php
 
                     include("footer.php");

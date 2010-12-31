@@ -130,7 +130,7 @@
          *
          */
         public function __destruct() {
-
+            
         }
 
         /**
@@ -414,6 +414,63 @@
             $this->_userIsLoggedIn = false;
 
         }
+
+        public function registerUser($username, $realname, $email, $pass_hash) {
+            global $database;
+            $clean_username = strtolower($username);
+
+            $query = "INSERT INTO `users` (`username`,`username_clean` ,
+                                            `realname` ,`email` ,`password`,
+                                            `active`)
+                                   VALUES ( '$username',
+                                            '$clean_username',
+                                            '$realname',
+                                            '$email',
+                                            '$pass_hash',
+                                            '1');";
+
+            $result = $database->query($query);
+
+        }
+
+        public function generatePassword() {
+            $pass = "";
+            $c = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ)(-_!@=.0123456789";
+            /*             * for($i=0;$i<26;$i++)
+              $c[$i]=chr(97+$i);
+              for($i=0;$i<26;$i++)
+              $c[$i+26]=chr(65+$i);
+              $c[52]=")";
+              $c[53]="(";
+              $c[54]="-";
+              $c[55]="_";
+              $c[56]="!";
+              $c[57]="@";
+              $c[58]="=";
+              $c[59]=".";
+              for($i=0;$i<10;$i++)
+              $c[$i+60]=$i;* */
+            $pass = "";
+            for ($i = 0; $i < 12; $i++)
+                $pass.=$c[rand(0, 69)];
+            return $pass;
+
+        }
+
+        public function validate_email($address) {
+        if (function_exists('filter_var')) {
+            if (filter_var($address, FILTER_VALIDATE_EMAIL) === FALSE) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        else {
+            return preg_match('/^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9_](?:[a-zA-Z0-9_\-](?!\.)){0,61}[a-zA-Z0-9_-]?\.)+[a-zA-Z0-9_](?:[a-zA-Z0-9_\-](?!$)){0,61}[a-zA-Z0-9_]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/', $address);
+        }
+
+    }
 
     }
 

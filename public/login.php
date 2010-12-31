@@ -71,10 +71,10 @@
         include("header.php");
 
 ?>
-<div id="contenido">
-<?php if ($errores) {
+        <div id="contenido">
+    <?php if ($errores) {
 
-?>
+    ?>
             <div id="errores"><?php echo $errores; ?></div>
     <?php
 
@@ -83,21 +83,21 @@
 
     ?>
             <div id="success"><?php echo $success; ?></div>
-<?php
+    <?php
 
         }
         else {
 
-?>
-                <div id="login">
-<?php include("reging.php"); ?>
-                </div>
-<?php
+    ?>
+            <div id="login">
+        <?php include("reging.php"); ?>
+        </div>
+    <?php
 
         }
 
-?>
-        </div>
+    ?>
+</div>
 <?php
 
         include("footer.php");

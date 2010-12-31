@@ -30,6 +30,7 @@
     $success = "";
     $formedit = 0;
     $captcha = 0;
+
     if ($_GET['action']) {
         if ($_GET['action'] == 'edit') {
             if ($_POST != null) {
@@ -132,15 +133,15 @@
 
 ?>
 <div id="contenido">
-    <h2><?php echo $title; ?></h2>
+        <h2><?php echo $title; ?></h2>
     <?php
 
         if ($success) {
 
     ?>
-        <div id="success">
-    <?php echo $success; ?>
-            </div>
+            <div id="success">
+        <?php echo $success; ?>
+        </div>
     <?php
 
         }
@@ -148,14 +149,14 @@
 
     ?>
             <div id="errores">
-<?php echo $errores; ?>
-            </div>
-<?php
+        <?php echo $errores; ?>
+        </div>
+    <?php
 
         }
         if ($formedit) {
 
-?>
+    ?>
             <div id="formedit">
                 <form action="?action=edit&sid=<?php echo $sid; ?>" method="POST">
                     <input type="hidden" name="lid" value="<?php echo $lid; ?>" />
@@ -182,24 +183,24 @@
                     </table>
                 </form>
             </div>
-<?php
+    <?php
 
         }
 
-?>
-    <div id="mylinks_div">
-        <form action="?action=delete&sid=<?php echo $sid; ?>" method="POST">
-            <table id="tabla_links">
-                <tr id="links_tr_head">
-                    <td id="links_head_td">&nbsp;</td>
-                    <td id="links_head_td"><?php echo $language->translate("table_destination"); ?></td>
-                    <td id="links_head_td">Link</td>
-                    <td id="links_head_td"><?php echo $language->translate("table_description"); ?></td>
-                    <td id="links_head_td"><?php echo $language->translate("table_round"); ?></td>
-                    <td id="links_head_td"><?php echo $language->translate("table_edit"); ?></td>
-                    <td id="links_head_td"><?php echo $language->translate("table_remove"); ?></td>
-                    <td id="links_head_td"><?php echo $language->translate("table_last_modified"); ?></td>
-                </tr>
+    ?>
+        <div id="mylinks_div">
+            <form action="?action=delete&sid=<?php echo $sid; ?>" method="POST">
+                <table id="tabla_links">
+                    <tr id="links_tr_head">
+                        <td id="links_head_td">&nbsp;</td>
+                        <td id="links_head_td"><?php echo $language->translate("table_destination"); ?></td>
+                        <td id="links_head_td">Link</td>
+                        <td id="links_head_td"><?php echo $language->translate("table_description"); ?></td>
+                        <td id="links_head_td"><?php echo $language->translate("table_round"); ?></td>
+                        <td id="links_head_td"><?php echo $language->translate("table_edit"); ?></td>
+                        <td id="links_head_td"><?php echo $language->translate("table_remove"); ?></td>
+                        <td id="links_head_td"><?php echo $language->translate("table_last_modified"); ?></td>
+                    </tr>
                 <?php
 
                     while (($temp = @mysql_fetch_object($rs_links)) != null) {
@@ -213,27 +214,27 @@
                             <td id="visits_td_links"><?php echo $temp->visits; ?></td>
                             <td id="edit_td_links"><a href="?action=edit&lid=<?php echo $temp->lid . "&sid=$sid"; ?>" title="<?php echo $language->translate("table_edit"); ?>"><img src="<?php echo IMAGE_PATH . DS; ?>edit.png" alt="<?php echo $language->translate("table_edit"); ?>" title="<?php echo $language->translate("table_edit"); ?>" /></a></td>
                             <td id="delete_td_links"><a href="?action=delete&lid=<?php echo $temp->lid . "&sid=$sid"; ?>" title="<?php echo $language->translate("table_remove"); ?>"><img src="<?php echo IMAGE_PATH . DS; ?>delete.png" alt="<?php echo $language->translate("table_remove"); ?>" title="<?php echo $language->translate("table_remove"); ?>" /></a></td>
-                                        <td id="lastmod_td_links"><?php echo $temp->lastmod; ?></td>
-                                    </tr>
-<?php
+                            <td id="lastmod_td_links"><?php echo $temp->lastmod; ?></td>
+                        </tr>
+                <?php
 
                     }
 
-?>
-                                    <tr id="links_tr_head">
-                                        <td colspan="6" id="submit_td_links">&nbsp;</td>
-                                    </tr>
-                                    <tr id="links_tr_head">
-                                        <td colspan="6" id="submit_td_links"><input type="submit" id="submit_links" value="<?php echo $language->translate("delete_selected"); ?>" /></td>
-                                    </tr>
-                                </table>
-                            </form>
-                        </div>
-                    </div>
-                    <div id="explanation">
-<?php echo $language->translate("click_button"); ?> <img src="images/edit.png" alt="<?php echo $language->translate("table_edit"); ?>" title="<?php echo $language->translate("table_edit"); ?>" /> <?php echo $language->translate("inst_change_dest"); ?> <img src="<?php echo IMAGE_PATH . DS; ?>delete.png" alt="<?php echo $language->translate("table_edit"); ?>" title="<?php echo $language->translate("table_edit"); ?>" /> <?php echo $language->translate("inst_remove"); ?>
-<?php echo $language->translate("inst_bulk_remove"); ?>
-                    </div>
+                ?>
+                    <tr id="links_tr_head">
+                        <td colspan="6" id="submit_td_links">&nbsp;</td>
+                    </tr>
+                    <tr id="links_tr_head">
+                        <td colspan="6" id="submit_td_links"><input type="submit" id="submit_links" value="<?php echo $language->translate("delete_selected"); ?>" /></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+</div>
+<div id="explanation">
+    <?php echo $language->translate("click_button"); ?> <img src="images/edit.png" alt="<?php echo $language->translate("table_edit"); ?>" title="<?php echo $language->translate("table_edit"); ?>" /> <?php echo $language->translate("inst_change_dest"); ?> <img src="<?php echo IMAGE_PATH . DS; ?>delete.png" alt="<?php echo $language->translate("table_edit"); ?>" title="<?php echo $language->translate("table_edit"); ?>" /> <?php echo $language->translate("inst_remove"); ?>
+    <?php echo $language->translate("inst_bulk_remove"); ?>
+                </div>
 <?php
 
                     include("footer.php");

@@ -25,6 +25,12 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-01 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * register.php uses User class to register new users
+    * Added generatePassword() function to Users class
+    * Added validateEmail() function to Users class
+    * Removed generar_password.php
+
 2010-12-31 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Edited database.php file
     * Added get_last_id() function to Database class
@@ -43,7 +49,7 @@
     * reging.php uses User class to verify login
     * register.php uses User class to verify login
     * Edited visit.php
-    * Removed get_sid.php
+    * Removed get_sid.php 
 
 2010-12-30 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added .gitignore file
