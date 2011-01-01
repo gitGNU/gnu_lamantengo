@@ -4,7 +4,7 @@
      * @License(name="GNU General Public License", version="3.0")
      * 
      * Copyright (C) 2010 UnWebmaster.Com.Ar
-     * Copyright (C) 2010 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      * 
      * This file is part of LaMantengo.
      * 
@@ -24,32 +24,28 @@
      */
     require_once("../includes/initialise.php");
 
-    if (defined('INSITE')) {
-        /*         * *************************************************
-         * 	$mail_nombre = nombre de la persona
-         * 	$mail_to = campo to ("Nombre <direccion>" o  "direccion")
-         * 	$mail_subj = asunto del e-mail
-         * 	$mail_cuerpo = cuerpo del mensaje
-         * ************************************************** */
-        if ($realname) {
-            $mail_nombre = $realname;
-        }
-        else {
-            $mail_nombre = $username;
-        }
-        $mail_to = $mail_nombre . ' <' . $email . '>';
-        $mail_subj = $language->translate("new_data");
 
-        $mail_cuerpo = $language->translate("new_login_data");
-        $mail_cuerpo .= $language->translate("mail_username") . "<b>$username</b><br />\r\n";
-        $mail_cuerpo .= $language->translate("mail_password") . "<b>$password</b><br />\r\n";
-        $mail_cuerpo .= "<br />\r\n";
-        $mail_cuerpo .= $language->translate("login_reminder") . " <a href=\"http://www.lamantengo.com.ar/login.php\">http://www.lamantengo.com.ar/login.php</a><br />\r\n";
-
-        include('enviar_email.php');
+    /*     * *************************************************
+     * 	$mail_nombre = nombre de la persona
+     * 	$mail_to = campo to ("Nombre <direccion>" o  "direccion")
+     * 	$mail_subj = asunto del e-mail
+     * 	$mail_cuerpo = cuerpo del mensaje
+     * ************************************************** */
+    if ($realname) {
+        $mail_nombre = $realname;
     }
     else {
-        include("404.php");
+        $mail_nombre = $username;
     }
+    $mail_to = $mail_nombre . ' <' . $email . '>';
+    $mail_subj = $language->translate("new_data");
+
+    $mail_cuerpo = $language->translate("new_login_data");
+    $mail_cuerpo .= $language->translate("mail_username") . "<b>$username</b><br />\r\n";
+    $mail_cuerpo .= $language->translate("mail_password") . "<b>$password</b><br />\r\n";
+    $mail_cuerpo .= "<br />\r\n";
+    $mail_cuerpo .= $language->translate("login_reminder") . " <a href=\"http://www.lamantengo.com.ar/login.php\">http://www.lamantengo.com.ar/login.php</a><br />\r\n";
+
+    include('enviar_email.php');
 
 ?>

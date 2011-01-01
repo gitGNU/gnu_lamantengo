@@ -4,7 +4,7 @@
      * @License(name="GNU General Public License", version="3.0")
      * 
      * Copyright (C) 2010 UnWebmaster.Com.Ar
-     * Copyright (C) 2010 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      * 
      * This file is part of LaMantengo.
      * 
@@ -24,7 +24,6 @@
      */
     require_once("../includes/initialise.php");
 
-    if (defined('INSITE')) {
         /*         * *************************************************
          * 	$mail_nombre = nombre de la persona
          * 	$mail_to = campo to ("Nombre <direccion>" o  "direccion")
@@ -41,9 +40,5 @@
         $mail_cuerpo .= $language->translate("mail_link_fails") . " http://www.lamantengo.com.ar/report.php?action=confirm&id=$rid&key=$key " . $language->translate("mail_browser");
 
         include('enviar_email.php');
-    }
-    else {
-        include("404.php");
-    }
-
+   
 ?>

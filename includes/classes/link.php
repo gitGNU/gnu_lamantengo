@@ -2,7 +2,7 @@
 
     /**
      *
-     * Copyright (C) 2010 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * This file is part of LaMantengo.
      *

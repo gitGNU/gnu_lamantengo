@@ -4,7 +4,7 @@
      * @License(name="GNU General Public License", version="3.0")
      *
      * Copyright (C) 2010 UnWebmaster.Com.Ar
-     * Copyright (C) 2010 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * This file is part of LaMantengo.
      *
@@ -24,35 +24,31 @@
      */
     require_once("../includes/initialise.php");
 
-    if (defined('INSITE')) {
-        /*         * *************************************************
-         * 	$mail_nombre = nombre de la persona
-         * 	$mail_to = campo to ("Nombre <direccion>" o  "direccion")
-         * 	$mail_subj = asunto del e-mail
-         * 	$mail_cuerpo = cuerpo del mensaje
-         * ************************************************** */
-        if ($realname) {
-            $mail_nombre = $realname;
-        }
-        else {
-            $mail_nombre = $username;
-        }
-        $mail_to = $mail_nombre . ' <' . $email . '>';
-        $mail_subj = $language->translate("mail_subject_lost_pass");
 
-        $mail_cuerpo = $language->translate("mail_lost_pass_message");
-        $mail_cuerpo .= "<br />\r\n";
-        $mail_cuerpo .= $language->translate("mail_rebuild_login");
-        $mail_cuerpo .= "<a href=\"http://www.lamantengo.com.ar/forgot.php?action=confirm&id=$uid&key=$key\">http://www.lamantengo.com.ar/forgot.php?action=confirm&id=$uid&key=$key</a><br />\r\n";
-        $mail_cuerpo .= "<br />\r\n";
-        $mail_cuerpo .= $language->translate("mail_link_fails") . " http://www.lamantengo.com.ar/forgot.php?action=confirm&id=$uid&key=$key" . $language->translate("mail_browser");
-        $mail_cuerpo .= "<br />\r\n";
-        $mail_cuerpo .= $language->translate("mail_receive_email");
-
-        include('enviar_email.php');
+    /*     * *************************************************
+     * 	$mail_nombre = nombre de la persona
+     * 	$mail_to = campo to ("Nombre <direccion>" o  "direccion")
+     * 	$mail_subj = asunto del e-mail
+     * 	$mail_cuerpo = cuerpo del mensaje
+     * ************************************************** */
+    if ($realname) {
+        $mail_nombre = $realname;
     }
     else {
-        include("404.php");
+        $mail_nombre = $username;
     }
+    $mail_to = $mail_nombre . ' <' . $email . '>';
+    $mail_subj = $language->translate("mail_subject_lost_pass");
+
+    $mail_cuerpo = $language->translate("mail_lost_pass_message");
+    $mail_cuerpo .= "<br />\r\n";
+    $mail_cuerpo .= $language->translate("mail_rebuild_login");
+    $mail_cuerpo .= "<a href=\"http://www.lamantengo.com.ar/forgot.php?action=confirm&id=$uid&key=$key\">http://www.lamantengo.com.ar/forgot.php?action=confirm&id=$uid&key=$key</a><br />\r\n";
+    $mail_cuerpo .= "<br />\r\n";
+    $mail_cuerpo .= $language->translate("mail_link_fails") . " http://www.lamantengo.com.ar/forgot.php?action=confirm&id=$uid&key=$key" . $language->translate("mail_browser");
+    $mail_cuerpo .= "<br />\r\n";
+    $mail_cuerpo .= $language->translate("mail_receive_email");
+
+    include('enviar_email.php');
 
 ?>

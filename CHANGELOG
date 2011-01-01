@@ -2,7 +2,7 @@
      * @License(name="GNU General Public License", version="3.0")
      * 
      * Copyright (C) 2010 UnWebmaster.Com.Ar
-     * Copyright (C) 2010 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      * 
      * This file is part of LaMantengo.
      * 
@@ -31,7 +31,7 @@
     * Added validateEmail() function to Users class
     * Removed generar_password.php
     * Renamed $errores variable to $errors sitewide
-    * 
+    * Updated Copyright information for 2011
 
 2010-12-31 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Edited database.php file
