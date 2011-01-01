@@ -25,7 +25,7 @@
     require_once("../includes/initialise.php");
 
     $title = $language->translate("title_register");
-    $errores = "";
+    $errors = "";
 
     if (!$user->isUserLoggedIn()) { // not logged in
         if ($_POST) { // Process form data
@@ -35,29 +35,29 @@
             $email2 = $database->escapeValue($_POST['email2']);
             $agree = $database->escapeValue($_POST['agree']);
 
-            // look for errors and methodological errors as listed in $errores
+            // look for errors and methodological errors as listed in $errors
             if (!($agree))
-                $errores .= $language->translate("error_agree");
+                $errors .= $language->translate("error_agree");
             if ($username == "")
-                $errores .= $language->translate("error_username");
+                $errors .= $language->translate("error_username");
             else
             if (strlen($username) < 4)
-                $errores .= $language->translate("error_size");
+                $errors .= $language->translate("error_size");
             if ($email == "")
-                $errores .= $language->translate("error_email_empty");
+                $errors .= $language->translate("error_email_empty");
             else {
                 $email = strtolower($email);
                 $email2 = strtolower($email2);
                 if ($email != $email2)
-                    $errores .= $language->translate("error_email_nomatch");
+                    $errors .= $language->translate("error_email_nomatch");
                 else
                 if (!($user->validate_email($email)))
-                    $errores .= $language->translate("error_email_invalid");
+                    $errors .= $language->translate("error_email_invalid");
             }
             /*             * *********************** chequeo recaptcha **************************************
               include('recaptcha_check.php');
               /**********************fin chequeo recaptcha ************************************* */
-            if (!$errores) { // no errors
+            if (!$errors) { // no errors
                 /*                 * ***********************************************************************************
                  * * NO USO ESTO. VERIFICO EL EMAIL MEDIANTE EL ENVIO DEL PASSWORD
                  * * //Genero un activation_key completamente random (Sacado de Coppermine 1.4.19 - register.php:261-264)
@@ -73,8 +73,8 @@
                 $result = $user->registerUser($username, $realname, $email, $pass_hash);
 
                 if (mysql_errno() == 1062)
-                    $errores .= $language->translate("error_already_registered");
-                if (!$errores) {
+                    $errors .= $language->translate("error_already_registered");
+                if (!$errors) {
 
 //                    // activation and concatenate shipping errors
 //                    $query = "SELECT `uid` FROM `users` ORDER BY `uid` DESC LIMIT 0 , 1;";
@@ -86,7 +86,7 @@
 
                     $password = "";
                     $uid = "";
-                    if (!$errores) {
+                    if (!$errors) {
                         $success = $language->translate("registered_successfully");
                     }
                     else {
@@ -97,7 +97,7 @@
         } // END POST
     }
     else { // User logged in
-        $errores .= $language->translate("error_already_reg");
+        $errors .= $language->translate("error_already_reg");
     }
 
     // show page
@@ -107,10 +107,10 @@
 <div id="contenido">
     <?php
 
-        if ($errores) {
+        if ($errors) {
 
     ?>
-            <div id="errores"><?php echo $errores; ?></div>
+            <div id="errores"><?php echo $errors; ?></div>
     <?php
 
         }

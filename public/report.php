@@ -27,7 +27,7 @@
 
     $title = $language->translate("title_report");
 
-    $errores = "";
+    $errors = "";
     $success = "";
     $formreport = 0;
 
@@ -55,11 +55,11 @@
                 $rs = mysql_query($query);
                 if (($temp = mysql_fetch_object($rs)) == null) {
                     // there is no link / is inactive
-                    $errores .= $language->translate("error_link_not_exist");
+                    $errors .= $language->translate("error_link_not_exist");
                 }
                 else {
                     if (($uid == $temp->uid) || ($temp->uid == 0)) {
-                        $errores .= $language->translate("error_link_public") . "<a href=\"mylinks.php?action=edit&lid=$lid&sid=$sid\">" . $language->translate("error_click_here");
+                        $errors .= $language->translate("error_link_public") . "<a href=\"mylinks.php?action=edit&lid=$lid&sid=$sid\">" . $language->translate("error_click_here");
                     }
                     else {
                         if ($_POST) {
@@ -67,23 +67,23 @@
                             if ($_POST['destination'] != null) {
                                 $parts = @parse_url($_POST['destination']);
                                 if ($parts['scheme'] == '')
-                                    $errores .= $language->translate("error_incomplete_url");
+                                    $errors .= $language->translate("error_incomplete_url");
                             }
                             if (!$uid) {
                                 if ($_POST['realname'] == "") {
-                                    $errores .= $language->translate("error_must_enter_name");
+                                    $errors .= $language->translate("error_must_enter_name");
                                 }
                                 if ($_POST['email'] == "") {
-                                    $errores .= $language->translate("error_must_enter_email");
+                                    $errors .= $language->translate("error_must_enter_email");
                                 }
                                 else {
                                     if (!comprobar_email($_POST['email'])) {
-                                        $errores .= $language->translate("error_email_invalid");
+                                        $errors .= $language->translate("error_email_invalid");
                                     }
                                 }
                             }
                             $report = $_POST['report'];
-                            if ($errores == null) {// correct report, sent it / put pending
+                            if ($errors == null) {// correct report, sent it / put pending
                                 if ($uid) {
                                     // is logged, the mail command
                                     /** @TODO: grab recipient data and report, prepare the mail message, and send it * */
@@ -97,7 +97,7 @@
                                       $success="Reporte enviado";
                                       $success.=$mail_cuerpo;
                                       }else{
-                                      $errores.="Usuario incorrecto<br />";
+                                      $errors.="Usuario incorrecto<br />";
                                       } */
                                 }
                                 else {
@@ -131,7 +131,7 @@
             }
             else {
                 // No lid. throw error
-                $errores .= $language->translate("error_link_id_empty");
+                $errors .= $language->translate("error_link_id_empty");
             }
         }
         else {
@@ -144,7 +144,7 @@
                     $rs = mysql_query($query);
                     if (($temp = mysql_fetch_object($rs)) == null) {
                         // the key does not exist
-                        $errores .= $language->translate("error_key_invalid");
+                        $errors .= $language->translate("error_key_invalid");
                     }
                     else {
                         // valid key, sending the mail to report to the owner of the link, turn off the slope and informed that the report is sent
@@ -159,22 +159,22 @@
                         $query = "UPDATE `reports` SET `active`='0' WHERE `rid`='$rid' LIMIT 1;";
                         $rs = mysql_query($query);
                         if (!mysql_affected_rows())
-                            $errores .= $language->translate("error_modify_report");
+                            $errors .= $language->translate("error_modify_report");
                     }
                 }else {
                     // reporting no key.
-                    $errores .= $language->translate("error_empty_report");
+                    $errors .= $language->translate("error_empty_report");
                 }
             }
             else {
                 // Action is no report or confirm. I fruit. will throw error.
-                $errores .= $language->translate("error_invalid_action");
+                $errors .= $language->translate("error_invalid_action");
             }
         }
     }
     else {
         // No action. throw error
-        $errores .= $language->translate("error_nothing_to_do");
+        $errors .= $language->translate("error_nothing_to_do");
     }
     include('header.php');
 
@@ -189,10 +189,10 @@
     <?php
 
         }
-        if ($errores) {
+        if ($errors) {
 
     ?>
-            <div id="errores"><?php echo $errores; ?></div>
+            <div id="errores"><?php echo $errors; ?></div>
     <?php
 
         }

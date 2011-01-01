@@ -26,7 +26,7 @@
 
     $title = $language->translate("title_mylinks");
 
-    $errores = "";
+    $errors = "";
     $success = "";
     $formedit = 0;
     $captcha = 0;
@@ -36,21 +36,21 @@
             if ($_POST != null) {
                 $parts = @parse_url($_POST['destination']);
                 if ($parts['scheme'] == '')
-                    $errores .= $language->translate("error_incomplete_url");
+                    $errors .= $language->translate("error_incomplete_url");
                 if (!($lid = $_POST['lid']))
-                    $errores .= $language->translate("error_link_empty");
+                    $errors .= $language->translate("error_link_empty");
                 if (!$uid) {
                     /*                     * *********************** recaptcha check **************************************
                       include('recaptcha_check.php');
                       /**********************fin recaptcha check ************************************* */
                 }
-                if ($errores == null) {
+                if ($errors == null) {
                     $query = "UPDATE `links` SET `destination`='" . $_POST['destination'] . "', `description`='" . $_POST['description'] . "' WHERE `lid`='$lid' AND (`uid`='$uid' OR `uid`='0') AND `active`='1' LIMIT 1;";
                     $rs = mysql_query($query);
                     if (mysql_affected_rows ())
                         $success = $language->translate("success_updated");
                     else
-                        $errores .= $language->translate("error_nopermission");
+                        $errors .= $language->translate("error_nopermission");
                 }else {
                     $formedit = 1;
                 }
@@ -73,11 +73,11 @@
                           $captcha=1;* */
                     }
                     else {
-                        $errores .= $language->translate("error_nopermission");
+                        $errors .= $language->translate("error_nopermission");
                     }
                 }
                 else {
-                    $errores .= $language->translate("error_link_empty");
+                    $errors .= $language->translate("error_link_empty");
                 }
             }
         }
@@ -85,7 +85,7 @@
             if ($_GET['action'] == 'delete') {
                 if ($_POST) { // remove many links together since mylinks.php
                     if (!($uid))
-                        $errores .= $language->translate("error_mass_removal");
+                        $errors .= $language->translate("error_mass_removal");
                     else {
                         foreach ($_POST as $key => $value) {
                             $query = "UPDATE `links` SET `active`='0' WHERE `lid`='$key' AND (`uid`='$uid' OR `uid`='0') AND `active`='1' LIMIT 1;";
@@ -93,7 +93,7 @@
                             if (mysql_affected_rows ())
                                 $success .= $language->translate("success_link_removed");
                             else
-                                $errores .= $language->translate("error_no_edit_permission");
+                                $errors .= $language->translate("error_no_edit_permission");
                         }
                     }
                 }else {
@@ -106,28 +106,28 @@
                         if (mysql_affected_rows ())
                             $success = $language->translate("success_link_removed");
                         else
-                            $errores .= $language->translate("error_no_edit_permission");
+                            $errors .= $language->translate("error_no_edit_permission");
                     }else {
-                        $errores .= $language->translate("error_no_link_id");
+                        $errors .= $language->translate("error_no_link_id");
                     }
                 }
             }
             else {
-                $errores .= $language->translate("error_invalid_action");
+                $errors .= $language->translate("error_invalid_action");
             }
         }
     }
     else {
         if (!$user->isUserLoggedIn()) { // User not logged in
             // not logged in
-            $errores .= $language->translate("error_not_loggedin_links");
+            $errors .= $language->translate("error_not_loggedin_links");
         }
     }
     if ($user->isUserLoggedIn()) { // User is logged in
         $query = "SELECT `lid`, `destination`, `description`, `lastmod`, `visits` FROM `links` WHERE `uid`='$uid' AND `active`='1';";
         $rs_links = mysql_query($query);
         if (mysql_errno ())
-            $errores .= $language->translate("error_failed_database_conn");
+            $errors .= $language->translate("error_failed_database_conn");
     }
     include('header.php');
 
@@ -145,11 +145,11 @@
     <?php
 
         }
-        if ($errores) {
+        if ($errors) {
 
     ?>
             <div id="errores">
-        <?php echo $errores; ?>
+        <?php echo $errors; ?>
         </div>
     <?php
 

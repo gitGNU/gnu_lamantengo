@@ -26,17 +26,17 @@
 
     $title = $language->translate("title_view");
 
-    $errores = "";
+    $errors = "";
     $id = $_GET['id'];
     if (!$id) {
-        $errores .= $language->translate("error_no_link_id");
+        $errors .= $language->translate("error_no_link_id");
     }
     else {
         // There id. I look in the db
         $query = "SELECT `uid`,`destination`,`description`,`lastmod`, `visits` FROM `links` WHERE `lid`='$id' AND `active`='1' LIMIT 0, 1;";
         $rs = mysql_query($query);
         if (($temp = @mysql_fetch_object($rs)) == null) {
-            $errores .= $language->translate("error_link_noexistent");
+            $errors .= $language->translate("error_link_noexistent");
         }
         else {
             $destination = $temp->destination;
@@ -53,10 +53,10 @@
     <h2><?php echo $title; ?></h2>
 <?php
 
-    if ($errores) {
+    if ($errors) {
 
 ?>
-        <div id="errores"><?php echo $errores; ?></div>
+        <div id="errores"><?php echo $errors; ?></div>
     <?php
 
     }

@@ -28,14 +28,14 @@
 
     $title = $language->translate("title_home");
 
-    $errores = "";
+    $errors = "";
     if ($_POST) {
 
         // prepare data for database
         $dest = $database->escapeValue($_POST['destination']);
         $desc = $database->escapeValue($_POST['description']);
 
-        if (!$errores) {
+        if (!$errors) {
 
             $result = Link::add_new_link($dest, $desc);
 
@@ -45,15 +45,15 @@
                 exit;
             }
             else {
-                $errores .= $language->translate("error_insert_link");
+                $errors .= $language->translate("error_insert_link");
             }
         }
     }
     else {
         //if ($_GET['visitnoid']) // No id on visit.php
-        //$errores .= $language->translate("error_url");
+        //$errors .= $language->translate("error_url");
         //if ($_GET['visitidnoexist']) // Visit.php the link does not exist or was discharged
-        //$errores .= $language->translate("unknown_url");
+        //$errors .= $language->translate("unknown_url");
     }
     include("header.php");
 
@@ -68,10 +68,10 @@
     <?php
 
         }
-        if ($errores != null) { // There are errors in the print
+        if ($errors != null) { // There are errors in the print
 
     ?>
-            <div id="errores"><?php echo $errores; ?></div>
+            <div id="errores"><?php echo $errors; ?></div>
     <?php
 
         }

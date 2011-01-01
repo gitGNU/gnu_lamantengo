@@ -26,7 +26,7 @@
 
     $title = $language->translate("title_profile");
 
-    $errores = ""; // void error
+    $errors = ""; // void error
     $muestro_formulario = 1;
     if ($user->isUserLoggedIn()) { // user is logged in
         if ($_POST) { // Process form data
@@ -37,37 +37,37 @@
             $_POST['new_pass2'] = "";
             $password = md5($_POST['password']);
             $_POST['password'] = "";
-            // look for errors and methodological errors as listed in $errores
+            // look for errors and methodological errors as listed in $errors
             if ($new_pass != "") {
                 if ($new_pass2 == "")
-                    $errores .= $language->translate("error_confirm_pass_empty");
+                    $errors .= $language->translate("error_confirm_pass_empty");
                 else
                 if ($new_pass != $new_pass2)
-                    $errores .= $language->translate("error_passwords_nomatch");
+                    $errors .= $language->translate("error_passwords_nomatch");
                 else {
                     $new_pass2 = "";
                     if (strlen($new_pass) < 6)
-                        $errores .= $language->translate("error_password_tooshort");
+                        $errors .= $language->translate("error_password_tooshort");
                     else
                     if (!(preg_match('/^[a-zA-Z0-9\.\(\)\-\_\!\@\=]{6,20}/', $new_pass))) {
-                        $errores .= $language->translate("error_password_6_20_long");
-                        $errores .= "<b>(</b> <b>)</b> <b>-</b> <b>_</b> <b>!</b> <b>@</b> <b>=</b><br />\n";
+                        $errors .= $language->translate("error_password_6_20_long");
+                        $errors .= "<b>(</b> <b>)</b> <b>-</b> <b>_</b> <b>!</b> <b>@</b> <b>=</b><br />\n";
                     }
                     else { // no password error
                         $new_pass = md5($new_pass);
                     }
                 }
             }
-            if (!$errores) {
+            if (!$errors) {
                 $query = "SELECT `active` FROM `users` WHERE `uid`='$uid' AND `password`='$password';";
                 $rs = mysql_query($query);
                 if (!($fila = mysql_fetch_object($rs)))
-                    $errores .= $language->translate("error_password_incorrect");
+                    $errors .= $language->translate("error_password_incorrect");
                 else {
                     if (!($fila->active))
-                        $errores .= $language->translate("error_user_disabled");
+                        $errors .= $language->translate("error_user_disabled");
                 }
-                if (!$errores) {
+                if (!$errors) {
                     // update data
                     $query = "UPDATE `users` SET ";
                     if ($new_pass)
@@ -79,7 +79,7 @@
             }
         } // END POST
     }else { // User not logged
-        $errores .= $language->translate("error_login_to_view_profile");
+        $errors .= $language->translate("error_login_to_view_profile");
         $muestro_formulario = 0;
     }
 // Show page with errors or success whichever is applicable
@@ -96,10 +96,10 @@
 <?php
 
         }
-        if ($errores) {
+        if ($errors) {
 
 ?>
-            <div id="errores"><?php echo $errores; ?></div>
+            <div id="errores"><?php echo $errors; ?></div>
 <?php
 
         }

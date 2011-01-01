@@ -53,7 +53,7 @@
         $mail_head.="MIME-Version: 1.0 \r\nContent-type: text/html; charset=UTF-8\r\n";
         $mail_head.="Bcc: nocaduca+forgot@gmail.com\r\n";
         if (@mail($mail_to, $mail_subj, $mail_cuerpo, $mail_head))
-            $errores .= $language->translate("error_mail");
+            $errors .= $language->translate("error_mail");
     }else {
         include("404.php");
     }

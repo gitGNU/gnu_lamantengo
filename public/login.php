@@ -25,10 +25,10 @@
     require_once("../includes/initialise.php");
 
     $title = $language->translate("title_login");
-    $errores = "";
+    $errors = "";
 
     if ($user->isUserLoggedIn()) { // Already logged in
-        $errores .= $language->translate("error_loggedin");
+        $errors .= $language->translate("error_loggedin");
     }
     else { // Not logged in
         if ($_POST['login']) {
@@ -39,19 +39,19 @@
             $password = $database->escapeValue($_POST['password']);
 
             if ($username == "") {
-                $errores .= $language->translate("error_username_empty");
+                $errors .= $language->translate("error_username_empty");
             }
             if ($password == "") {
-                $errores .= $language->translate("error_password_empty");
+                $errors .= $language->translate("error_password_empty");
             }
-            if (!($errores)) {
+            if (!($errors)) {
                 $user_id = $user->authenticateUser($username, $password);
 
                 if ($user_id != null && $user_id != '') {
                     $user->loginUser($user_id);
 
                     if ($user->getIsUserActive() == FALSE)
-                        $errores .= $language->translate("error_user_disabled");
+                        $errors .= $language->translate("error_user_disabled");
                     else {
 
                         // Update the sid in the database session table
@@ -63,19 +63,20 @@
                     }
                 }
                 else {
-                    $errores .= $language->translate("error_unknown_user");
+                    $errors .= $language->translate("error_unknown_user");
                 }
             }
         }
+
         // Show form
         include("header.php");
 
 ?>
         <div id="contenido">
-    <?php if ($errores) {
+    <?php if ($errors) {
 
     ?>
-            <div id="errores"><?php echo $errores; ?></div>
+            <div id="errores"><?php echo $errors; ?></div>
     <?php
 
         }

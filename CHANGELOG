@@ -30,6 +30,8 @@
     * Added generatePassword() function to Users class
     * Added validateEmail() function to Users class
     * Removed generar_password.php
+    * Renamed $errores variable to $errors sitewide
+    * 
 
 2010-12-31 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Edited database.php file

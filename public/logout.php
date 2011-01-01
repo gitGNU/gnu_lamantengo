@@ -26,10 +26,10 @@
 
     $title = $language->translate("title_logout");
 
-    $errores = "";
+    $errors = "";
 
     if (!$user->isUserLoggedIn()) { // Not logged in
-        $errores .= $language->translate("error_already_loggedout");
+        $errors .= $language->translate("error_already_loggedout");
     }
     else {
         $user->logoutUser();
@@ -40,8 +40,8 @@
 <div id="contenido">
     <?php
 
-        if ($errores)
-            echo "<div id=\"errores\">$errores</div>";
+        if ($errors)
+            echo "<div id=\"errores\">$errors</div>";
         else
             echo $language->translate("session_closed");
 

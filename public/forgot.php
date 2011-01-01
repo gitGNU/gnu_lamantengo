@@ -28,21 +28,21 @@
     
     $title = $language->translate("title_forgot");
 
-    $errores = "";
+    $errors = "";
     if ($uid) { // already logged in
-        $errores .= $language->translate("error_already_loggedin");
+        $errors .= $language->translate("error_already_loggedin");
     }
     else { // Not logged. I look if I'm dating or not
         if ($_POST) { // Came in POST data, bone, and put the username / email
             if ($_POST['username'] == "") {
-                $errores .= $language->translate("error_username");
+                $errors .= $language->translate("error_username");
                 $username = "";
             }
             else {
                 $username = $_POST['username'];
             }
             if ($_POST['email'] == "") {
-                $errores .= $language->translate("error_email_empty");
+                $errors .= $language->translate("error_email_empty");
             }
             else {
                 $email = $_POST['email'];
@@ -50,12 +50,12 @@
             /*             * *********************** recaptcha check **************************************
               include('recaptcha_check.php');
               /********************** recaptcha check order ************************************* */
-            if (!($errores)) {
+            if (!($errors)) {
                 $query = "SELECT uid,username,email,realname,active FROM users WHERE LOWER(username) ='" . strtolower($username) . "' AND email='" . strtolower($email) . "'";
                 $rs = mysql_query($query);
                 if ($fila = mysql_fetch_object($rs)) { // matches users and mail ... new genus pass, and sent him
                     if (!$fila->active) {
-                        $errores .= $language->translate("error_user_disabled");
+                        $errors .= $language->translate("error_user_disabled");
                         $_POST['email'] = "";
                         $_POST['username'] = "";
                     }
@@ -71,7 +71,7 @@
                         $query = "UPDATE `users` SET `password`='$password' WHERE `uid`=$uid;";
                         $password = "";
                         $rs = mysql_query($query);
-                        if ($errores)
+                        if ($errors)
                             $success = $cuerpo;
                         else
                             $success = $language->translate("password_updated");
@@ -81,7 +81,7 @@
                         $email = "";
                     }
                 }else {
-                    $errores .= $language->translate("error_email_nomatch");
+                    $errors .= $language->translate("error_email_nomatch");
                 }
             }
         }
@@ -92,11 +92,11 @@
         <div id="contenido">
     <?php
 
-        if ($errores) {
+        if ($errors) {
 
     ?>
             <div id="errores">
-        <?php echo $errores; ?>
+        <?php echo $errors; ?>
         </div>
     <?php
 
