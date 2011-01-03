@@ -32,6 +32,11 @@
     * Edited profile.php - updates are now performed by User class
       successfully
 
+    * Edited new_link.php - added link ID to redirect
+    * Removed $_GET parameters from redirect in visit.php
+    * Added addNewLinkTest.php to tests
+    * Renamed new_link.php to newlink.php
+
 2011-01-01 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * register.php uses User class to register new users
     * Added generatePassword() function to Users class

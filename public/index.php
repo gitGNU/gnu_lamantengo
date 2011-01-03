@@ -23,7 +23,7 @@
      * 
      */
     require_once("../includes/initialise.php");
-    require_once("new_link.php");
+    require_once("newlink.php");
 
     // optional file - used for running tests if available
     // edit config.php to remove UnitCheck testing

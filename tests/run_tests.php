@@ -81,6 +81,7 @@
                 require_once("UserTests/updateUserTests.php");
                 require_once("UserTests/logoutUserTests.php");
 
+                require_once("LinkTests/addNewLinkTest.php");
 
                 // GET TEST DATA
                 $registerDataResult = getUserTestData();
@@ -113,6 +114,8 @@
                     updateUserPasswordTest();
                     updateUserRealNameTest();
 
+                    addNewLinkTest();
+                    
                     // logout test
                     logoutUserTest();
 

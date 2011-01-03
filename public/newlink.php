@@ -36,11 +36,13 @@
 
         if (!$errors) {
 
-            $result = Link::add_new_link($dest, $desc);
+            $link = new Link();
+
+            $result = $link->add_new_link($dest, $desc);
 
             if ($result) { // If success
                 $lid = $database->get_last_id();
-                header('Location: view.php');
+                header('Location: view.php?id='.$lid);
                 exit;
             }
             else {
@@ -49,10 +51,10 @@
         }
     }
     else {
-        //if ($_GET['visitnoid']) // No id on visit.php
-        //$errors .= $language->translate("error_url");
-        //if ($_GET['visitidnoexist']) // Visit.php the link does not exist or was discharged
-        //$errors .= $language->translate("unknown_url");
+        if ($_GET['visitnoid']) // No id on visit.php
+        $errors .= $language->translate("error_url");
+        if ($_GET['visitidnoexist']) // Visit.php the link does not exist or was discharged
+        $errors .= $language->translate("unknown_url");
     }
     include("header.php");
 

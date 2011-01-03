@@ -227,7 +227,6 @@
          */
         public function get_visits() {
             return $this->_visits;
-
         }
 
         /**
@@ -239,14 +238,14 @@
          * @return Boolean TRUE if successful, FALSE otherwise
          *
          */
-        public static function add_new_link($dest, $desc) {
+        public function add_new_link($dest, $desc) {
             global $database;
             global $user;
 
             $query = "INSERT INTO `links` (`uid`, `destination`, `description`)
                                    VALUES ( '$user->getUserID()',
                                             '$dest',
-                                            '$desc')";
+                                            '$desc');";
             //echo $query;
             // run query
             $result = $database->query($query);

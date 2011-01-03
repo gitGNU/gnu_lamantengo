@@ -345,9 +345,7 @@
          * @return Boolean TRUE if logged in, FALSE if not
          */
         public function isUserLoggedIn() {
-
             return $this->_userIsLoggedIn;
-
         }
 
         /**

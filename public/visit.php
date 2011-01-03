@@ -28,7 +28,7 @@
 
     $errors = "";
     if (!$lid = $_GET['id']) { // no id, notice the error
-        header('Location: index.php?sid=' . $sid . '&visitnoid=1');
+        header('Location: index.php');
     }
     else { // Go there, I look
         $query = "SELECT `destination`, `description`, `lastmod`, `uid`, `visits` FROM `links` WHERE `lid`='$lid' AND `active`='1';";
@@ -61,41 +61,41 @@
                                         </div>
                                         <div id="cp_visit">
                                             <a href="<?php echo $temp->destination; ?>" title="<?php echo $language->translate("remove_frame"); ?>"><img src="<?php echo IMAGE_PATH . DS; ?>cross.png" alt="<?php echo $language->translate("remove_frame"); ?>" /></a><br />
-<?php if ($owns) {
+                                <?php if ($owns) {
 
-?>
-                                <a href="mylinks.php?action=edit&lid=<?php echo $lid; ?>&sid=<?php echo $sid; ?>" title="<?php echo $language->translate("title_edit_link"); ?>"><?php echo $language->translate("table_edit"); ?></a><br />
-                                <a href="mylinks.php?action=delete&lid=<?php echo $lid; ?>&sid=<?php echo $sid; ?>" title="<?php echo $language->translate("title_remove_link"); ?>"><?php echo $language->translate("table_remove"); ?></a>
-<?php
+                                ?>
+                                        <a href="mylinks.php?action=edit&lid=<?php echo $lid; ?>&sid=<?php echo $sid; ?>" title="<?php echo $language->translate("title_edit_link"); ?>"><?php echo $language->translate("table_edit"); ?></a><br />
+                                        <a href="mylinks.php?action=delete&lid=<?php echo $lid; ?>&sid=<?php echo $sid; ?>" title="<?php echo $language->translate("title_remove_link"); ?>"><?php echo $language->translate("table_remove"); ?></a>
+                                <?php
 
-                            }
-                            else {
+                                    }
+                                    else {
 
-?>
-                                <a href="report.php?action=report&id=<?php echo $lid; ?>&sid=<?php echo $sid; ?>" title ="<?php echo $language->translate("report_link_expired"); ?>"><?php echo $language->translate("report"); ?></a><br />
-<?php } ?>
-                            </div>
-<?php echo $language->translate("no_definitions_found"); ?><span id="link_nh_visit"><?php echo "http://" . $_SERVER['HTTP_HOST'] . "/visit.php?id=" . $lid; ?></span><br />
+                                ?>
+                                        <a href="report.php?action=report&id=<?php echo $lid; ?>&sid=<?php echo $sid; ?>" title ="<?php echo $language->translate("report_link_expired"); ?>"><?php echo $language->translate("report"); ?></a><br />
+                                <?php } ?>
+                                </div>
+                            <?php echo $language->translate("no_definitions_found"); ?><span id="link_nh_visit"><?php echo "http://" . $_SERVER['HTTP_HOST'] . "/visit.php?id=" . $lid; ?></span><br />
                             <?php echo $language->translate("label_destination"); ?><span id="link_dest_visit"><?php echo $temp->destination; ?></span><br />
                             <?php echo $language->translate("label_description"); ?><span id="link_desc_visit"><?php echo $temp->description; ?></span><br />
                             <?php echo $language->translate("label_last_modified"); ?><span id="lastmod_visit"><?php echo $temp->lastmod; ?></span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr id="destino">
-                        <td><iframe id="dest_frame" frameborder="0" src="<?php echo $temp->destination; ?>"></iframe></td>
-                    </tr>
-                </table>
-            </div>
-        </body>
-</html>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="destino">
+                            <td><iframe id="dest_frame" frameborder="0" src="<?php echo $temp->destination; ?>"></iframe></td>
+                        </tr>
+                    </table>
+                </div>
+            </body>
+        </html>
 <?php
 
+                                }
+                                else {
+                                    // There id, but est disabled or does not exist
+                                    header('Location: index.php');
+                                }
                             }
-                            else {
-                                // There id, but est disabled or does not exist
-                                header('Location: index.php');
-                            }
-                        }
 
 ?>
