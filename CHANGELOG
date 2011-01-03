@@ -25,6 +25,13 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-03 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Added tests/ directory with tests for User objects
+    * Added DEBUG define to config.php
+    * Added UnitCheck test link to index.php
+    * Edited profile.php - updates are now performed by User class
+      successfully
+
 2011-01-01 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * register.php uses User class to register new users
     * Added generatePassword() function to Users class
@@ -32,6 +39,7 @@
     * Removed generar_password.php
     * Renamed $errores variable to $errors sitewide
     * Updated Copyright information for 2011
+    * 
 
 2010-12-31 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Edited database.php file

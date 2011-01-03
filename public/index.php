@@ -25,4 +25,10 @@
     require_once("../includes/initialise.php");
     require_once("new_link.php");
 
+    // optional file - used for running tests if available
+    // edit config.php to remove UnitCheck testing
+    if (DEBUG) {
+        echo '<h2><a href="../tests/run_tests.php" target="_blank" title="Run UnitCheck Tests">Run UnitCheck</a></h2>';
+    }
+
 ?>

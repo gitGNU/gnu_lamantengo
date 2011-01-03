@@ -61,7 +61,7 @@
          * @access private
          * @var String
          */
-        private $_first_name;
+        private $_real_name;
         /**
          * User Email
          *
@@ -114,7 +114,7 @@
             $this->setUserID($data['uid']);
             $this->setUsername($data['username']);
             $this->setUserEmail($data['email']);
-            $this->setFirstName($data['realname']);
+            $this->setRealName($data['realname']);
             $this->setPassword($data['password']);
             $this->setIsActive($data['active']);
 
@@ -170,8 +170,8 @@
          * @return String User first name
          *
          */
-        public function getUserFirstName() {
-            return $this->_first_name;
+        public function getUserRealName() {
+            return $this->_real_name;
 
         }
 
@@ -268,8 +268,8 @@
          * @return
          *
          */
-        private function setFirstName($firstname) {
-            $this->_first_name = $firstname;
+        private function setRealName($firstname) {
+            $this->_real_name = $firstname;
 
         }
 
@@ -365,10 +365,10 @@
             global $database;
 
             $query = "SELECT uid, username, active
-						FROM users
-						WHERE username = '$username'
-						AND password = md5('$password')
-						LIMIT 1";
+			 FROM users
+			 WHERE username = '$username'
+			 AND password = md5('$password')
+			 LIMIT 1";
 
             $result = $database->query($query);
             $data = $database->fetchArray($result);
@@ -391,11 +391,8 @@
                 $this->_userIsLoggedIn = TRUE;
                 $this->initUser($this->_userID);
                 $_SESSION['username'] = $this->_username;
-                //echo "User Initialised<br />";
-                //echo "USER ID in SESSION: ".$_SESSION['user_id']."<br />";
-                //echo "USER STATUS: ".$this->_userIsLoggedIn."<br />";
+                
             }
-
         }
 
         /**
@@ -412,9 +409,21 @@
             unset($_SESSION['username']);
             unset($this->_UserID);
             $this->_userIsLoggedIn = false;
-
+            
         }
 
+        /**
+         * Function registers user in database
+         *
+         * @param String $username Username
+         * @param String $realname Real Name
+         * @param String $email Email
+         * @param String $pass_hash md5 Password
+         * @access public
+         *
+         * @return Boolean TRUE if Successful, FALSE otherwise
+         *
+         */
         public function registerUser($username, $realname, $email, $pass_hash) {
             global $database;
             $clean_username = strtolower($username);
@@ -431,8 +440,24 @@
 
             $result = $database->query($query);
 
+            if ($result == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
         }
 
+        /**
+         * Function generates a new password
+         *
+         * @param
+         * @access public
+         *
+         * @return String Password
+         *
+         */
         public function generatePassword() {
             $pass = "";
             $c = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ)(-_!@=.0123456789";
@@ -457,20 +482,134 @@
 
         }
 
+        /**
+         * Function is a wrapper for filer_var and
+         * validates entered email
+         *
+         * @param String $address
+         * @access public
+         *
+         * @return Boolean TRUE if successful, otherwise FALSE
+         *
+         */
         public function validate_email($address) {
-        if (function_exists('filter_var')) {
-            if (filter_var($address, FILTER_VALIDATE_EMAIL) === FALSE) {
-                return false;
+            if (function_exists('filter_var')) {
+                if (filter_var($address, FILTER_VALIDATE_EMAIL) === FALSE) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
             }
             else {
-                return true;
+                return preg_match('/^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9_](?:[a-zA-Z0-9_\-](?!\.)){0,61}[a-zA-Z0-9_-]?\.)+[a-zA-Z0-9_](?:[a-zA-Z0-9_\-](?!$)){0,61}[a-zA-Z0-9_]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/', $address);
             }
-        }
-        else {
-            return preg_match('/^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9_](?:[a-zA-Z0-9_\-](?!\.)){0,61}[a-zA-Z0-9_-]?\.)+[a-zA-Z0-9_](?:[a-zA-Z0-9_\-](?!$)){0,61}[a-zA-Z0-9_]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/', $address);
+
         }
 
-    }
+        /**
+         * Function is a wrapper for filer_var and
+         * validates entered email
+         *
+         * @param String $address
+         * @access public
+         *
+         * @return Boolean TRUE if successful, otherwise FALSE
+         *
+         */
+        public function updateProfile($realname, $new_pass) {
+            global $database;
+
+            $query = "UPDATE users
+                      SET password = '$new_pass',
+			  realname = '$realname'
+		      WHERE uid = '" . $this->_userID . "'";
+
+            $result = $database->query($query);
+
+            if ($database->affectedRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
+        /**
+         * Function updates user password
+         *
+         * @param String $new_pass New Password
+         * @access public
+         *
+         * @return Boolean TRUE if Successful, FALSE otherwise
+         *
+         */
+        public function updateUserPassword($new_pass) {
+            global $database;
+
+            $query = "UPDATE users
+                      SET password = '$new_pass'
+		      WHERE uid = '$this->_userID'";
+
+            $result = $database->query($query);
+
+            if ($database->affectedRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
+        /**
+         * Function updates users realname
+         *
+         * @param String $realname Real Name
+         * @access public
+         *
+         * @return Boolean TRUE if Successful, FALSE otherwise
+         *
+         */
+        public function verifyPassword($password) {
+
+            if ($password == $this->_password) {
+                //if ($database->numRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
+        /**
+         * Function verifies entered password
+         *
+         * @param String $password Password
+         * @access public
+         *
+         * @return Boolean TRUE if Successful, FALSE otherwise
+         *
+         */
+        public function updateRealName($realname) {
+            global $database;
+
+            $query = "UPDATE users
+                      SET realname = '$realname'
+		      WHERE uid = '$this->_userID'";
+
+            $result = $database->query($query);
+
+            if ($database->affectedRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
 
     }
 

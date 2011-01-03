@@ -27,61 +27,72 @@
     $title = $language->translate("title_profile");
 
     $errors = ""; // void error
-    $muestro_formulario = 1;
+    $show_form = TRUE;
+
     if ($user->isUserLoggedIn()) { // user is logged in
         if ($_POST) { // Process form data
-            $realname = $_POST['realname'];
-            $new_pass = $_POST['new_pass'];
+            // prepare data for database
+            $realname = $database->escapeValue($_POST['realname']);
+            $new_pass = $database->escapeValue($_POST['new_pass']);
             $_POST['new_pass'] = "";
-            $new_pass2 = $_POST['new_pass2'];
+            $new_pass2 = $database->escapeValue($_POST['new_pass2']);
             $_POST['new_pass2'] = "";
-            $password = md5($_POST['password']);
+            $password = md5($database->escapeValue($_POST['password']));
             $_POST['password'] = "";
-            // look for errors and methodological errors as listed in $errors
-            if ($new_pass != "") {
-                if ($new_pass2 == "")
-                    $errors .= $language->translate("error_confirm_pass_empty");
-                else
-                if ($new_pass != $new_pass2)
-                    $errors .= $language->translate("error_passwords_nomatch");
-                else {
-                    $new_pass2 = "";
-                    if (strlen($new_pass) < 6)
-                        $errors .= $language->translate("error_password_tooshort");
-                    else
-                    if (!(preg_match('/^[a-zA-Z0-9\.\(\)\-\_\!\@\=]{6,20}/', $new_pass))) {
-                        $errors .= $language->translate("error_password_6_20_long");
-                        $errors .= "<b>(</b> <b>)</b> <b>-</b> <b>_</b> <b>!</b> <b>@</b> <b>=</b><br />\n";
+
+            //echo "PASSWORD: " . $password . "<br />";
+
+            if ($user->verifyPassword($password)) {
+
+                if ($new_pass != "") {
+                    if ($new_pass2 == "") {
+                        $errors .= $language->translate("error_confirm_pass_empty");
                     }
-                    else { // no password error
-                        $new_pass = md5($new_pass);
+                    if ($new_pass != $new_pass2) { // verify new passwords match
+                        $errors .= $language->translate("error_passwords_nomatch");
+                    }
+                    else {
+                        $new_pass2 = "";
+                        if (strlen($new_pass) < 6) // ensure new password is at least 6 chars
+                            $errors .= $language->translate("error_password_tooshort");
+                        else
+                        if (!(preg_match('/^[a-zA-Z0-9\.\(\)\-\_\!\@\=]{6,20}/', $new_pass))) {
+                            $errors .= $language->translate("error_password_6_20_long");
+                            $errors .= "<b>(</b> <b>)</b> <b>-</b> <b>_</b> <b>!</b> <b>@</b> <b>=</b><br />\n";
+                        }
+                        else { // no password error
+                            // encrypt new password
+                            $new_pass = md5($new_pass);
+                        }
                     }
                 }
-            }
-            if (!$errors) {
-                $query = "SELECT `active` FROM `users` WHERE `uid`='$uid' AND `password`='$password';";
-                $rs = mysql_query($query);
-                if (!($fila = mysql_fetch_object($rs)))
-                    $errors .= $language->translate("error_password_incorrect");
-                else {
-                    if (!($fila->active))
-                        $errors .= $language->translate("error_user_disabled");
+                // update data
+                if (($new_pass != "") && ($realname != $user->getUserRealName())) { // realname & password update
+                    $result = $user->updateProfile($realname, $new_pass);
                 }
-                if (!$errors) {
-                    // update data
-                    $query = "UPDATE `users` SET ";
-                    if ($new_pass)
-                        $query.="`password`='$new_pass', ";
-                    $query.="`realname`='$realname' WHERE `uid`='$uid';";
-                    $rs = mysql_query($query);
+                elseif (($new_pass == "") && ($realname != $user->getUserRealName())) { // realname update only
+                    $result = $user->updateRealName($realname);
+                }
+                elseif ($new_pass != "") { // password update only
+                    $result = $user->updateUserPassword($new_pass);
+                }
+
+                // check result
+                if ($result) {
                     $success = $language->translate("profile_updated");
+                    $show_form = FALSE;
                 }
+                else {
+                    $errors .= $language->translate("error_password_incorrect");
+                }
+            } // END POST
+            else { // User not logged in
+                $errors .= $language->translate("error_login_to_view_profile");
+                $show_form = FALSE;
             }
-        } // END POST
-    }else { // User not logged
-        $errors .= $language->translate("error_login_to_view_profile");
-        $muestro_formulario = 0;
+        }
     }
+
 // Show page with errors or success whichever is applicable
     include('header.php');
 
@@ -93,35 +104,35 @@
 
     ?>
             <div id="success"><?php echo $success; ?></div>
-<?php
+    <?php
 
         }
         if ($errors) {
 
-?>
+    ?>
             <div id="errores"><?php echo $errors; ?></div>
-<?php
+    <?php
 
         }
-        if ($muestro_formulario) {
+        if ($show_form) {
 
-?>
+    ?>
             <div id="form_reg">
-                <form action="?sid=<?php echo $sid; ?>" method="POST">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                     <table id="table_reg">
                         <tr id="tr_reg">
                             <td id="td_reg1">User:</td>
-                            <td id="td_reg"><b><?php echo $username; ?></b></td>
+                            <td id="td_reg"><b><?php echo $user->getUsername(); ?></b></td>
                             <td id="td_reg2">&nbsp;</td>
                         </tr>
                         <tr id="tr_reg">
                             <td id="td_reg1">Email:</td>
-                            <td id="td_reg"><?php echo $email; ?></td>
+                            <td id="td_reg"><?php echo $user->getUserEmail(); ?></td>
                             <td id="td_reg2">&nbsp;</td>
                         </tr>
                         <tr id="tr_reg">
                             <td id="td_reg1"><?php echo $language->translate("first_name_label"); ?></td>
-                            <td id="td_reg"><input id="text_reg" type="text" name="realname" value="<?php echo $realname; ?>" /></td>
+                            <td id="td_reg"><input id="text_reg" type="text" name="realname" value="<?php echo $user->getUserRealName(); ?>" /></td>
                             <td id="td_reg2"><?php echo $language->translate("first_name_message"); ?></td>
                         </tr>
                         <tr id="tr_reg">
@@ -153,15 +164,15 @@
                     </table>
                 </form>
             </div>
-<?php } ?>
-        </div>
-        <div id="explanation">
-<?php
+    <?php } ?>
+</div>
+<div id="explanation">
+    <?php
 
         echo $language->translate("profile_explanation");
 
-?>
-        </div>
+    ?>
+</div>
 <?php
 
         include("footer.php");

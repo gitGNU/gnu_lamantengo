@@ -72,9 +72,10 @@
 
                 $result = $user->registerUser($username, $realname, $email, $pass_hash);
 
-                if (mysql_errno() == 1062)
-                    $errors .= $language->translate("error_already_registered");
-                if (!$errors) {
+                if ($result) {
+                    if (mysql_errno() == 1062)
+                        $errors .= $language->translate("error_already_registered");
+                    if (!$errors) {
 
 //                    // activation and concatenate shipping errors
 //                    $query = "SELECT `uid` FROM `users` ORDER BY `uid` DESC LIMIT 0 , 1;";
@@ -82,16 +83,20 @@
 //                    $temp = mysql_fetch_object($rs);
 //                    $uid = $temp->uid;
 
-                    include("email_register.php");
+                        include("email_register.php");
 
-                    $password = "";
-                    $uid = "";
-                    if (!$errors) {
-                        $success = $language->translate("registered_successfully");
+                        $password = "";
+                        $uid = "";
+                        if (!$errors) {
+                            $success = $language->translate("registered_successfully");
+                        }
+                        else {
+                            $success = $mail_cuerpo . $language->translate("important_message");
+                        }
                     }
-                    else {
-                        $success = $mail_cuerpo . $language->translate("important_message");
-                    }
+                }
+                else {
+                    $errors .= "Registration failed<br />\n";
                 }
             }
         } // END POST
