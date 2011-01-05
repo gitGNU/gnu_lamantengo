@@ -61,7 +61,7 @@
          * @access private
          * @var String
          */
-        private $_real_name;
+        private $_realName;
         /**
          * User Email
          *
@@ -111,13 +111,13 @@
         private function initUser($user_id) {
             $data = $this->getUserDatasetById($user_id);
 
-            $this->setUserID($data['uid']);
-            $this->setUsername($data['username']);
-            $this->setUserEmail($data['email']);
-            $this->setRealName($data['realname']);
-            $this->setPassword($data['password']);
-            $this->setIsActive($data['active']);
-
+            $this->_userID = $data['uid'];
+            $this->_username = $data['username'];
+            $this->_email = $data['email'];
+            $this->_realName = $data['realname'];
+            $this->_password = $data['password'];
+            $this->_isActive = $data['active'];            
+            $this->setUserLanguage($data['language']);
         }
 
         /**
@@ -171,7 +171,7 @@
          *
          */
         public function getUserRealName() {
-            return $this->_real_name;
+            return $this->_realName;
 
         }
 
@@ -269,7 +269,7 @@
          *
          */
         private function setRealName($firstname) {
-            $this->_real_name = $firstname;
+            $this->_realName = $firstname;
 
         }
 
@@ -289,6 +289,24 @@
 
         private function setIsActive($status) {
             $this->_isActive = $status;
+
+        }
+
+        public function setUserLanguage($language = '') {
+            
+            if ($language == "") { // if language not yet set
+                if (isset($_SESSION['language'])) {
+                    $this->_language = $_SESSION['language'];
+                }
+                else {
+                    $this->_language = LAN;
+                }
+            }
+            else { // language has already been set for user
+                $this->_language = $language;
+            }
+
+
 
         }
 
@@ -346,6 +364,7 @@
          */
         public function isUserLoggedIn() {
             return $this->_userIsLoggedIn;
+
         }
 
         /**
@@ -389,8 +408,8 @@
                 $this->_userIsLoggedIn = TRUE;
                 $this->initUser($this->_userID);
                 $_SESSION['username'] = $this->_username;
-                
             }
+
         }
 
         /**
@@ -407,7 +426,7 @@
             unset($_SESSION['username']);
             unset($this->_UserID);
             $this->_userIsLoggedIn = false;
-            
+
         }
 
         /**

@@ -74,6 +74,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `realname` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `password` varchar(40) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `language` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`uid`),
   UNIQUE KEY `username` (`username_clean`),

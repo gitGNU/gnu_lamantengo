@@ -228,7 +228,7 @@
 
         }
 
-        public function get_last_id() {
+        public function getLastID() {
             return mysql_insert_id();
 
         }

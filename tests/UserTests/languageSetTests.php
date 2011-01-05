@@ -23,34 +23,23 @@
      */
     require_once("../includes/initialise.php");
 
-    function addNewLinkTest() {
-        global $database;
+
+    function isLanguageSet() {
         global $testNames;
         global $testResults;
-
-        global $newLinkDestination;
-        global $newLinkDescription;
         global $user;
 
-        $testNames[] = "TEST - Add New Link";
+        $testNames[] = "TEST - Is Language Set";
 
-        $link = new Link();
+        $result = $user->getUserLanguage();
 
-        $link->addNewLink($newLinkDestination, $newLinkDescription);
-
-        $query = "SELECT * FROM links
-                  WHERE uid = '" . $user->getUserID() . "'
-                  AND destination = '" . $newLinkDestination . "';";
-
-        $result = $database->query($query);
-
-        if ($database->numRows($result) == 1) {
+        if (($result == 'en') || ($result == 'es')) {
             $testResults[] = "PASSED";
         }
         else {
             $testResults[] = "FAILED";
         }
-
     }
-
+    
+    
 ?>

@@ -80,6 +80,7 @@
                 require_once("UserTests/loginUserTests.php");
                 require_once("UserTests/updateUserTests.php");
                 require_once("UserTests/logoutUserTests.php");
+                require_once("UserTests/languageSetTests.php");
 
                 require_once("LinkTests/addNewLinkTest.php");
 
@@ -113,7 +114,8 @@
                     updateUserProfileTest();
                     updateUserPasswordTest();
                     updateUserRealNameTest();
-
+                    isLanguageSet();
+                    
                     addNewLinkTest();
                     
                     // logout test

@@ -98,9 +98,16 @@
          * @return
          *
          */
-        public function setLocale($language, $country) {
-            $this->_language = $language;
-            $this->_country = $country;
+        public function setLocale($language = '', $country = '') {
+
+            if ($language == '' || $country == '') {
+                $this->_language = $_SESSION['language'];
+                $this->_country = $_SESSION['country'];
+            }
+            else {
+                $this->_language = $language;
+                $this->_country = $country;
+            }
 
         }
 

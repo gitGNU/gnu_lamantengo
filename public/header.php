@@ -26,6 +26,11 @@
 
     if (($_GET['language'] == 'en') || ($_GET['language'] == 'es')) {
         $language->setLocale($_GET['language'], $_GET['country']);
+        $_SESSION['language'] = $_GET['language'];
+        $_SESSION['country'] = $_GET['country'];
+    }
+    else {
+        $language->setLocale();
     }
 
 ?>
@@ -42,12 +47,10 @@
             <title><?php echo $title; ?> - LaMantengo</title>
         </head>
         <body class="cuerpo" bgcolor="#DDFFDD">
-            <div id="upperLeftDiv"><a href="index.php<?php if ($sid)
-        echo "?sid=" . $sid; ?>"><img src="<?php echo IMAGE_PATH . DS; ?>home.png" alt="Go to home" title="Go to home" /></a>
+            <div id="upperLeftDiv"><a href="index.php"><img src="<?php echo IMAGE_PATH . DS; ?>home.png" alt="Go to home" title="Go to home" /></a>
         </div>
         <div id="inter"><a href="<?php echo $_SERVER['PHP_SELF'] . '?language=en&country=us'; ?>" title="View in English">English</a> | <a href="<?php echo $_SERVER['PHP_SELF'] . '?language=es&country=ar'; ?>" title="Ver en español">Spanish</a></div>
         <div id="reging"><?php include("reging.php"); ?></div>
         <div id="logo">
-            <a href="index.php<?php if ($sid)
-        echo "?sid=" . $sid; ?>"
+            <a href="index.php"
                id="logo" title="NoHuyas.Com.Ar"><img src="<?php echo IMAGE_PATH . DS; ?>logo.png" alt="LaMantengo.Com.Ar" title="LaMantengo.Com.Ar" /></a><br /><h1>LaMantengo</h1></br></div>

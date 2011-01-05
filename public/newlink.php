@@ -38,10 +38,10 @@
 
             $link = new Link();
 
-            $result = $link->add_new_link($dest, $desc);
+            $result = $link->addNewLink($dest, $desc);
 
             if ($result) { // If success
-                $lid = $database->get_last_id();
+                $lid = $database->getLastID();
                 header('Location: view.php?id='.$lid);
                 exit;
             }
@@ -51,10 +51,10 @@
         }
     }
     else {
-        if ($_GET['visitnoid']) // No id on visit.php
-        $errors .= $language->translate("error_url");
-        if ($_GET['visitidnoexist']) // Visit.php the link does not exist or was discharged
-        $errors .= $language->translate("unknown_url");
+//        if ($_GET['visitnoid']) // No id on visit.php
+//        $errors .= $language->translate("error_url");
+//        if ($_GET['visitidnoexist']) // Visit.php the link does not exist or was discharged
+//        $errors .= $language->translate("unknown_url");
     }
     include("header.php");
 
@@ -79,8 +79,7 @@
 
     ?>
         <div align="center">
-            <form action="new_link.php<?php if ($sid)
-            echo "?sid=$sid"; ?>" method="post">
+            <form action="newlink.php" method="post">
                   <?php echo $language->translate("label_destination"); ?>
                 <input type="text" name="destination" size="35" id="dest_text" value="<?php if ($_POST['destination'] != "")
                           echo $_POST['destination']; ?>" />

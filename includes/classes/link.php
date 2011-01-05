@@ -48,35 +48,35 @@
          * @access private
          * @var String
          */
-        private $_link_destination;
+        private $_linkDestination;
         /**
          * Lamantengo Link
          *
          * @access private
          * @var String
          */
-        private $_link_lamantengo;
+        private $_linkLamantengo;
         /**
          * Link description
          *
          * @access private
          * @var String
          */
-        private $_link_description;
+        private $_linkDescription;
         /**
          * Last Modified
          *
          * @access private
          * @var String
          */
-        private $_last_mod;
+        private $_lastMod;
         /**
          * Link Owner ID
          *
          * @access private
          * @var String
          */
-        private $_link_ownerID;
+        private $_linkOwnerID;
         /**
          * Active flag
          *
@@ -127,7 +127,7 @@
          * @return String Link ID
          *
          */
-        public function get_link_id() {
+        public function getLinkID() {
             return $this->_linkID;
 
         }
@@ -141,8 +141,8 @@
          * @return String Link Destination
          *
          */
-        public function get_link_destination() {
-            return $this->_link_destination;
+        public function getLinkDestination() {
+            return $this->_linkDestination;
 
         }
 
@@ -155,8 +155,8 @@
          * @return String Lamantengo link
          *
          */
-        public function get_lamantengo_link() {
-            return $this->_link_lamantengo;
+        public function getLamantengoLink() {
+            return $this->_linkLamantengo;
 
         }
 
@@ -169,8 +169,8 @@
          * @return String Link description
          *
          */
-        public function get_link_description() {
-            return $this->_link_description;
+        public function getLinkDescription() {
+            return $this->_linkDescription;
 
         }
 
@@ -183,9 +183,8 @@
          * @return String Last modified date
          *
          */
-        public function get_last_mod() {
-            return $this->_last_mod;
-
+        public function getLastMod() {
+            return $this->_lastMod;
         }
 
         /**
@@ -197,8 +196,8 @@
          * @return String Link Owner ID
          *
          */
-        public function get_link_ownerID() {
-            return $this->_link_ownerID;
+        public function getLinkOwnerID() {
+            return $this->_linkOwnerID;
 
         }
 
@@ -211,9 +210,8 @@
          * @return String Link status
          *
          */
-        public function get_active_status() {
+        public function getActiveStatus() {
             return $this->_active;
-
         }
 
         /**
@@ -225,7 +223,7 @@
          * @return String Number of visits
          *
          */
-        public function get_visits() {
+        public function getVisits() {
             return $this->_visits;
         }
 
@@ -238,7 +236,7 @@
          * @return Boolean TRUE if successful, FALSE otherwise
          *
          */
-        public function add_new_link($dest, $desc) {
+        public function addNewLink($dest, $desc) {
             global $database;
             global $user;
 
@@ -268,7 +266,7 @@
          * @return Boolean TRUE if successful, FALSE otherwise
          *
          */
-        public function edit_link() {
+        public function editLink() {
 
         }
 
@@ -281,7 +279,7 @@
          * @return Boolean TRUE if successful, FALSE otherwise
          *
          */
-        public function remove_link() {
+        public function removeLink() {
 
         }
 

@@ -124,7 +124,7 @@
         			  SET uid = '$user->getUserID()' WHERE sid = '$this->_sessionId'";
 
             $result = $database->query($query);
-            //echo $result;
+            
 
         }
 

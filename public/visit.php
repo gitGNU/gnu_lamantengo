@@ -27,6 +27,7 @@
     $title = $language->translate("title_visit");
 
     $errors = "";
+
     if (!$lid = $_GET['id']) { // no id, notice the error
         header('Location: index.php');
     }

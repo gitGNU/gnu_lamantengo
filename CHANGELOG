@@ -25,13 +25,27 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-05 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Added language field to database users table in lamantengo-estructura.sql
+    * Added setUserLanguage() function to user class
+    * Added isLanguageSet() test to user tests
+    * Removed sid requirement from home imagelink
+    * Removed sid requirement from logo imagelink
+    * Added 'LANGUAGE' = 'en' define to config as default language
+    * Added 'COUNTRY' = 'us' define to config as default country
+    * Edited header.php to fix language display bug
+    * Edited setLocale() function in language class to fix language display bug
+
+2011-01-04 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Removed SID requirement from newlink.php form
+    * link.php - edited Link class method names
+
 2011-01-03 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added tests/ directory with tests for User objects
     * Added DEBUG define to config.php
     * Added UnitCheck test link to index.php
     * Edited profile.php - updates are now performed by User class
       successfully
-
     * Edited new_link.php - added link ID to redirect
     * Removed $_GET parameters from redirect in visit.php
     * Added addNewLinkTest.php to tests
