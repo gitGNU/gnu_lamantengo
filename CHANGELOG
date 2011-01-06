@@ -25,6 +25,17 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-06 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Edited constructor for language object
+    * Added updateUserLanguage() function to language class
+    * Added updateUserLanguage() function call to setLocale() function
+    * Removed sid requirements in reging.php file
+    * Removed all sid requirements from es_ar.inc
+    * Removed all sid requirements from en_us.inc
+    * Added LanguageTests/ directory to tests
+    * Added updateUserLanguageTests.php file to test updateUserLanguage()
+      function
+
 2011-01-05 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added language field to database users table in lamantengo-estructura.sql
     * Added setUserLanguage() function to user class

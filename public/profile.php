@@ -27,9 +27,10 @@
     $title = $language->translate("title_profile");
 
     $errors = ""; // void error
-    $show_form = TRUE;
+    $show_form = FALSE;
 
     if ($user->isUserLoggedIn()) { // user is logged in
+        $show_form = TRUE;
         if ($_POST) { // Process form data
             // prepare data for database
             $realname = $database->escapeValue($_POST['realname']);
@@ -39,8 +40,6 @@
             $_POST['new_pass2'] = "";
             $password = md5($database->escapeValue($_POST['password']));
             $_POST['password'] = "";
-
-            //echo "PASSWORD: " . $password . "<br />";
 
             if ($user->verifyPassword($password)) {
 

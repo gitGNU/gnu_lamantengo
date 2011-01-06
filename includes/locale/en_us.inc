@@ -88,7 +88,7 @@ $en_message_ar['en']['reset_button']                    = "Reset";
 $en_message_ar['en']['reg_instruct']                    = "Enter the name of the user you want to register on the site, his real name (optional, only appear when we need to contact you), and a valid e-mail.<br />
                                                            In addition, enter the two words you see in the image, to verify that you are a human, not a computer by automated registrations.<br />
                                                            We will send a message to that address stating your login information, and will be the contact address associated with your account.<br />
-                                                           To register for the site has to be consistent with our <a href=\"tos.php?sid=$sid\" target=\"_blank\" title=\"Read the ToS (in a new window)\">Terms of Service</a>.";
+                                                           To register for the site has to be consistent with our <a href=\"tos.php\" target=\"_blank\" title=\"Read the ToS (in a new window)\">Terms of Service</a>.";
 
 $en_message_ar['en']['read_ToS_nWindow']                = "Read the ToS (in a new window)";
 
@@ -131,8 +131,8 @@ $en_message_ar['en']['error_password_empty']            = "The password is empty
 $en_message_ar['en']['error_user_disabled']             = "This user was disabled by admin.<br />\n";
 $en_message_ar['en']['error_unknown_user']              = "Username/password combination unknown. Try again.<br />\n";
 
-$en_message_ar['en']['login_welcome']                   = "Welcome, <b>$username</b>. You will shortly be redirected to the home page.<br />";
-$en_message_ar['en']['login_redirect']                  = "If you are not redirected after 3 seconds, click <a href=\"index.php?sid=$sid\">here</ a>.";
+$en_message_ar['en']['login_welcome']                   = "Welcome, <b>".$_SESSION['username']."</b>. You will shortly be redirected to the home page.<br />";
+$en_message_ar['en']['login_redirect']                  = "If you are not redirected after 3 seconds, click <a href=\"index.php\">here</ a>.";
 
 // logout.php
 $en_message_ar['en']['title_logout']                    = "Logout";
@@ -147,7 +147,7 @@ $en_message_ar['en']['error_passwords_nomatch']         = "New passwords do not 
 $en_message_ar['en']['error_password_tooshort']         = "The new password must be at least 6 characters.<br />\n";
 $en_message_ar['en']['error_password_6_20_long']        = "The new password must be between 6 and 20 alphanumeric characters or symbols are<b>.</b>";
 $en_message_ar['en']['error_password_incorrect']        = "The password entered is incorrect.<br />\n";
-$en_message_ar['en']['error_login_to_view_profile']     = "You must login <a href=\"login.php?sid=$sid\"> </ a> to view your profile.<br />\n";
+$en_message_ar['en']['error_login_to_view_profile']     = "You must login <a href=\"login.php?\"> </ a> to view your profile.<br />\n";
 
 $en_message_ar['en']['profile_updated']                 = "The account details were updated successfully.<br />\n";
 $en_message_ar['en']['new_password_label']              = "New Password: ";
@@ -160,18 +160,18 @@ $en_message_ar['en']['btn_edit_profile']                = "Edit Profile";
 $en_message_ar['en']['profile_explanation']             = "Enter the name of the user you want to register on the site, his real name (optional, only appear when we need to contact you), and a valid e-mail.<br />
                                                           In addition, enter the two words you see in the image, to verify that you are a human, not a computer by automated registrations.<br />
                                                           We will send a message to that address stating your login information, and will be the contact address associated with your account.<br />
-                                                          To register for the site has to be consistent with our <a href=\"tos.php?sid=$sid\" target=\"_blank\" title=\"Read the ToS (in a new window)\">Terms of Service</a>.";
+                                                          To register for the site has to be consistent with our <a href=\"tos.php\" target=\"_blank\" title=\"Read the ToS (in a new window)\">Terms of Service</a>.";
 
 // mylinks.php
 $en_message_ar['en']['title_mylinks']                   = "My Links";
 $en_message_ar['en']['error_link_empty']                = "The link is empty<br />\n";
 $en_message_ar['en']['error_incomplete_url']            = "The URL entered is incomplete. Please type your URL in either <b>protocol://server/path</b> (the \"//\" may be waived in cases that are not necessary)<br />\n";
 $en_message_ar['en']['error_nopermission']              = "Link does does not exist / You do not have permission to edit this link.<br />\n";
-$en_message_ar['en']['error_mass_removal']              = "To remove links massively must log <a href=\"login.php?sid=$sid\"> </ a>. If you do not have an account, <a href=\"register.php?sid=$sid\">register</a><br />\n";
+$en_message_ar['en']['error_mass_removal']              = "To remove links massively must log <a href=\"login.php\"> </ a>. If you do not have an account, <a href=\"register.php\">register</a><br />\n";
 $en_message_ar['en']['error_no_edit_permission']        = "No link $key: link exist / do not have permission to edit this link.<br />\n";
 $en_message_ar['en']['error_no_link_id']                = "You have not entered the id of the link you want to delete.<br />\n";
 $en_message_ar['en']['error_invalid_action']            = "Invalid action.<br />\n";
-$en_message_ar['en']['error_not_loggedin_links']        = "To view your links must log <a href=\"login.php?sid=$sid\">login</ a>. If you do not have an account, <a href=\"register.php?sid=$sid\">register</a><br />\n";
+$en_message_ar['en']['error_not_loggedin_links']        = "To view your links must log <a href=\"login.php\">login</ a>. If you do not have an account, <a href=\"register.php\">register</a><br />\n";
 $en_message_ar['en']['error_failed_database_conn']      = "Failed to connect to the database.<br />\n";
 
 $en_message_ar['en']['success_updated']                 = "The $lid No. link was updated successfully";

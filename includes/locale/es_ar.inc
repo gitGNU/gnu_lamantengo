@@ -87,7 +87,7 @@ $es_message_ar['es']['reset_button']                    = "Limpiar";
 $es_message_ar['es']['reg_instruct']                    = "Ingrese el nombre de usuario con el que quiere registrarse en el sitio, su nombre real (opcional, solamente figurar&aacute; cuando debamos contactarnos con usted), y un e-mail v&aacute;lido.<br />
                                                            Adem&aacute;s, ingrese las dos palabras que ve en la imagen, para verificar que usted es un humano, y no una computadora haciendo registros autom&aacute;ticos.<br />
                                                            Se enviar&aacute; un mensaje a esa direcci&oacute;n indicando sus datos de inicio de sesi&oacute;n, y ser&aacute; la direcci&oacute;n de contacto asociada a su cuenta.<br />
-                                                           Para registrarse en el sitio tiene que estar de acuerdo con nuestros <a href=\"tos.php?sid=$sid\" target=\"_blank\"";
+                                                           Para registrarse en el sitio tiene que estar de acuerdo con nuestros <a href=\"tos.php\" target=\"_blank\"";
 
 $es_message_ar['es']['read_ToS_nWindow']                = "Leer los ToS (en una ventana nueva)";
 
@@ -125,8 +125,8 @@ $es_message_ar['es']['error_password_empty']            = "La contrase&ntilde;a 
 $es_message_ar['es']['error_user_disabled']             = "El usuario fue desactivado por la administraci&oacute;n<br />\n";
 $es_message_ar['es']['error_unknown_user']              = "Usuario inexistente/Contrase&ntilde;a incorrecta. Intente de nuevo<br />\n";
 
-$es_message_ar['es']['login_welcome']                   = "Bienvenid@, <b>$user</b>. En breve ser&aacute; redirigido a la p&aacute;gina principal.<br />";
-$es_message_ar['es']['login_redirect']                  = "Si tras 3 segundos no es redirigido, haga click <a href=\"index.php?sid=$sid\">aqu&iacute;</a>.";
+$es_message_ar['es']['login_welcome']                   = "Bienvenid@, <b>".$_SESSION['username']."</b>. En breve ser&aacute; redirigido a la p&aacute;gina principal.<br />";
+$es_message_ar['es']['login_redirect']                  = "Si tras 3 segundos no es redirigido, haga click <a href=\"index.php\">aqu&iacute;</a>.";
 
 // logout.php
 $es_message_ar['es']['title_logout']                    = "Cerrar sesi&oacute;n";
@@ -140,7 +140,7 @@ $es_message_ar['es']['error_passwords_nomatch']         = "Las nuevas contrase&n
 $es_message_ar['es']['error_password_tooshort']         = "La nueva contrase&ntilde;a debe tener al menos 6 caracteres<br />\n";
 $es_message_ar['es']['error_password_6_20_long']        = "La nueva contrase&ntilde;a debe tener entre 6 y 20 caracteres que sean alfanum&eacute;ricos o los s&iacute;mbolos <b>.</b>";
 $es_message_ar['es']['error_password_incorrect']        = "La contrase&ntilde;a ingresada es incorrecta<br />\n";
-$es_message_ar['es']['error_login_to_view_profile']     = "Debe <a href=\"login.php?sid=$sid\">iniciar sesi&oacute;n</a> para ver su perfil.<br />\n";
+$es_message_ar['es']['error_login_to_view_profile']     = "Debe <a href=\"login.php\">iniciar sesi&oacute;n</a> para ver su perfil.<br />\n";
 
 $es_message_ar['es']['profile_updated']                 = "Los datos de la cuenta fueron actualizados exitosamente.<br />\n";
 $es_message_ar['es']['new_password_label']              = "Nuevo Password: ";
@@ -153,18 +153,18 @@ $es_message_ar['es']['btn_edit_profile']                = "Modificar perfil";
 $es_message_ar['es']['profile_explanation']             = "Ingrese el nombre de usuario con el que quiere registrarse en el sitio, su nombre real (opcional, solamente figurar&aacute; cuando debamos contactarnos con usted), y un e-mail v&aacute;lido.<br />
                                                            Adem&aacute;s, ingrese las dos palabras que ve en la imagen, para verificar que usted es un humano, y no una computadora haciendo registros autom&aacute;ticos.<br />
                                                            Se enviar&aacute; un mensaje a esa direcci&oacute;n indicando sus datos de inicio de sesi&oacute;n, y ser&aacute; la direcci&oacute;n de contacto asociada a su cuenta.<br />
-                                                           Para registrarse en el sitio tiene que estar de acuerdo con nuestros <a href=\"tos.php?sid=<?php echo $sid; ?>\" target=\"_blank\" title=\"Leer los ToS (en una ventana nueva)\">T&eacute;rminos del Servicio</a>.";
+                                                           Para registrarse en el sitio tiene que estar de acuerdo con nuestros <a href=\"tos.php >\" target=\"_blank\" title=\"Leer los ToS (en una ventana nueva)\">T&eacute;rminos del Servicio</a>.";
 
 // mylinks.php
 $es_message_ar['es']['title_mylinks']                   = "Mis links";
 $es_message_ar['es']['error_link_empty']                = "El id de link est&aacute; vac&iacute;o<br />\n";
 $es_message_ar['es']['error_incomplete_url']            = "La URL ingresada est&aacute; incompleta. Por favor, escriba su URL en formato <b>protocolo://servidor/ruta</b> (las &quot;//&quot; pueden obviarse en los casos en que no sean necesarias)<br />\n";
 $es_message_ar['es']['error_nopermission']              = "Link inexistente / No tienes permiso para editar este link<br />\n";
-$es_message_ar['es']['error_mass_removal']              = "Para eliminar enlaces masivamente tiene que <a href=\"login.php?sid=$sid\">iniciar sesi&oacute;n</a>. Si no tiene una cuenta, <a href=\"register.php?sid=$sid\">reg&iacute;strese</a><br />\n";
+$es_message_ar['es']['error_mass_removal']              = "Para eliminar enlaces masivamente tiene que <a href=\"login.php\">iniciar sesi&oacute;n</a>. Si no tiene una cuenta, <a href=\"register.php\">reg&iacute;strese</a><br />\n";
 $es_message_ar['es']['error_no_edit_permission']        = "Link n&ordm;$key: link inexistente / No tienes permiso para editar este link.<br />\n";
 $es_message_ar['es']['error_no_link_id']                = "No se ha ingresado el id del link que se quiere eliminar<br />\n";
 $es_message_ar['es']['error_invalid_action']            = "Acci&oacute;n inv&aacute;lida.<br />\n";
-$es_message_ar['es']['error_not_loggedin_links']        = "Para ver sus enlaces tiene que <a href=\"login.php?sid=$sid\">iniciar sesi&oacute;n</a>. Si no tiene una cuenta, <a href=\"register.php?sid=$sid\">reg&iacute;strese</a><br />\n";
+$es_message_ar['es']['error_not_loggedin_links']        = "Para ver sus enlaces tiene que <a href=\"login.php\">iniciar sesi&oacute;n</a>. Si no tiene una cuenta, <a href=\"register.php\">reg&iacute;strese</a><br />\n";
 $es_message_ar['es']['error_failed_database_conn']      = "Error al conectar con la base de datos.<br />\n";
 
 $es_message_ar['es']['success_updated']                 = "El link n&ordm; $lid fue actualizado con &eacute;xito";

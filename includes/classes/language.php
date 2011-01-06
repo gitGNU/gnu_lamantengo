@@ -68,8 +68,8 @@
          * @return
          *
          */
-        public function __construct($language = "en", $country="us") {
-            $this->setLocale($language, $country);
+        public function __construct() {
+            $this->setLocale();
             $this->_message_arr = array(); // create array
             $this->fillArray();
 
@@ -103,12 +103,44 @@
             if ($language == '' || $country == '') {
                 $this->_language = $_SESSION['language'];
                 $this->_country = $_SESSION['country'];
+
+                // update language in database
+                $this->updateUserLanguage();
             }
             else {
                 $this->_language = $language;
                 $this->_country = $country;
             }
 
+        }
+
+        /**
+         * Function updates user language in database
+         *
+         * @param
+         * @access public
+         *
+         * @return Boolean TRUE if successful, otherwise FALSE
+         *
+         */
+        function updateUserLanguage() {
+            global $database;
+            global $user;
+            
+            $query = "UPDATE users
+                      SET language = '$this->_language'
+		      WHERE uid = '".$user->getUserID()."'";
+
+            //echo $query;
+            $result = $database->query($query);
+
+            if ($database->affectedRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+            
         }
 
         /**

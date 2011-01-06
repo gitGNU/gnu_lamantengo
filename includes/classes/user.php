@@ -118,6 +118,10 @@
             $this->_password = $data['password'];
             $this->_isActive = $data['active'];            
             $this->setUserLanguage($data['language']);
+
+            if ($this->_userID == "") {
+                $this->_userID = $user_id;
+            }
         }
 
         /**

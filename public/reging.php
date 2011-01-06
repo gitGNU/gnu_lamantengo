@@ -28,9 +28,9 @@
     if ($user->isUserLoggedIn()) { // User is logged in
 
 ?>
-        <a href="profile.php?sid=<?php echo $sid; ?>" title="<?php echo $language->translate("title_profile"); ?>"><?php echo $language->translate("profile_link"); ?></a> -
-        <a href="mylinks.php?sid=<?php echo $sid; ?>" title="<?php echo $language->translate("title_links"); ?>"><?php echo $language->translate("links_link"); ?></a> -
-        <a href="logout.php?sid=<?php echo $sid; ?>" title="<?php echo $language->translate("title_sess_close"); ?>"><?php echo $language->translate("sess_close_link"); ?> [<b><?php echo $user->getUsername(); ?>]</b></a>
+        <a href="profile.php" title="<?php echo $language->translate("title_profile"); ?>"><?php echo $language->translate("profile_link"); ?></a> -
+        <a href="mylinks.php" title="<?php echo $language->translate("title_links"); ?>"><?php echo $language->translate("links_link"); ?></a> -
+        <a href="logout.php" title="<?php echo $language->translate("title_sess_close"); ?>"><?php echo $language->translate("sess_close_link"); ?> [<b><?php echo $user->getUsername(); ?>]</b></a>
 
 <?php
 

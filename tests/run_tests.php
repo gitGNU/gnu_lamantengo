@@ -82,6 +82,8 @@
                 require_once("UserTests/logoutUserTests.php");
                 require_once("UserTests/languageSetTests.php");
 
+                require_once("LanguageTests/updateUserLanguageTests.php");
+                
                 require_once("LinkTests/addNewLinkTest.php");
 
                 // GET TEST DATA
@@ -116,6 +118,8 @@
                     updateUserRealNameTest();
                     isLanguageSet();
                     
+                    updateUserLanguageTest();
+
                     addNewLinkTest();
                     
                     // logout test
@@ -189,7 +193,7 @@
             ?>
 
         </div>
-        <div id="footer">
+        <div id="footer" style="text-align:center;">
             <hr />
             <p>Copyright &copy; 2010, 2011 Tom Kaczocha</p>
             <p>Please Report Bugs to <a href="mailto:freedomdeveloper@yahoo.com?subject=UnitCheck Project Bug" title="Bug Reporting">Project Developer</a></p>
