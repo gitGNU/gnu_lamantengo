@@ -25,6 +25,18 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-07 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Edited return statements to updateSession() function in Session class
+    * Added sessionTests.php for testing session object
+    * Added tests/classes/test.php - Test class for running all the testing
+    * Moved print test report into Test class
+    * Edited languageSetTests
+    * Edited loginUserTests
+    * Edited loginUserTests
+    * Edited logoutUserTests
+    * Edited registrationTests
+    * Edited updateUserTests
+
 2011-01-06 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Edited constructor for language object
     * Added updateUserLanguage() function to language class

@@ -40,14 +40,10 @@
                             AND email = '$email'
                       LIMIT 1";
 
-        //echo "DELETE USER QUERY: " . $userQuery . "<br />";
-
         $linkQuery = "DELETE FROM links
                       WHERE destination = '$newLinkDestination'
                       AND description = '$newLinkDescription'
                       LIMIT 1";
-
-        //echo "DELETE LINK QUERY: " . $userQuery . "<br />";
 
         $result = $database->query($userQuery);
 

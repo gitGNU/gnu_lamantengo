@@ -24,24 +24,18 @@
     require_once("../includes/initialise.php");
 
     function logoutUserTest() {
-        global $testNames;
-        global $testResults;
         global $username;
         global $pass;
         global $database;
         global $user;
 
-        $testNames[] = "TEST - Logout User";
+        $test = new Test();
 
         // run test
         $user->logoutUser();
 
-        if (($_SESSION['username'] != "$username") && ($user->getUserID() != $user_id)) {
-            $testResults[] = "PASSED";
-        }
-        else {
-            $testResults[] = "FAILED";
-        }
+        $test->failUnless("TEST - Logout User",
+                $_SESSION['username'] != $username);
 
     }
 

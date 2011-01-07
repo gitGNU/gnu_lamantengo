@@ -28,21 +28,15 @@
     // if affectedRows function returns 1, the function
     // is operating correctly as it should, else it fails
     function updateUserLanguageTest() {
-        global $testNames;
-        global $testResults;
         global $language;
         global $database;
 
-        $testNames[] = "TEST - Update User Language";
+        $test = new Test();
 
         $result = $language->updateUserLanguage();
 
-        if ($database->affectedRows($result) == 1) {
-            $testResults[] = "PASSED";
-        }
-        else {
-            $testResults[] = "FAILED";
-        }
+        $test->failUnless("TEST - Update User Language",
+                $database->affectedRows($result) == 1);
 
     }
 

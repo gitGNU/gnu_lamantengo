@@ -25,32 +25,46 @@
 
     function addNewLinkTest() {
         global $database;
-        global $testNames;
-        global $testResults;
 
         global $newLinkDestination;
         global $newLinkDescription;
         global $user;
 
-        $testNames[] = "TEST - Add New Link";
+        $test = new Test();
 
         $link = new Link();
 
         $link->addNewLink($newLinkDestination, $newLinkDescription);
 
         $query = "SELECT * FROM links
-                  WHERE uid = '" . $user->getUserID() . "'
-                  AND destination = '" . $newLinkDestination . "';";
+                  WHERE destination = '" . $newLinkDestination . "'
+                  AND description = '" . $newLinkDescription . "';";
 
         $result = $database->query($query);
 
-        if ($database->numRows($result) == 1) {
-            $testResults[] = "PASSED";
-        }
-        else {
-            $testResults[] = "FAILED";
-        }
+        $test->failUnless("TEST - Add New Link",
+                $database->numRows($result) == 1);
 
+    }
+
+    // test for adding User_ID to new link
+    function addUserIDToLinkTest() {
+        global $database;
+        global $user;
+
+        global $newLinkDestination;
+
+        $test = new Test();
+
+        $query = "SELECT * FROM links
+                  WHERE destination = '" . $newLinkDestination . "'
+                  AND uid = '" . $user->getUserID() . "'";
+
+        $result = $database->query($query);
+
+        $test->failUnless("TEST - User ID Added To New Link",
+                $database->numRows($result) == 1,
+                "Error: Link User ID does not match Link Owner");
     }
 
 ?>

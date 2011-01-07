@@ -24,21 +24,16 @@
     require_once("../includes/initialise.php");
 
 
-    function isLanguageSet() {
-        global $testNames;
-        global $testResults;
+    function isLanguageSetTest() {
         global $user;
 
-        $testNames[] = "TEST - Is Language Set";
+        $test = new Test();
 
         $result = $user->getUserLanguage();
 
-        if (($result == 'en') || ($result == 'es')) {
-            $testResults[] = "PASSED";
-        }
-        else {
-            $testResults[] = "FAILED";
-        }
+        $test->failUnless("TEST - Is Language Set",
+                ($result == 'en') || ($result == 'es'));
+        
     }
     
     

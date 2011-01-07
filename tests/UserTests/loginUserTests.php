@@ -24,14 +24,12 @@
     require_once("../includes/initialise.php");
 
     function loginUserTest() {
-        global $testNames;
-        global $testResults;
         global $username;
         global $pass;
         global $database;
         global $user;
 
-        $testNames[] = "TEST - Login User";
+        $test = new Test();
 
         $userIDQuery = "SELECT uid
                         FROM users
@@ -46,12 +44,10 @@
         // run test
         $user->loginUser($user_id);
 
-        if (($_SESSION['username'] == "$username") && ($user->getUserID() == $user_id)) {
-            $testResults[] = "PASSED";
-        }
-        else {
-            $testResults[] = "FAILED";
-        }
+
+        $test->failUnless("TEST - Login User",
+                ($_SESSION['username'] == $username) &&
+                ($user->getUserID() == $user_id));
 
     }
 

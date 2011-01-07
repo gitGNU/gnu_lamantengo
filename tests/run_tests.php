@@ -56,19 +56,19 @@
                 $newLinkDestination = "";
                 $newLinkDescription = "";
 
-                if (!empty($testNames)) {
-                    echo "testNames not empty";
-                }
-                if (!empty($testResults)) {
-                    echo "testResults not empty";
-                }
+//                if (!empty($testNames)) {
+//                    echo "testNames not empty";
+//                }
+//                if (!empty($testResults)) {
+//                    echo "testResults not empty";
+//                }
 
                 // included all relevant files
                 // tested project files
                 require_once("../includes/initialise.php");
 
                 // test classes
-                //require_once("classes/test.php");
+                require_once("classes/test.php");
                 // tests init file
                 require_once("initTests.php");
                 require_once("finaliseTests.php");
@@ -82,6 +82,8 @@
                 require_once("UserTests/logoutUserTests.php");
                 require_once("UserTests/languageSetTests.php");
 
+                require_once("SessionTests/sessionTests.php");
+
                 require_once("LanguageTests/updateUserLanguageTests.php");
                 
                 require_once("LinkTests/addNewLinkTest.php");
@@ -92,36 +94,34 @@
 
                 // ensure required data is successfully set
                 if (($registerDataResult == TRUE) && ($newLinkDataResult == TRUE)) {
-                    echo '<table style="width:1100px; border:1px; margin-left:150px; font-size:14px;">
-                  <tr>
-                  <td colspan="2"><b><center>*****  Test Data Successfully Retrieved  *****</center></b></td>
-                  </tr>';
-
                     // INIT TESTS //
 
                     cleanDatabase();
 
-
-                    echo '<tr>
-                  <td colspan="2"><b><center>*****  Running Tests  *****</center></b></td>
-                  </tr><hr />';
-
                     // RUN TESTS //
                     // registration tests
                     registerNewUserTest();
+
+                    // session tests
+                    isSessionCreatedTest();
+                    isSessionAddedToDatabaseTest();
+                    
                     // login test
                     loginUserTest();
 
+                    isSessionUpdatedOnLoginTest();
+                    
                     // update user details test
                     updateUserProfileTest();
                     updateUserPasswordTest();
                     updateUserRealNameTest();
-                    isLanguageSet();
-                    
+                    isLanguageSetTest();
+
                     updateUserLanguageTest();
 
                     addNewLinkTest();
-                    
+                    addUserIDToLinkTest();
+
                     // logout test
                     logoutUserTest();
 
@@ -132,17 +132,10 @@
                     // test data from database
                     cleanDatabase();
 
-                    // to initialise new test object
-                    //$test = new Test();
-
-
                     /**
                      *                  DISPLAY RESULTS
                      * =========================================================
                      */
-                    $totalTests = 0; // $testResults counter
-                    $totalSuccess = 0; // total succeeded
-                    $totalFailure = 0; // total failed
 
                     echo '<h3>Test Data</h3>';
                     echo '<br />Username: '.$username;
@@ -154,40 +147,8 @@
                     echo '<br />New Link Destination: '.$newLinkDestination;
                     echo '<br />New Link Description: '.$newLinkDescription;
                     echo '<br /><br />';
-                    
-                    foreach ($testNames as $test) {
-                        echo '<tr>
-                    <td style="width:900px;">' . $test . '</td>';
 
-                        if ($testResults[$totalTests] == "PASSED") {
-                            $r = 'style="color:green; weight:bold; font-size:14px;"';
-                            $totalSuccess++;
-                        }
-                        else {
-                            $r = 'style="color:red; weight:bold; font-size:14px;"';
-                            $totalFailure++;
-                        }
-
-                        echo '<td ' . $r . '>' . $testResults[$totalTests] . '</td>';
-                        echo '</tr>';
-                        $totalTests++;
-                    }
-
-                    echo '<tr>
-                <td colspan="2"><b><center>*****  Tests Completed  *****</center></b></td>
-              </tr>
-              <tr>
-                <td><b>Number of Tests Run:</td>
-                <td>' . $totalTests . '</td>
-              </tr>
-                <td><b>Success:</b></td>
-                <td>' . $totalSuccess . '</td>
-              </tr>
-              <tr>
-                <td><b>Failed:</b></td>
-                <td>' . $totalFailure . '</td>
-              </tr>
-           </table>';
+                    Test::printResults();
                 }
 
             ?>

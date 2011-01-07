@@ -34,6 +34,26 @@
         $dest = $database->escapeValue($_POST['destination']);
         $desc = $database->escapeValue($_POST['description']);
 
+        /*
+         * @TODO Ensure valid destination
+         * @TODO Ensure description not empty
+         *
+         */
+
+        // test form variables
+        // this test is wrong
+        // TESTS MUST TEST FUNCTIONALITY of the application
+        // and not just contents of variables
+        // this test might test whether application allows
+        // empty variables in a place where empty variables
+        // are not allowed - in which case, the test belongs in the tests/
+        // directory NOT here
+//        if (DEBUG) {
+//
+//            $test->fail_if("TEST - New Link Destination", $dest == "");
+//            //die ("FAILED");
+//        }
+
         if (!$errors) {
 
             $link = new Link();

@@ -124,7 +124,18 @@
         			  SET uid = '$user->getUserID()' WHERE sid = '$this->_sessionId'";
 
             $result = $database->query($query);
-            
+
+            if ($database->affectedRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
+        public function getSessionId() {
+            return $this->_sessionId;
 
         }
 

@@ -32,8 +32,8 @@
     //echo "Including \"registrationTests.php\"<br />";
     // Register new user test
     function updateUserProfileTest() {
-        global $testNames;
-        global $testResults;
+//        global $testNames;
+//        global $testResults;
         global $username;
         global $name;
         global $newName;
@@ -42,11 +42,11 @@
         global $newPass;
         global $user;
 
-        $testNames[] = "TEST - Update User Profile";
+        $test = new Test();
 
+//        $testNames[] = "TEST - Update User Profile";
         // run test
         $user->updateProfile($newName, $newPass);
-
 
         global $database;
 
@@ -58,21 +58,12 @@
         $result = $database->query($query);
         $data = $database->fetchArray($result);
 
-        if ($data['realname'] == $newName) {
-            $testResults[] = "PASSED";
-        }
-        else {
-            $testResults[] = "FAILED";
-        }
-
-
-        //echo "Failed to get Test Failed<br />";
+        $test->failUnless("TEST - Update User Profile",
+                $data['realname'] == $newName);
 
     }
 
     function updateUserPasswordTest() {
-        global $testNames;
-        global $testResults;
         global $username;
         global $name;
         global $newName;
@@ -81,7 +72,7 @@
         global $newPass;
         global $user;
 
-        $testNames[] = "TEST - Update Password";
+        $test = new Test();
 
         $user->updateUserPassword($newPass);
 
@@ -95,19 +86,13 @@
         $result = $database->query($query);
         $data = $database->fetchArray($result);
 
-        if ($data['password'] == $newPass) {
-            $testResults[] = "PASSED";
-        }
-        else {
-            $testResults[] = "FAILED";
-        }
+        $test->failUnless("TEST - Update Password",
+                $data['password'] == $newPass);
 
     }
 
     // function tests the updating of user
     function updateUserRealNameTest() {
-        global $testNames;
-        global $testResults;
         global $username;
         global $name;
         global $newName;
@@ -116,7 +101,7 @@
         global $newPass;
         global $user;
 
-        $testNames[] = "TEST - Update Real Name";
+        $test = new Test();
 
         $user->updateRealName($newName);
 
@@ -130,12 +115,8 @@
         $result = $database->query($query);
         $data = $database->fetchArray($result);
 
-        if ($data['realname'] == $newName) {
-            $testResults[] = "PASSED";
-        }
-        else {
-            $testResults[] = "FAILED";
-        }
+        $test->failUnless("TEST - Update Real Name",
+                $data['realname'] == $newName);
 
     }
 

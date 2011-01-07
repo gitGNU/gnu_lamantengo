@@ -26,15 +26,13 @@
     //echo "Including \"registrationTests.php\"<br />";
     // Register new user test
     function registerNewUserTest() {
-        global $testNames;
-        global $testResults;
         global $username;
         global $name;
         global $email;
         global $pass;
         global $user;
 
-        $testNames[] = "TEST - Register New User";
+        $test = new Test();
 
         // run test
         $user->registerUser($username, $name, $email, $pass);
@@ -48,14 +46,8 @@
 
         $result = $database->query($query);
 
-        if ($database->numRows($result) == 1) {
-            //echo "TEST: User Registered Successfully<br />";
-            $testResults[] = "PASSED";
-        }
-        else {
-            //echo "TEST: User Registration Failed<br />";
-            $testResults[] = "FAILED";
-        }
+        $test->failUnless("TEST - Register New User",
+                $database->numRows($result) == 1);
 
     }
 

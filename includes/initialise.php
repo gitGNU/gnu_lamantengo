@@ -9,4 +9,7 @@
     require_once(LIB_PATH . DS . 'language.php');
     require_once(LIB_PATH . DS . 'link.php');
 
+    require_once("../tests".DS."classes".DS."test.php");
+    
+
 ?>
