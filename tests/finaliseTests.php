@@ -30,8 +30,9 @@
         global $name;
         global $email;
         global $pass;
-        global $newLinkDestination;
-        global $newLinkDescription;
+        global $updatedDestination;
+        global $updatedDescription;
+
 
         $status = 0; // holds test status
 
@@ -41,8 +42,8 @@
                       LIMIT 1";
 
         $linkQuery = "DELETE FROM links
-                      WHERE destination = '$newLinkDestination'
-                      AND description = '$newLinkDescription'
+                      WHERE destination = '$updatedDestination'
+                      AND description = '$updatedDescription'
                       LIMIT 1";
 
         $result = $database->query($userQuery);

@@ -180,11 +180,11 @@ $en_message_ar['en']['success_link_removed']            = "The link No. $key was
 $en_message_ar['en']['label_destination']               = "Destination:";
 $en_message_ar['en']['label_description']               = "Description:";
 $en_message_ar['en']['label_last_modified']             = "Last modified:";
-$en_message_ar['en']['label_round']                     = "Round:";
+$en_message_ar['en']['label_visits']                     = "Visits:";
 
 $en_message_ar['en']['table_destination']               = "Destination";
 $en_message_ar['en']['table_description']               = "Description";
-$en_message_ar['en']['table_round']                     = "Round";
+$en_message_ar['en']['table_visits']                    = "Visits";
 $en_message_ar['en']['table_edit']                      = "Edit";
 $en_message_ar['en']['table_remove']                    = "Remove";
 $en_message_ar['en']['table_last_modified']             = "Last modified";

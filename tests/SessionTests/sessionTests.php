@@ -46,7 +46,7 @@
         $test = new Test();
 
         $query = "SELECT sid FROM sessions
-                  WHERE sid = '".$session->getSessionId() ."'";
+                  WHERE sid = '".$session->getSessionId() ."';";
         //echo "SESSION ID: ".$session->getSessionId();
         $result = $database->query($query);
 

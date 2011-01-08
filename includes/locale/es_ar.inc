@@ -173,11 +173,11 @@ $es_message_ar['es']['success_link_removed']            = "El link n&ordm;$key f
 $es_message_ar['es']['label_destination']               = "Destino:";
 $es_message_ar['es']['label_description']               = "Descripci&oacute;n:";
 $es_message_ar['es']['label_last_modified']             = "&Uacute;ltima modificaci&oacute;n:";
-$es_message_ar['es']['label_round']                     = "Visitas:";
+$es_message_ar['es']['label_visits']                    = "Visitas:";
 
 $es_message_ar['es']['table_destination']               = "Destino";
 $es_message_ar['es']['table_description']               = "Descripci&oacute;n";
-$es_message_ar['es']['table_round']                     = "Visitas";
+$es_message_ar['es']['table_visits']                    = "Visitas";
 $es_message_ar['es']['table_edit']                      = "Editar";
 $es_message_ar['es']['table_remove']                    = "Eliminar";
 $es_message_ar['es']['table_last_modified']             = "&Uacute;ltima modificaci&oacute;n";

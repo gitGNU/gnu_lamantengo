@@ -129,7 +129,7 @@
             
             $query = "UPDATE users
                       SET language = '$this->_language'
-		      WHERE uid = '".$user->getUserID()."'";
+		      WHERE uid = '".$user->getUserID()."';";
 
             //echo $query;
             $result = $database->query($query);

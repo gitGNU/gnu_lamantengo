@@ -83,7 +83,7 @@
         }
         else {
             if ($_GET['action'] == 'delete') {
-                if ($_POST) { // remove many links together since mylinks.php
+                if ($_POST) { // remove many links together
                     if (!($uid))
                         $errors .= $language->translate("error_mass_removal");
                     else {
@@ -97,7 +97,7 @@
                         }
                     }
                 }else {
-                    if ($lid = $_GET['lid']) { //elimino un unico link (por get)
+                    if ($lid = $_GET['lid']) { // remove a single link (get)
                         if ($uid)
                             $query = "UPDATE `links` SET `active`='0' WHERE `lid`='$lid' AND (`uid`='$uid' OR `uid`='0') AND `active`='1' LIMIT 1;";
                         else
@@ -124,7 +124,7 @@
         }
     }
     if ($user->isUserLoggedIn()) { // User is logged in
-        $query = "SELECT `lid`, `destination`, `description`, `lastmod`, `visits` FROM `links` WHERE `uid`='$uid' AND `active`='1';";
+        $query = "SELECT `lid`, `destination`, `description`, `lastmod`, `visits` FROM `links` WHERE `uid`='" . $user->getUserID() . "' AND `active`='1';";
         $rs_links = mysql_query($query);
         if (mysql_errno ())
             $errors .= $language->translate("error_failed_database_conn");
@@ -158,12 +158,12 @@
 
     ?>
             <div id="formedit">
-                <form action="?action=edit&sid=<?php echo $sid; ?>" method="POST">
+                <form action="?action=edit" method="POST">
                     <input type="hidden" name="lid" value="<?php echo $lid; ?>" />
                     <table id="table_edit">
                         <tr id="tr_table_edit">
                             <td id="td1_table_edit">Link LaMantengo:</td>
-                            <td id="td2_table_edit"><a href="visit.php?id=<?php echo $lid . "&sid=$sid"; ?>">http://www.lamantengo.com.ar/visit.php?id=<?php echo $lid; ?></a></td>
+                            <td id="td2_table_edit"><a href="visit.php?id=<?php echo $lid; ?>">http://www.lamantengo.com.ar/visit.php?id=<?php echo $lid; ?></a></td>
                         </tr>
                         <tr id="tr_table_edit">
                             <td id="td1_table_edit"><?php echo $language->translate("label_destination"); ?></td>
@@ -189,14 +189,14 @@
 
     ?>
         <div id="mylinks_div">
-            <form action="?action=delete&sid=<?php echo $sid; ?>" method="POST">
+            <form action="?action=delete" method="POST">
                 <table id="tabla_links">
                     <tr id="links_tr_head">
                         <td id="links_head_td">&nbsp;</td>
                         <td id="links_head_td"><?php echo $language->translate("table_destination"); ?></td>
                         <td id="links_head_td">Link</td>
                         <td id="links_head_td"><?php echo $language->translate("table_description"); ?></td>
-                        <td id="links_head_td"><?php echo $language->translate("table_round"); ?></td>
+                        <td id="links_head_td"><?php echo $language->translate("table_visits"); ?></td>
                         <td id="links_head_td"><?php echo $language->translate("table_edit"); ?></td>
                         <td id="links_head_td"><?php echo $language->translate("table_remove"); ?></td>
                         <td id="links_head_td"><?php echo $language->translate("table_last_modified"); ?></td>
@@ -208,12 +208,12 @@
                 ?>
                         <tr id="links_tr">
                             <td id="chk_td_links"><input type="checkbox" name="<?php echo $temp->lid; ?>" id="chk_links" /></td>
-                            <td id="dest_td_links"><a href="view.php?id=<?php echo $temp->lid . "&sid=" . $sid; ?>" target="_blank" title="<?php echo $language->translate("title_link_new_window"); ?>"><?php echo $temp->destination; ?></a></td>
-                            <td id="link_td_links"><a href="visit.php?id=<?php echo $temp->lid . "&sid=" . $sid; ?>" title="Ver link"><img src="<?php echo IMAGE_PATH . DS; ?>link.png" title="Link LaMantengo" alt="Link LaMantengo" /></a></td>
+                            <td id="dest_td_links"><a href="view.php?id=<?php echo $temp->lid; ?>" target="_blank" title="<?php echo $language->translate("title_link_new_window"); ?>"><?php echo $temp->destination; ?></a></td>
+                            <td id="link_td_links"><a href="visit.php?id=<?php echo $temp->lid; ?>" title="Ver link"><img src="<?php echo IMAGE_PATH . DS; ?>link.png" title="Link LaMantengo" alt="Link LaMantengo" /></a></td>
                             <td id="desc_td_links"><?php echo $temp->description; ?></td>
                             <td id="visits_td_links"><?php echo $temp->visits; ?></td>
-                            <td id="edit_td_links"><a href="?action=edit&lid=<?php echo $temp->lid . "&sid=$sid"; ?>" title="<?php echo $language->translate("table_edit"); ?>"><img src="<?php echo IMAGE_PATH . DS; ?>edit.png" alt="<?php echo $language->translate("table_edit"); ?>" title="<?php echo $language->translate("table_edit"); ?>" /></a></td>
-                            <td id="delete_td_links"><a href="?action=delete&lid=<?php echo $temp->lid . "&sid=$sid"; ?>" title="<?php echo $language->translate("table_remove"); ?>"><img src="<?php echo IMAGE_PATH . DS; ?>delete.png" alt="<?php echo $language->translate("table_remove"); ?>" title="<?php echo $language->translate("table_remove"); ?>" /></a></td>
+                            <td id="edit_td_links"><a href="?action=edit&lid=<?php echo $temp->lid; ?>" title="<?php echo $language->translate("table_edit"); ?>"><img src="<?php echo IMAGE_PATH . DS; ?>edit.png" alt="<?php echo $language->translate("table_edit"); ?>" title="<?php echo $language->translate("table_edit"); ?>" /></a></td>
+                            <td id="delete_td_links"><a href="?action=delete&lid=<?php echo $temp->lid; ?>" title="<?php echo $language->translate("table_remove"); ?>"><img src="<?php echo IMAGE_PATH . DS; ?>delete.png" alt="<?php echo $language->translate("table_remove"); ?>" title="<?php echo $language->translate("table_remove"); ?>" /></a></td>
                             <td id="lastmod_td_links"><?php echo $temp->lastmod; ?></td>
                         </tr>
                 <?php

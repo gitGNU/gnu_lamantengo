@@ -34,7 +34,7 @@
         $userIDQuery = "SELECT uid
                         FROM users
                         WHERE username = '$username'
-                        AND password = '$pass'";
+                        AND password = '$pass';";
 
         $result = $database->query($userIDQuery);
         $data = $database->fetchArray($result);

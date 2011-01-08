@@ -1,7 +1,7 @@
 <?php
 
     /**
-     * Comment here
+     * initTests.php
      *
      * Copyright 	(c) 2010 Tom Kaczocha
      *
@@ -22,11 +22,11 @@
      *
      *
      * @package
-     * @author	Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @author	        Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @copyright	2010 Tom Kaczocha
      * @version 	1.0
-     * @access	public
-     * @License     "GNU General Public License", version="3.0"
+     * @access	        public
+     * @License         "GNU General Public License", version="3.0"
      *
      */
     /*
@@ -78,6 +78,8 @@
     function getNewLinkTestData() {
         global $newLinkDestination;
         global $newLinkDescription;
+        global $updatedDescription;
+        global $updatedDestination;
 
         // open file for reading
         $filename = SITE_ROOT . DS . "tests" . DS . "testdata" . DS . "linkData";
@@ -87,7 +89,9 @@
 
             $newLinkDestination = fgets($file);
             $newLinkDescription = fgets($file);
-
+            $updatedDestination = fgets($file);
+            $updatedDescription = fgets($file);
+            
             // close file
             fclose($file);
 

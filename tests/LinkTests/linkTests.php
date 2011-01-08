@@ -58,7 +58,7 @@
 
         $query = "SELECT * FROM links
                   WHERE destination = '" . $newLinkDestination . "'
-                  AND uid = '" . $user->getUserID() . "'";
+                  AND uid = '" . $user->getUserID() . "';";
 
         $result = $database->query($query);
 
@@ -81,21 +81,21 @@
 
         $query = "SELECT lid
                   FROM links
-                  WHERE destination = '" . $newLinkDestination . "'";
+                  WHERE destination = '" . $newLinkDestination . "';";
 
         $result = $database->query($query);
         $data = $database->fetchArray($result);
 
         if (!empty($data)) {
-        $lid = $data['lid'];
+            $lid = $data['lid'];
 
-        $data = $link->getLinkDataSetByID($lid);
+            $data = $link->getLinkDataSetByID($lid);
 
-        $test->failUnless("TEST - Get Link DataSet",
-                (($data['destination'] == $newLinkDestination) &&
-                ($data['description'] == $newLinkDescription) &&
-                ($data['lid'] == $lid)),
-                "Error: Unable to get Link DataSet");
+            $test->failUnless("TEST - Get Link DataSet",
+                    (($data['destination'] == $newLinkDestination) &&
+                    ($data['description'] == $newLinkDescription) &&
+                    ($data['lid'] == $lid)),
+                    "Error: Unable to get Link DataSet");
         }
         else {
             "'getLinkDataSetByIDTest()' Failed";
@@ -103,16 +103,97 @@
 
     }
 
-    // test the creation of
-//    function newLamantengoLinkCreatedTest() {
-//        global $database;
-//
-//        $test = new Test();
-//
-//
-//        $test->failUnless("TEST - Lamantengo Link Created",
-//                $data[''], $error)
-//
-//    }
+    // test link update
+    function updateLinkTest() {
+        global $database;
+        global $newLinkDestination;
+        global $updatedDescription;
+        global $updatedDestination;
+
+        $test = new Test();
+
+        $link = new Link();
+
+        $query = "SELECT lid
+                  FROM links
+                  WHERE destination = '" . $newLinkDestination . "';";
+
+        $result = $database->query($query);
+        $data = $database->fetchArray($result);
+
+        $lid = $data['lid'];
+
+        //$link->getLinkDataSetByID($lid);
+
+        $result = $link->updateLink($lid, $updatedDestination, $updatedDescription);
+
+        $query = "SELECT *
+                  FROM links
+                  WHERE lid = '" . $lid . "'";
+
+        $result = $database->query($query);
+        $data = $database->fetchArray($result);
+
+        $test->failUnless("TEST - Update Link",
+                (($data['destination'] == $updatedDestination) &&
+                ($data['description'] == $updatedDescription)),
+                "Error: Link not updating");
+
+    }
+
+    // test getting all user links
+    function getUserLinksTest() {
+        global $database;
+        global $user;
+
+        $test = new Test();
+
+        // get user id
+        $uid = $user->getUserID();
+
+        $result = Link::getUserLinksResultSet($uid);
+
+        //echo "Number of Results: ".$database->numRows($result);
+
+        $test->failUnless("TEST - Getting Link ResultSet",
+                $database->numRows($result) > 0,
+                "Error: Unable to retrieve Link ResultSet");
+
+    }
+
+    // test for removing links successfully
+    function removeLinkByIDTest() {
+        global $database;
+        global $updatedDestination;
+        global $updatedDescription;
+
+        $test = new Test();
+
+        $link = new Link();
+
+        $query = "SELECT lid
+                  FROM links
+                  WHERE destination = '" . $updatedDestination . "'
+                  AND description = '" . $updatedDescription . "';";
+        
+        $result = $database->query($query);
+        $data = $database->fetchArray($result);
+
+        $lid = $data['lid'];
+
+        $link->removeLinkByID($lid);
+
+        $query = "SELECT active
+                  FROM links
+                  WHERE lid = '" . $lid . "';";
+        
+        $result = $database->query($query);
+        $data = $database->fetchArray($result);
+
+        $test->failUnless("TEST - Remove Link",
+                $data['active'] == 0,
+                "Error: Unable to remove link");
+
+    }
 
 ?>

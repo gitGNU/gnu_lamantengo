@@ -31,13 +31,21 @@
     * Edited public/login.php - Added updateSession result condition
     * Edited error printing condition in Test class
     * User Class - Added Session control from constructor
-
     * Edited addNewLink query
     * Added getLinkDataSetByID($lid) function Link class
     * Renamed tests/LinkTests/addNewLinkTest.php to
       tests/LinkTests/linkTests.php
     * Added getLinkDataSetByIDTest to linkTests.php
-
+    * Removed sid requirements from mylinks.php
+    * Implemented Link class in view.php
+    * Edited description CSS class name in view.php
+    * Edited en_us & es_ar.inc files - changed label name and translation
+      of visits label for view.php
+    * Added addUserIDToLinkTest
+    * Added getLinkDataSetByIDTest
+    * Added updateLinkTest
+    * Added getUserLinksTest
+    * Added removeLinkByIdTest
 
 2011-01-07 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Edited return statements to updateSession() function in Session class

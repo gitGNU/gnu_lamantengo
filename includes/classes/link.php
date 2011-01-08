@@ -50,13 +50,6 @@
          */
         private $_linkDestination;
         /**
-         * Lamantengo Link
-         *
-         * @access private
-         * @var String
-         */
-        private $_linkLamantengo;
-        /**
          * Link description
          *
          * @access private
@@ -185,6 +178,7 @@
          */
         public function getLastMod() {
             return $this->_lastMod;
+
         }
 
         /**
@@ -212,6 +206,7 @@
          */
         public function getActiveStatus() {
             return $this->_active;
+
         }
 
         /**
@@ -225,6 +220,7 @@
          */
         public function getVisits() {
             return $this->_visits;
+
         }
 
         /**
@@ -241,7 +237,7 @@
             global $user;
 
             $query = "INSERT INTO `links` (`uid`, `destination`, `description`)
-                                   VALUES ( '".$user->getUserID()."',
+                                   VALUES ( '" . $user->getUserID() . "',
                                             '$dest',
                                             '$desc');";
             //echo $query;
@@ -258,7 +254,7 @@
         }
 
         /**
-         * Function edits link attributes
+         * Function updates link attributes
          *
          * @param
          * @access public
@@ -266,12 +262,27 @@
          * @return Boolean TRUE if successful, FALSE otherwise
          *
          */
-        public function editLink() {
+        public function updateLink($lid, $destination, $description) {
+            global $database;
+
+            $query = "UPDATE links
+                      SET destination = '" . $destination . "',
+                          description = '" . $description . "'
+                      WHERE lid = '" . $lid . "';";
+
+            $result = $database->query($query);
+
+            if ($database->affectedRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
 
         }
 
         /**
-         * Function removes link from database
+         * Function makes link inactive
          *
          * @param
          * @access public
@@ -279,16 +290,39 @@
          * @return Boolean TRUE if successful, FALSE otherwise
          *
          */
-        public function removeLink() {
+        public function removeLinkByID($lid) {
+            global $database;
+
+            $query = "UPDATE links
+                      SET active = '0'
+                      WHERE lid = '" . $lid . "';";
+
+            $result = $database->query($query);
+
+            if ($database->affectedRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
 
         }
 
+        /**
+         * Function gets link dataset
+         *
+         * @param
+         * @access public
+         *
+         * @return DataSet Link Dataset
+         *
+         */
         public function getLinkDataSetByID($lid) {
             global $database;
 
             $query = "SELECT *
                       FROM links
-                      WHERE lid = '".$lid."'";
+                      WHERE lid = '" . $lid . "';";
 
             $result = $database->query($query);
             $data = $database->fetchArray($result);
@@ -296,6 +330,30 @@
             return $data;
 
         }
+
+        /**
+         * Function gets link dataset
+         *
+         * @param
+         * @access public
+         *
+         * @return DataSet Link Dataset
+         *
+         */
+        public static function getUserLinksResultSet($uid) {
+            global $database;
+
+            $query = "SELECT *
+                      FROM links
+                      WHERE uid = '" . $uid . "'
+                      AND active = '1';";
+
+            $result = $database->query($query);
+
+            return $result;
+
+        }
+
     }
 
 ?>

@@ -53,7 +53,7 @@
         $query = "SELECT realname
                   FROM users
                   WHERE username = '$username'
-                  AND email = '$email'";
+                  AND email = '$email';";
 
         $result = $database->query($query);
         $data = $database->fetchArray($result);
@@ -81,7 +81,7 @@
         $query = "SELECT password
                   FROM users
                   WHERE username = '$username'
-                  AND email = '$email'";
+                  AND email = '$email';";
 
         $result = $database->query($query);
         $data = $database->fetchArray($result);
@@ -110,7 +110,7 @@
         $query = "SELECT realname
                   FROM users
                   WHERE username = '$username'
-                  AND email = '$email'";
+                  AND email = '$email';";
 
         $result = $database->query($query);
         $data = $database->fetchArray($result);

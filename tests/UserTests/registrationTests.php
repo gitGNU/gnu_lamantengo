@@ -42,7 +42,7 @@
 
         $query = "SELECT * FROM users
                   WHERE username = '$username'
-                  AND email = '$email'";
+                  AND email = '$email';";
 
         $result = $database->query($query);
 

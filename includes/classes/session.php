@@ -86,7 +86,7 @@
             $session = session_id();
 
             $query = "SELECT `uid`,`lastmod`,`timeout`,`browser`,`ip` FROM `sessions`
-        			  WHERE sid = '$session'";
+        			  WHERE sid = '$session';";
 
             $result = $database->query($query);
 
@@ -124,7 +124,7 @@
         			  		  NOW(),
         			  		  '900',
         			  		  '$this->_browser',
-        			  		  '$this->_ip')";
+        			  		  '$this->_ip');";
 
             $result = $database->query($query);
 

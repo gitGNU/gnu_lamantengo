@@ -32,18 +32,22 @@
         $errors .= $language->translate("error_no_link_id");
     }
     else {
-        // There id. I look in the db
-        $query = "SELECT `uid`,`destination`,`description`,`lastmod`, `visits` FROM `links` WHERE `lid`='$id' AND `active`='1' LIMIT 0, 1;";
-        $rs = mysql_query($query);
-        if (($temp = @mysql_fetch_object($rs)) == null) {
+        // ID exists - get data
+
+        $link = new Link();
+
+        $data = $link->getLinkDataSetByID($id);
+
+
+        if (empty($data)) {
             $errors .= $language->translate("error_link_noexistent");
         }
         else {
-            $destination = $temp->destination;
-            $description = $temp->description;
-            $lastmod = $temp->lastmod;
-            $visits = $temp->visits;
-            $oid = $temp->uid;
+            $destination = $data['destination'];
+            $description = $data['description'];
+            $lastmod = $data['lastmod'];
+            $visits = $data['visits'];
+            $uid = $data['uid'];
         }
     }
     include('header.php');
@@ -82,7 +86,7 @@
             </tr>
             <tr>
                 <td class="headers_view"><?php echo $language->translate("label_description"); ?></td>
-                <td class="description_view"><?php echo $description; ?></td>
+                <td class="data_view"><?php echo $description; ?></td>
             </tr>
             <tr>
                 <td class="headers_view"><?php echo $language->translate("label_last_modified"); ?></td>
@@ -90,17 +94,17 @@
             </tr>
 <?php
 
-            if (($oid == $uid) || ($oid == 0)) { // if you own
+            if (($uid == $user->getUserID()) || ($uid == 0)) { // if you own
 
 ?>
                 <tr>
-                    <td class="headers_view"><?php echo $language->translate("label_round"); ?></td>
+                    <td class="headers_view"><?php echo $language->translate("label_visits"); ?></td>
                     <td class="data_view"><?php echo $visits; ?></td>
                 </tr>
                 <tr id="imglink">
                     <td colspan="2" align="center" id="imglink">
-                        <a href="mylinks.php?action=edit&lid=<?php echo $id . "&sid=" . $sid; ?>" id="imglink" title="<?php echo $language->translate("table_edit"); ?>"><img src="<?php echo IMAGE_PATH . DS; ?>edit.png" id="imglink" /><?php echo $language->translate("table_edit"); ?></a>
-                                <a href="mylinks.php?action=delete&lid=<?php echo $id . "&sid=" . $sid; ?>" title="<?php echo $language->translate("table_remove"); ?>" id="imglink"><img src="<?php echo IMAGE_PATH . DS; ?>delete.png" id="imglink" /><?php echo $language->translate("table_remove"); ?></a>
+                        <a href="mylinks.php?action=edit&lid=<?php echo $id; ?>" id="imglink" title="<?php echo $language->translate("table_edit"); ?>"><img src="<?php echo IMAGE_PATH . DS; ?>edit.png" id="imglink" /><?php echo $language->translate("table_edit"); ?></a>
+                                <a href="mylinks.php?action=delete&lid=<?php echo $id; ?>" title="<?php echo $language->translate("table_remove"); ?>" id="imglink"><img src="<?php echo IMAGE_PATH . DS; ?>delete.png" id="imglink" /><?php echo $language->translate("table_remove"); ?></a>
                             </td>
                         </tr>
     <?php

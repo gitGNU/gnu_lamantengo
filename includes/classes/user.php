@@ -105,7 +105,7 @@
 
             $this->checkUserLogin();
             $this->initUser($user_id);
-            
+
             // check for matching session in database
             $session_status = $session->checkForSession();
 
@@ -126,12 +126,13 @@
             $this->_email = $data['email'];
             $this->_realName = $data['realname'];
             $this->_password = $data['password'];
-            $this->_isActive = $data['active'];            
+            $this->_isActive = $data['active'];
             $this->setUserLanguage($data['language']);
 
             if ($this->_userID == "") {
                 $this->_userID = $user_id;
             }
+
         }
 
         /**
@@ -307,7 +308,7 @@
         }
 
         public function setUserLanguage($language = '') {
-            
+
             if ($language == "") { // if language not yet set
                 if (isset($_SESSION['language'])) {
                     $this->_language = $_SESSION['language'];
@@ -319,8 +320,6 @@
             else { // language has already been set for user
                 $this->_language = $language;
             }
-
-
 
         }
 
@@ -338,7 +337,7 @@
 
             $query = "SELECT *
             		  FROM `users`
-            		  WHERE `uid` = '$user_id'";
+            		  WHERE `uid` = '$user_id';";
 
             $result = $database->query($query);
             $data = $database->fetchArray($result);
@@ -399,7 +398,7 @@
 			 FROM users
 			 WHERE username = '$username'
 			 AND password = md5('$password')
-			 LIMIT 1";
+			 LIMIT 1;";
 
             $result = $database->query($query);
             $data = $database->fetchArray($result);
@@ -554,7 +553,7 @@
             $query = "UPDATE users
                       SET password = '$new_pass',
 			  realname = '$realname'
-		      WHERE uid = '" . $this->_userID . "'";
+		      WHERE uid = '" . $this->_userID . "';";
 
             $result = $database->query($query);
 
@@ -581,7 +580,7 @@
 
             $query = "UPDATE users
                       SET password = '$new_pass'
-		      WHERE uid = '$this->_userID'";
+		      WHERE uid = '" . $this->_userID . "';";
 
             $result = $database->query($query);
 
@@ -606,7 +605,6 @@
         public function verifyPassword($password) {
 
             if ($password == $this->_password) {
-                //if ($database->numRows($result) == 1) {
                 return TRUE;
             }
             else {
@@ -629,7 +627,7 @@
 
             $query = "UPDATE users
                       SET realname = '$realname'
-		      WHERE uid = '$this->_userID'";
+		      WHERE uid = '".$this->_userID."';";
 
             $result = $database->query($query);
 
@@ -657,7 +655,7 @@
 
             $query = "UPDATE sessions
                       SET uid = '" . $this->_userID . "' 
-                      WHERE sid = '" . $session->getSessionID() . "'";
+                      WHERE sid = '" . $session->getSessionID() . "';";
 
             //echo "Update Session Query: " . $query;
             $result = $database->query($query);
@@ -670,7 +668,7 @@
             }
 
         }
-        
+
     }
 
     // When user first enters the site they are given a user_id

@@ -55,6 +55,9 @@
                 $newPass = "";
                 $newLinkDestination = "";
                 $newLinkDescription = "";
+                $updatedDestination = "";
+                $updatedDescription = "";
+                
 
 //                if (!empty($testNames)) {
 //                    echo "testNames not empty";
@@ -122,7 +125,10 @@
                     addNewLinkTest();
                     addUserIDToLinkTest();
                     getLinkDataSetByIDTest();
-
+                    updateLinkTest();
+                    getUserLinksTest();
+                    removeLinkByIDTest();
+                    
                     // logout test
                     logoutUserTest();
 
@@ -134,7 +140,7 @@
                     cleanDatabase();
 
                     /**
-                     *                  DISPLAY RESULTS
+                     *                  DISPLAY TEST DATA USED
                      * =========================================================
                      */
 
@@ -147,6 +153,8 @@
                     echo '<br />New Password: '.$newPass;
                     echo '<br />New Link Destination: '.$newLinkDestination;
                     echo '<br />New Link Description: '.$newLinkDescription;
+                    echo '<br />Updated Link Destination: '.$updatedDestination;
+                    echo '<br />Updated Link Description: '.$updatedDescription;
                     echo '<br /><br />';
 
                     Test::printResults();
