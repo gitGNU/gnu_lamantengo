@@ -37,7 +37,8 @@
 
         public static $testName = array();
         public static $testResult = array();
-        public static $errors = array();
+        public static $errMessage = array();
+        public static $testErrors = array();
         private static $totalTests;
         private static $totalSuccess;
         private static $totalFailure;
@@ -47,6 +48,10 @@
             Test::$totalSuccess = 0;
             Test::$totalFailure = 0;
 
+            if (!empty(self::$errMessage)) {
+                self::$testErrors[] = "Test Error";
+            }
+
         }
 
         public function __destruct() {
@@ -55,40 +60,70 @@
 
         public function failIf($testName, $condition, $error = "") {
 
-            Test::$testName[] = $testName;
+            self::$testName[] = $testName;
 
             if ($condition == FALSE) {
-                Test::$testResult[] = "FAILED";
+                self::$testResult[] = "FAILED";
             }
             else {
-                Test::$testResult[] = "PASSED";
+                self::$testResult[] = "PASSED";
             }
 
-            if ((Test::$errors != "") && ($condition == FALSE)) {
-                Test::$errors[] = $error;
+            if ((self::$errMessage != "") && ($condition == FALSE)) {
+                self::$errMessage[] = $error;
             }
             else {
-                Test::$errors[] = "";
+                self::$errMessage[] = "";
             }
 
         }
 
         public function failUnless($testName, $condition, $error = "") {
 
-            Test::$testName[] = $testName;
+            self::$testName[] = $testName;
 
             if ($condition == TRUE) {
-                Test::$testResult[] = "PASSED";
+                self::$testResult[] = "PASSED";
             }
             else {
-                Test::$testResult[] = "FAILED";
+                self::$testResult[] = "FAILED";
             }
 
-            if ((Test::$errors != "") && ($condition == FALSE)) {
-                Test::$errors[] = $error;
+            if ((self::$errMessage != "") && ($condition == FALSE)) {
+                self::$errMessage[] = $error;
             }
             else {
-                Test::$errors[] = "";
+                self::$errMessage[] = "";
+            }
+
+        }
+
+        public function assertTrue($value, $error = "") {
+            if ($value == TRUE) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
+        public function assertFalse($value, $error = "") {
+            if ($value == FALSE) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
+        public function assertEquals($value1, $value2, $error = "") {
+            if ($value1 == $value2) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
             }
 
         }
@@ -112,11 +147,11 @@
                   <td colspan="2"><b><center>*****  Running Tests  *****</center></b></td>
                   </tr><hr />';
 
-            foreach (Test::$testName as $test) {
+            foreach (self::$testName as $test) {
 
-                if ((Test::$errors[$i] != "") && (Test::$errors != NULL)) {
+                if ((self::$errMessage[$i] != "") && (self::$errMessage != NULL)) {
                     echo '<tr>
-                    <td style="width:900px;color:red;">' . $test . ' - ' . Test::$errors[$i] . '</td>';
+                    <td style="width:900px;color:red;">' . $test . ' - ' . self::$errors[$i] . '</td>';
                 }
                 else {
                     echo '<tr>
@@ -126,16 +161,16 @@
 
                 if (Test::$testResult[Test::$totalTests] == "PASSED") {
                     $r = 'style="color:green; weight:bold; font-size:14px;"';
-                    Test::$totalSuccess++;
+                    self::$totalSuccess++;
                 }
                 else {
                     $r = 'style="color:red; weight:bold; font-size:14px;"';
-                    Test::$totalFailure++;
+                    self::$totalFailure++;
                 }
 
-                echo '<td ' . $r . '>' . Test::$testResult[Test::$totalTests] . '</td>';
+                echo '<td ' . $r . '>' . self::$testResult[self::$totalTests] . '</td>';
                 echo '</tr>';
-                Test::$totalTests++;
+                self::$totalTests++;
                 $i++;
             }
 
@@ -144,33 +179,19 @@
               </tr>
               <tr>
                 <td><b>Number of Tests Run:</td>
-                <td>' . Test::$totalTests . '</td>
+                <td>' . self::$totalTests . '</td>
               </tr>
                 <td><b>Success:</b></td>
-                <td>' . Test::$totalSuccess . '</td>
+                <td>' . self::$totalSuccess . '</td>
               </tr>
               <tr>
                 <td><b>Failed:</b></td>
-                <td>' . Test::$totalFailure . '</td>
+                <td>' . self::$totalFailure . '</td>
               </tr>
            </table>';
 
         }
 
     }
-
-    $test = new Test();
-
-//class FunctionTest extends Test {
-//
-//}
-//
-//class ClassTest extends Test {
-//
-//}
-//
-//class ObjectTest extends Test {
-//
-//}
 
 ?>

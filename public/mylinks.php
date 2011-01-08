@@ -132,7 +132,7 @@
     include('header.php');
 
 ?>
-<div id="contenido">
+<div id="contents">
         <h2><?php echo $title; ?></h2>
     <?php
 
@@ -163,7 +163,7 @@
                     <table id="table_edit">
                         <tr id="tr_table_edit">
                             <td id="td1_table_edit">Link LaMantengo:</td>
-                            <td id="td2_table_edit"><a href="visit.php?id=<?php echo $lid; ?>">http://www.lamantengo.com.ar/visit.php?id=<?php echo $lid; ?></a></td>
+                            <td id="td2_table_edit"><a href="visit.php?lid=<?php echo $lid; ?>">http://www.lamantengo.com.ar/visit.php?lid=<?php echo $lid; ?></a></td>
                         </tr>
                         <tr id="tr_table_edit">
                             <td id="td1_table_edit"><?php echo $language->translate("label_destination"); ?></td>
@@ -232,7 +232,7 @@
         </div>
 </div>
 <div id="explanation">
-    <?php echo $language->translate("click_button"); ?> <img src="images/edit.png" alt="<?php echo $language->translate("table_edit"); ?>" title="<?php echo $language->translate("table_edit"); ?>" /> <?php echo $language->translate("inst_change_dest"); ?> <img src="<?php echo IMAGE_PATH . DS; ?>delete.png" alt="<?php echo $language->translate("table_edit"); ?>" title="<?php echo $language->translate("table_edit"); ?>" /> <?php echo $language->translate("inst_remove"); ?>
+    <?php echo $language->translate("click_button"); ?> <img src="<?php echo IMAGE_PATH . DS; ?>edit.png" alt="<?php echo $language->translate("table_edit"); ?>" title="<?php echo $language->translate("table_edit"); ?>" /> <?php echo $language->translate("inst_change_dest"); ?> <img src="<?php echo IMAGE_PATH . DS; ?>delete.png" alt="<?php echo $language->translate("table_edit"); ?>" title="<?php echo $language->translate("table_edit"); ?>" /> <?php echo $language->translate("inst_remove"); ?>
     <?php echo $language->translate("inst_bulk_remove"); ?>
                 </div>
 <?php

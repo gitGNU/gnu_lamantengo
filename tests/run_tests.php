@@ -128,6 +128,7 @@
                     updateLinkTest();
                     getUserLinksTest();
                     removeLinkByIDTest();
+                    updateLinkVisitCountTest();
                     
                     // logout test
                     logoutUserTest();

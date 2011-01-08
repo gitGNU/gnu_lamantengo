@@ -71,13 +71,13 @@ $en_message_ar['en']['error_already_registered']        = "The username or e-mai
 $en_message_ar['en']['error_already_reg']               = "Already logged in, cannot re-register.<br />\n";
 
 $en_message_ar['en']['registered_successfully']         = "Your account has been created successfully. Check your e-mail (<b>$email</ b>) to obtain their input.<br />\n";
-$en_message_ar['en']['important_message']               = "<br /><br /><b>** IMPORTANT **:</b>You are seeing this message because the site is in beta. Probably your account be removed after a few days, or update your password to verify your email.<br />\n";
+$en_message_ar['en']['important_message']               = "<br /><br /><b>** IMPORTANT **: </b>You are seeing this message because the site is in beta. Probably your account be removed after a few days, or update your password to verify your email.<br />\n";
 
 $en_message_ar['en']['username_message']                = "(Minimum 4 characters)";
 $en_message_ar['en']['first_name_message']              = "(Used for contact)";
 $en_message_ar['en']['first_name_label']                = "First Name:";
 $en_message_ar['en']['email_message']                   = "(Valid - password will be sent to this email)";
-$en_message_ar['en']['email_repeat_label']              = "Repeat Email *:";
+$en_message_ar['en']['email_repeat_label']              = "Repeat Email *: ";
 $en_message_ar['en']['email_repeat_message']            = "(Repeat the email)";
 
 $en_message_ar['en']['title_agreeToS']                  = "I agree to the ToS";
@@ -152,9 +152,9 @@ $en_message_ar['en']['error_login_to_view_profile']     = "You must login <a hre
 $en_message_ar['en']['profile_updated']                 = "The account details were updated successfully.<br />\n";
 $en_message_ar['en']['new_password_label']              = "New Password: ";
 $en_message_ar['en']['message_6_20_char']               = "6-20 alphanumeric characters";
-$en_message_ar['en']['message_repeat_password']         = "Repeat new password:";
+$en_message_ar['en']['message_repeat_password']         = "Repeat new password: ";
 $en_message_ar['en']['message_symbols']                 = "or symbols <b>. ( ) - _ ! @ =</b>";
-$en_message_ar['en']['label_current_password']          = "Current password *:";
+$en_message_ar['en']['label_current_password']          = "Current password *: ";
 $en_message_ar['en']['confirm_changes']                 = "Confirm changes";
 $en_message_ar['en']['btn_edit_profile']                = "Edit Profile";
 $en_message_ar['en']['profile_explanation']             = "Enter the name of the user you want to register on the site, his real name (optional, only appear when we need to contact you), and a valid e-mail.<br />
@@ -177,10 +177,10 @@ $en_message_ar['en']['error_failed_database_conn']      = "Failed to connect to 
 $en_message_ar['en']['success_updated']                 = "The $lid No. link was updated successfully";
 $en_message_ar['en']['success_link_removed']            = "The link No. $key was successfully removed.<br />\n";
 
-$en_message_ar['en']['label_destination']               = "Destination:";
-$en_message_ar['en']['label_description']               = "Description:";
-$en_message_ar['en']['label_last_modified']             = "Last modified:";
-$en_message_ar['en']['label_visits']                     = "Visits:";
+$en_message_ar['en']['label_destination']               = "Destination: ";
+$en_message_ar['en']['label_description']               = "Description: ";
+$en_message_ar['en']['label_last_modified']             = "Last modified: ";
+$en_message_ar['en']['label_visits']                     = "Visits: ";
 
 $en_message_ar['en']['table_destination']               = "Destination";
 $en_message_ar['en']['table_description']               = "Description";
@@ -193,9 +193,9 @@ $en_message_ar['en']['title_link_new_window']           = "See link in a new win
 $en_message_ar['en']['delete_selected']                 = "Delete Selected";
 $en_message_ar['en']['save_changes']                    = "Save Changes";
 
-$en_message_ar['en']['click_button']                    = "Click button";
-$en_message_ar['en']['inst_change_dest']                = "to the right of a link to change the destination of it, or";
-$en_message_ar['en']['inst_remove']                     = "to remove it off permanently.<br />";
+$en_message_ar['en']['click_button']                    = "Click the Edit button";
+$en_message_ar['en']['inst_change_dest']                = "to the right of a link to change the destination, or";
+$en_message_ar['en']['inst_remove']                     = "to remove it permanently.<br />";
 $en_message_ar['en']['inst_bulk_remove']                = "To delete multiple links together, check the box to the left of each link you want to delete, then press the \"Delete Selected.\"";
 
 // view.php
@@ -282,7 +282,7 @@ $en_message_ar['en']['title_remove_link']               = "Remove Link";
 $en_message_ar['en']['report_link_expired']             = "Report link expired / invalid";
 $en_message_ar['en']['report']                          = "Report";
 
-$en_message_ar['en']['no_definitions_found']            = "No definitions found:";
+$en_message_ar['en']['no_definitions_found']            = "No definitions found: ";
 
 
 ?>

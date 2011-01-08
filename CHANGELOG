@@ -1,7 +1,6 @@
 /**
      * @License(name="GNU General Public License", version="3.0")
      * 
-     * Copyright (C) 2010 UnWebmaster.Com.Ar
      * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      * 
      * This file is part of LaMantengo.
@@ -24,6 +23,16 @@
 ================================================================================
                                CHANGELOG
 ================================================================================
+
+2011-01-09 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Edited en_us.inc mylinks.php english translations
+    * Added updateLinkVisitCountTest
+    * Added updateLinkVisitCount function to link class
+    * Replaced 'Test' class-variable name with usinig 'self' in Test class
+    * Edited internal-styles link in visit.php
+    * Added ownership check to visit.php
+    * Removed sid requirements from report.php
+    * Renamed (id="contenido") with (id="contents") site wide
 
 2011-01-08 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Moved session updating to the User class because User object does

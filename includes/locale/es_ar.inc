@@ -69,13 +69,13 @@ $es_message_ar['es']['error_already_registered']        = "El nombre de usuario 
 $es_message_ar['es']['error_already_reg']               = "Ya est&aacute; loggeado, por lo que no puede volver a registrarse.<br />\n";
 
 $es_message_ar['es']['registered_successfully']         = "Su cuenta ha sido creada exitosamente. Revise su e-mail (<b>$email</b>) para obtener sus datos de ingreso.<br />\n";
-$es_message_ar['es']['important_message']               = "<br /><br /><b>** IMPORTANTE **:</b> Est&aacute;s viendo este mensaje porque el sitio est&aacute; en beta. Probablemente tu cuenta sea eliminada luego de unos d&iacute;as, o se actualizar&aacute; tu password para verificar tu email.<br />\n";
+$es_message_ar['es']['important_message']               = "<br /><br /><b>** IMPORTANTE **: </b> Est&aacute;s viendo este mensaje porque el sitio est&aacute; en beta. Probablemente tu cuenta sea eliminada luego de unos d&iacute;as, o se actualizar&aacute; tu password para verificar tu email.<br />\n";
 
 $es_message_ar['es']['username_message']                = "(m&iacute;nimo 4 caracteres)";
 $es_message_ar['es']['first_name_message']              = "(para usar en caso de contacto)";
-$es_message_ar['es']['first_name_label']                = "Nombre:";
+$es_message_ar['es']['first_name_label']                = "Nombre: ";
 $es_message_ar['es']['email_message']                   = "(v&aacute;lido - se enviar&aacute; la contrase&ntilde;a))";
-$es_message_ar['es']['email_repeat_label']              = "Repite Email*:";
+$es_message_ar['es']['email_repeat_label']              = "Repite Email*: ";
 $es_message_ar['es']['email_repeat_message']            = "(repite la direcci&oacute;n)";
 
 $es_message_ar['es']['title_agreeToS']                  = "Acepto los ToS";
@@ -147,7 +147,7 @@ $es_message_ar['es']['new_password_label']              = "Nuevo Password: ";
 $es_message_ar['es']['message_6_20_char']               = "6-20 caracteres alfanumericos";
 $es_message_ar['es']['message_repeat_password']         = "Repite nuevo password:";
 $es_message_ar['es']['message_symbols']                 = "o los s&iacute;mbolos <b>. ( ) - _ ! @ =</b>";
-$es_message_ar['es']['label_current_password']          = "Contrase&ntilde;a actual*:";
+$es_message_ar['es']['label_current_password']          = "Contrase&ntilde;a actual*: ";
 $es_message_ar['es']['confirm_changes']                 = "Confirma los cambios";
 $es_message_ar['es']['btn_edit_profile']                = "Modificar perfil";
 $es_message_ar['es']['profile_explanation']             = "Ingrese el nombre de usuario con el que quiere registrarse en el sitio, su nombre real (opcional, solamente figurar&aacute; cuando debamos contactarnos con usted), y un e-mail v&aacute;lido.<br />
@@ -262,8 +262,8 @@ $es_message_ar['es']['error_nothing_to_do']             = "No se indic&oacute; n
 $es_message_ar['es']['email_verify']                    = "Se envi&oacute; un e-mail a <b>" . $_POST['email'] . "</b> para verificar la direcci&oacute;n. De no hacerlo, el reporte no ser&aacute; enviado.<br />\n";
 $es_message_ar['es']['report_sent']                     = "El reporte fue confirmado y enviado correctamente al propietario del link reportado.";
 
-$es_message_ar['es']['suggested_target']                = "Destino sugerido:";
-$es_message_ar['es']['comment']                         = "Comentario::";
+$es_message_ar['es']['suggested_target']                = "Destino sugerido: ";
+$es_message_ar['es']['comment']                         = "Comentario:: ";
 
 // visit.php
 $es_message_ar['es']['title_visit']                     = "Visitar sitio";
@@ -274,7 +274,7 @@ $es_message_ar['es']['title_remove_link']               = "Eliminar link";
 $es_message_ar['es']['report_link_expired']             = "Reportar link caducado/invalido";
 $es_message_ar['es']['report']                          = "Reportar";
 
-$es_message_ar['es']['no_definitions_found']            = "Link NoHuyas:";
+$es_message_ar['es']['no_definitions_found']            = "Link NoHuyas: ";
 
 
 ?>

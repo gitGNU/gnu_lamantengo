@@ -30,7 +30,7 @@
     include('header.php');
 
 ?>
-<div id="contenido">    
+<div id="contents">    
         <div id="tos">
             <h2><?php echo $language->translate("terms_and_conditions"); ?></h2>
             <h3><?php echo $language->translate("introduction"); ?></h3>

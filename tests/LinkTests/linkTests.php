@@ -175,7 +175,7 @@
                   FROM links
                   WHERE destination = '" . $updatedDestination . "'
                   AND description = '" . $updatedDescription . "';";
-        
+
         $result = $database->query($query);
         $data = $database->fetchArray($result);
 
@@ -186,13 +186,50 @@
         $query = "SELECT active
                   FROM links
                   WHERE lid = '" . $lid . "';";
-        
+
         $result = $database->query($query);
         $data = $database->fetchArray($result);
 
         $test->failUnless("TEST - Remove Link",
                 $data['active'] == 0,
                 "Error: Unable to remove link");
+
+    }
+
+    // test for successful link visit update
+    function updateLinkVisitCountTest() {
+        global $database;
+        global $updatedDestination;
+        global $updatedDescription;
+
+        $test = new Test();
+
+        $link = new Link();
+
+        $query = "SELECT *
+                  FROM links
+                  WHERE destination = '" . $updatedDestination . "'
+                  AND description = '" . $updatedDescription . "';";
+
+        $result = $database->query($query);
+        $data = $database->fetchArray($result);
+
+        $lid = $data['lid'];
+        $count = $data['visits'];
+
+        $link->updateLinkVisitCount($lid, $count);
+
+        $query = "SELECT visits
+                  FROM links
+                  WHERE destination = '" . $updatedDestination . "';";
+        
+        $count++;
+        $result = $database->query($query);
+        $data = $database->fetchArray($result);
+        
+        $test->failUnless("TEST - Link Visit Updated",
+                $data['visits'] == $count,
+                "Error: Unable to Update Link Visits");
 
     }
 

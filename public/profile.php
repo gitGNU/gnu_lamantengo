@@ -96,7 +96,7 @@
     include('header.php');
 
 ?>
-<div id="contenido">
+<div id="contents">
     <?
 
         if ($success) {

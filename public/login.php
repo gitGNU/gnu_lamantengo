@@ -77,7 +77,7 @@
         include("header.php");
 
 ?>
-        <div id="contenido">
+        <div id="contents">
 <?php if ($errors) {
 
 ?>

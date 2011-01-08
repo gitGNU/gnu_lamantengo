@@ -22,7 +22,7 @@
      * along with LaMantengo.  If not, see <http://www.gnu.org/licenses/>.
      *
      */
-    define('INSITE', 1);
+    
     require_once("../includes/initialise.php");
 
     $title = $language->translate("title_report");
@@ -59,7 +59,7 @@
                 }
                 else {
                     if (($uid == $temp->uid) || ($temp->uid == 0)) {
-                        $errors .= $language->translate("error_link_public") . "<a href=\"mylinks.php?action=edit&lid=$lid&sid=$sid\">" . $language->translate("error_click_here");
+                        $errors .= $language->translate("error_link_public") . "<a href=\"mylinks.php?action=edit&lid=$lid\">" . $language->translate("error_click_here");
                     }
                     else {
                         if ($_POST) {
@@ -179,7 +179,7 @@
     include('header.php');
 
 ?>
-<div id="contenido">
+<div id="contents">
     <?php
 
         if ($success) {
@@ -200,7 +200,7 @@
 
     ?>
             <div id="form_reg">
-                <form action="?action=report&id=<?php echo $lid; ?>&sid=<?php echo $sid; ?>" method="POST">
+                <form action="?action=report&id=<?php echo $lid; ?>" method="POST">
                     <table id="table_reg">
                 <?php
 
@@ -222,7 +222,7 @@
                 ?>
                     <tr id="tr_reg">
                         <td id="td_reg1">Link LaMantengo:</td>
-                        <td id="td_reg2"><a href="visit.php?id=<?php echo $lid . "&sid=$sid"; ?>">http://www.lamantengo.com.ar/visit.php?id=<?php echo $lid; ?></a></td>
+                        <td id="td_reg2"><a href="visit.php?id=<?php echo $lid; ?>">http://www.lamantengo.com.ar/visit.php?id=<?php echo $lid; ?></a></td>
                     </tr>
                     <tr id="tr_reg">
                         <td id="td_reg1"><?php echo $language->translate("suggested_target"); ?></td>

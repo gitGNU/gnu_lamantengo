@@ -53,7 +53,7 @@
     include('header.php');
 
 ?>
-<div id="contenido">
+<div id="contents">
     <h2><?php echo $title; ?></h2>
 <?php
 

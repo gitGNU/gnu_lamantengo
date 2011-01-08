@@ -109,7 +109,7 @@
     require_once('header.php');
 
 ?>
-<div id="contenido">
+<div id="contents">
     <?php
 
         if ($errors) {

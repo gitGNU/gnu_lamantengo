@@ -354,6 +354,26 @@
 
         }
 
+        public function updateLinkVisitCount($lid, $count) {
+            global $database;
+
+            $count++; // increment visit count
+
+            $query = "UPDATE links
+                      SET visits = '".$count."'
+                      WHERE lid = '".$lid."'
+                      LIMIT 1;";
+
+            $result = $database->query($query);
+
+            if ($database->affectedRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+        }
+
     }
 
 ?>
