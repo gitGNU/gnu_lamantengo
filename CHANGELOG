@@ -32,6 +32,13 @@
     * Edited error printing condition in Test class
     * User Class - Added Session control from constructor
 
+    * Edited addNewLink query
+    * Added getLinkDataSetByID($lid) function Link class
+    * Renamed tests/LinkTests/addNewLinkTest.php to
+      tests/LinkTests/linkTests.php
+    * Added getLinkDataSetByIDTest to linkTests.php
+
+
 2011-01-07 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Edited return statements to updateSession() function in Session class
     * Added sessionTests.php for testing session object

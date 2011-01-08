@@ -86,7 +86,7 @@
 
                 require_once("LanguageTests/updateUserLanguageTests.php");
                 
-                require_once("LinkTests/addNewLinkTest.php");
+                require_once("LinkTests/linkTests.php");
 
                 // GET TEST DATA
                 $registerDataResult = getUserTestData();
@@ -121,6 +121,7 @@
 
                     addNewLinkTest();
                     addUserIDToLinkTest();
+                    getLinkDataSetByIDTest();
 
                     // logout test
                     logoutUserTest();

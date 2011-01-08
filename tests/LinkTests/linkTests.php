@@ -65,6 +65,54 @@
         $test->failUnless("TEST - User ID Added To New Link",
                 $database->numRows($result) == 1,
                 "Error: Link User ID does not match Link Owner");
+
     }
+
+    // test checks for whether function returns link
+    // dataset
+    function getLinkDataSetByIDTest() {
+        global $database;
+        global $newLinkDestination;
+        global $newLinkDescription;
+
+        $test = new Test();
+
+        $link = new Link();
+
+        $query = "SELECT lid
+                  FROM links
+                  WHERE destination = '" . $newLinkDestination . "'";
+
+        $result = $database->query($query);
+        $data = $database->fetchArray($result);
+
+        if (!empty($data)) {
+        $lid = $data['lid'];
+
+        $data = $link->getLinkDataSetByID($lid);
+
+        $test->failUnless("TEST - Get Link DataSet",
+                (($data['destination'] == $newLinkDestination) &&
+                ($data['description'] == $newLinkDescription) &&
+                ($data['lid'] == $lid)),
+                "Error: Unable to get Link DataSet");
+        }
+        else {
+            "'getLinkDataSetByIDTest()' Failed";
+        }
+
+    }
+
+    // test the creation of
+//    function newLamantengoLinkCreatedTest() {
+//        global $database;
+//
+//        $test = new Test();
+//
+//
+//        $test->failUnless("TEST - Lamantengo Link Created",
+//                $data[''], $error)
+//
+//    }
 
 ?>

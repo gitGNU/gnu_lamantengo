@@ -241,7 +241,7 @@
             global $user;
 
             $query = "INSERT INTO `links` (`uid`, `destination`, `description`)
-                                   VALUES ( '$user->getUserID()',
+                                   VALUES ( '".$user->getUserID()."',
                                             '$dest',
                                             '$desc');";
             //echo $query;
@@ -283,6 +283,19 @@
 
         }
 
+        public function getLinkDataSetByID($lid) {
+            global $database;
+
+            $query = "SELECT *
+                      FROM links
+                      WHERE lid = '".$lid."'";
+
+            $result = $database->query($query);
+            $data = $database->fetchArray($result);
+
+            return $data;
+
+        }
     }
 
 ?>
