@@ -59,16 +59,9 @@
         private $_ip;
 
         public function __construct() {
-            session_start(); // start session
-            // check for matching session in database
-            $session_status = $this->checkForSession();
 
-            if ($session_status) {// match -> update session object
-                $this->updateSession();
-            }
-            else { // no match -> create new session object
-                $this->setNewSession();
-            }
+            session_start(); // start session
+            $this->_sessionId = session_id();
 
         }
 
@@ -77,7 +70,17 @@
 
         }
 
-        private function checkForSession() {
+        /**
+         * Function checks for an existing session
+         * in the database
+         *
+         * @param
+         * @access public
+         *
+         * @return Boolean TRUE if session exists, otherwise FALSE
+         *
+         */
+        public function checkForSession() {
             global $database; // use global database object
 
             $session = session_id();
@@ -87,7 +90,7 @@
 
             $result = $database->query($query);
 
-            if ($database->numRows($result) > 0) {
+            if ($database->numRows($result) == 1) {
                 return TRUE;
             }
             else {
@@ -96,6 +99,17 @@
 
         }
 
+        /**
+         * Function adds a new session to database
+         *
+         * @param
+         * @access public
+         *
+         * @return Boolean TRUE if session was successfully added to database
+         * otherwise FALSE
+         *
+         *
+         */
         public function setNewSession() {
             global $database;
             global $user;
@@ -111,17 +125,6 @@
         			  		  '900',
         			  		  '$this->_browser',
         			  		  '$this->_ip')";
-
-            $result = $database->query($query);
-
-        }
-
-        public function updateSession() {
-            global $database;
-            global $user;
-
-            $query = "UPDATE sessions
-        			  SET uid = '$user->getUserID()' WHERE sid = '$this->_sessionId'";
 
             $result = $database->query($query);
 

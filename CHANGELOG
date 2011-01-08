@@ -25,6 +25,13 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-08 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Moved session updating to the User class because User object does
+      not exist for updating purposes at the time of Session creation
+    * Edited public/login.php - Added updateSession result condition
+    * Edited error printing condition in Test class
+    * User Class - Added Session control from constructor
+
 2011-01-07 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Edited return statements to updateSession() function in Session class
     * Added sessionTests.php for testing session object

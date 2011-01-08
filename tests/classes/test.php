@@ -53,7 +53,7 @@
 
         }
 
-        public function failIf($testName, $condition) {
+        public function failIf($testName, $condition, $error = "") {
 
             Test::$testName[] = $testName;
 
@@ -62,6 +62,13 @@
             }
             else {
                 Test::$testResult[] = "PASSED";
+            }
+
+            if ((Test::$errors != "") && ($condition == FALSE)) {
+                Test::$errors[] = $error;
+            }
+            else {
+                Test::$errors[] = "";
             }
 
         }
@@ -77,7 +84,7 @@
                 Test::$testResult[] = "FAILED";
             }
 
-            if (Test::$errors != "") {
+            if ((Test::$errors != "") && ($condition == FALSE)) {
                 Test::$errors[] = $error;
             }
             else {
@@ -88,6 +95,13 @@
 
         public static function printResults() {
             $i = 0; // local counter variable
+//            echo "Number of error messages: ". count(Test::$errors)."<br />";
+//
+//            foreach(Test::$errors as $err) {
+//                echo "Error ".$i.": '".$err."'<br />";
+//                $i++;
+//            }
+//            $i = 0;
 
             echo '<table style="width:1100px; border:1px; margin-left:150px; font-size:14px;">
                   <tr>
@@ -100,7 +114,7 @@
 
             foreach (Test::$testName as $test) {
 
-                if (Test::$errors[$i] != "") {
+                if ((Test::$errors[$i] != "") && (Test::$errors != NULL)) {
                     echo '<tr>
                     <td style="width:900px;color:red;">' . $test . ' - ' . Test::$errors[$i] . '</td>';
                 }

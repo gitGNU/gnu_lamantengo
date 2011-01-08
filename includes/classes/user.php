@@ -101,10 +101,20 @@
          *
          */
         public function __construct($user_id = 0) {
-            //print_r($_SESSION);
-            //echo "USER ID: ".$user_id;
+            global $session;
+
             $this->checkUserLogin();
             $this->initUser($user_id);
+            
+            // check for matching session in database
+            $session_status = $session->checkForSession();
+
+            if ($session_status) {// match -> update session object
+                $this->updateSession();
+            }
+            else { // no match -> create new session object
+                $session->setNewSession();
+            }
 
         }
 
@@ -632,6 +642,35 @@
 
         }
 
+        /**
+         * Function updates user ID in session table
+         *
+         * @param
+         * @access public
+         *
+         * @return Boolean TRUE if session exists, otherwise FALSE
+         *
+         */
+        public function updateSession() {
+            global $database;
+            global $session;
+
+            $query = "UPDATE sessions
+                      SET uid = '" . $this->_userID . "' 
+                      WHERE sid = '" . $session->getSessionID() . "'";
+
+            //echo "Update Session Query: " . $query;
+            $result = $database->query($query);
+
+            if ($database->affectedRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+        
     }
 
     // When user first enters the site they are given a user_id
@@ -639,6 +678,9 @@
     // user ID
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
+    }
+    else {
+        $user_id = 0;
     }
 
     $user = new User($user_id);

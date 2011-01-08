@@ -55,11 +55,16 @@
                     else {
 
                         // Update the sid in the database session table
-                        $session->updateSession();
+                        $result = $user->updateSession();
 
-                        $success = $language->translate("login_welcome");
-                        $success .= $language->translate("login_redirect");
-                        $success .="<meta http-equiv=\"refresh\" content=\"3,index.php\" />";
+                        if ($result) {
+                            $success = $language->translate("login_welcome");
+                            $success .= $language->translate("login_redirect");
+                            $success .="<meta http-equiv=\"refresh\" content=\"3,index.php\" />";
+                        }
+                        else {
+                            // display an error
+                        }
                     }
                 }
                 else {
@@ -73,31 +78,31 @@
 
 ?>
         <div id="contenido">
-    <?php if ($errors) {
+<?php if ($errors) {
 
-    ?>
+?>
             <div id="errores"><?php echo $errors; ?></div>
-    <?php
+<?php
 
         }
         if ($success) {
 
-    ?>
+?>
             <div id="success"><?php echo $success; ?></div>
-    <?php
+<?php
 
         }
         else {
 
-    ?>
+?>
             <div id="login">
-        <?php include("reging.php"); ?>
-        </div>
-    <?php
+<?php include("reging.php"); ?>
+            </div>
+<?php
 
         }
 
-    ?>
+?>
 </div>
 <?php
 
