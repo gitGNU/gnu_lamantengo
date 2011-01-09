@@ -39,6 +39,7 @@
       set timestamp on update
     * Added UnitCheck class to tests/classes/ directory
     * Added userIDRemainsInSessionTest - not yet in green
+    * Removed all tasks from TODO file as they were all done now
 
 2011-01-08 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Moved session updating to the User class because User object does
@@ -243,4 +244,6 @@
     * Moved most public files into the 'public' directory to help in structuring the website.
     * Moved "styles.css" into it's very own styles folder -> "styles" in the "includes" folder
 
+================================================================================
+Report bugs to <freedomdeveloper@yahoo.com>
 ================================================================================
