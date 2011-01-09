@@ -30,14 +30,27 @@
     function updateUserLanguageTest() {
         global $language;
         global $database;
+        global $user;
 
         $test = new Test();
 
+        $language->setLanguage('es');
+
         $result = $language->updateUserLanguage();
 
-        $test->failUnless("TEST - Update User Language",
-                $database->affectedRows($result) == 1);
+        $query = "SELECT language
+                  FROM users
+                  WHERE uid = '" . $user->getUserID() . "'";
 
+        $result = $database->query($query);
+        $data = $database->fetchArray($result);
+        
+
+        $test->failUnless("TEST - Update User Language",
+                $data['language'] == 'es',
+                "Error: Language Not Updated");
+
+        //$language->setLanguage('en');
     }
 
 ?>

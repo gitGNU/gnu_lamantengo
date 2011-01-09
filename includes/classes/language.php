@@ -101,16 +101,41 @@
         public function setLocale($language = '', $country = '') {
 
             if ($language == '' || $country == '') {
-                $this->_language = $_SESSION['language'];
-                $this->_country = $_SESSION['country'];
+                if (isset($_SESSION['language'])) {
+                    $this->_language = $_SESSION['language'];
+                    $this->_country = $_SESSION['country'];
+                }
+                else {
+                    $this->_language = LANGUAGE;
+                    $this->_country = COUNTRY;
+
+                    // update language in database
+                    $this->updateUserLanguage();
+                }
+
+
+                // update language in database
+                $this->updateUserLanguage();
+            }
+            else if ($language != '') {
+                $this->_language = $language;
+                $this->_country = $country;
 
                 // update language in database
                 $this->updateUserLanguage();
             }
             else {
-                $this->_language = $language;
-                $this->_country = $country;
+                $this->_language = LANGUAGE;
+                $this->_country = COUNTRY;
+
+                // update language in database
+                $this->updateUserLanguage();
             }
+
+        }
+
+        public function setLanguage($language) {
+            $this->_language = $language;
 
         }
 
@@ -126,10 +151,10 @@
         function updateUserLanguage() {
             global $database;
             global $user;
-            
+
             $query = "UPDATE users
-                      SET language = '$this->_language'
-		      WHERE uid = '".$user->getUserID()."';";
+                      SET language = '" . $this->_language . "'
+		      WHERE uid = '" . $user->getUserID() . "';";
 
             //echo $query;
             $result = $database->query($query);
@@ -140,7 +165,7 @@
             else {
                 return FALSE;
             }
-            
+
         }
 
         /**

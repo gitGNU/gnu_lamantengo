@@ -66,8 +66,7 @@
         }
 
         public function __destruct() {
-            // actions to perform when session ends
-
+            // actions to perform when session ends            
         }
 
         /**

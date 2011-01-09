@@ -59,7 +59,7 @@ DROP TABLE IF EXISTS `sessions`;
 CREATE TABLE IF NOT EXISTS `sessions` (
   `sid` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `uid` int(10) unsigned NOT NULL,
-  `lastmod` int(11) NOT NULL,
+  `lastmod` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `timeout` int(11) NOT NULL,
   `browser` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `ip` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,

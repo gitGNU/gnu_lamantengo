@@ -2,7 +2,7 @@
 
     /**
      *
-     * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * This file is part of UnitCheck.
      *
@@ -22,113 +22,40 @@
      */
 
     /**
-     * Test class is a template for Test objects.
+     * UnitCheck class is a template for UnitCheck objects.
      *
-     * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * Copyright 	(C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * @package
      * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
-     * @copyright	2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @copyright	2011 Tom Kaczocha
      * @license         GNU General Public License, version 3.0
      * @version 	1.0
      * @access		public
      */
-    class Test {
+    class UnitCheck {
 
-        public static $testName = array();
-        public static $testResult = array();
-        public static $errMessage = array();
-        public static $testErrors = array();
-        private static $totalTests;
-        private static $totalSuccess;
-        private static $totalFailure;
+        private $_tests = array();
+
 
         public function __construct() {
-            Test::$totalTests = 0;
-            Test::$totalSuccess = 0;
-            Test::$totalFailure = 0;
-
-            if (!empty(self::$errMessage)) {
-                self::$testErrors[] = "Test Error";
-            }
 
         }
 
         public function __destruct() {
-
+            
         }
 
-        public function failIf($testName, $condition, $error = "") {
-
-            self::$testName[] = $testName;
-
-            if ($condition == FALSE) {
-                self::$testResult[] = "FAILED";
-            }
-            else {
-                self::$testResult[] = "PASSED";
-            }
-
-            if ((self::$errMessage != "") && ($condition == FALSE)) {
-                self::$errMessage[] = $error;
-            }
-            else {
-                self::$errMessage[] = "";
-            }
-
+        public function addTest(Test $test) {
+            $this->_tests[] = $test;
+            
         }
 
-        public function failUnless($testName, $condition, $error = "") {
-
-            self::$testName[] = $testName;
-
-            if ($condition == TRUE) {
-                self::$testResult[] = "PASSED";
-            }
-            else {
-                self::$testResult[] = "FAILED";
-            }
-
-            if ((self::$errMessage != "") && ($condition == FALSE)) {
-                self::$errMessage[] = $error;
-            }
-            else {
-                self::$errMessage[] = "";
-            }
-
+        public function removeTest(Test $test) {
+            
         }
 
-        public function assertTrue($value, $error = "") {
-            if ($value == TRUE) {
-                return TRUE;
-            }
-            else {
-                return FALSE;
-            }
-
-        }
-
-        public function assertFalse($value, $error = "") {
-            if ($value == FALSE) {
-                return TRUE;
-            }
-            else {
-                return FALSE;
-            }
-
-        }
-
-        public function assertEquals($value1, $value2, $error = "") {
-            if ($value1 == $value2) {
-                return TRUE;
-            }
-            else {
-                return FALSE;
-            }
-
-        }
-
-        public static function printResults() {
+        public function printResults() {
             $i = 0; // local counter variable
 
 
@@ -185,7 +112,6 @@
            </table>';
 
         }
-
     }
 
 ?>

@@ -133,6 +133,7 @@
                     // logout test
                     logoutUserTest();
 
+                    userIDRemainsInSessionTest();
                     // run method exists tests
                     //methodsExist();
                     // User class tests

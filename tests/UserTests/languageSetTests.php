@@ -31,7 +31,7 @@
 
         $result = $user->getUserLanguage();
 
-        $test->failUnless("TEST - Is Language Set",
+        $test->failUnless("TEST - Language is Set",
                 ($result == 'en') || ($result == 'es'));
         
     }

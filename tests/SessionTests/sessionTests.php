@@ -1,5 +1,6 @@
 <?php
-/**
+
+    /**
      * sessionTests.php
      *
      * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
@@ -20,14 +21,13 @@
      * along with LaMantengo.  If not, see <http://www.gnu.org/licenses/>.
      *
      */
-
     require_once("../includes/initialise.php");
 
     // test to ensure that session is created when
     // user enters site
     function isSessionCreatedTest() {
         global $session;
-        
+
         $test = new Test();
 
         $session_id = $session->getSessionId();
@@ -46,20 +46,45 @@
         $test = new Test();
 
         $query = "SELECT sid FROM sessions
-                  WHERE sid = '".$session->getSessionId() ."';";
+                  WHERE sid = '" . $session->getSessionId() . "';";
         //echo "SESSION ID: ".$session->getSessionId();
         $result = $database->query($query);
 
         $test->failUnless("TEST - Is Session Added to Database",
                 $database->numRows($result) == 1,
                 "Error: Session not added to database.");
+
     }
 
     // test to ensure session is updated with
     // user ID when user logs in
     function isSessionUpdatedOnLoginTest() {
+        global $database;
 
     }
-    
+
+    // test to ensure user ID remains in session when session
+    // is destroyed
+    function userIDRemainsInSessionTest() {
+        global $database;
+        global $user;
+        global $session;
+
+        $test = new Test();
+
+        $query = "SELECT uid
+                  FROM sessions
+                  WHERE sid = '" . $session->getSessionID() . "'
+                  LIMIT 1;";
+
+        echo "Session Query: " . $query;
+        $result = $database->query($query);
+        $data = $database->fetchArray($result);
+
+        $test->failUnless("TEST - Session Data Preserved",
+                $data['uid'] == $user->getUserID(),
+                "Error: Session Data Not Preserved");
+
+    }
 
 ?>

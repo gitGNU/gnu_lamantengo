@@ -314,7 +314,7 @@
                     $this->_language = $_SESSION['language'];
                 }
                 else {
-                    $this->_language = LAN;
+                    $this->_language = LANGUAGE;
                 }
             }
             else { // language has already been set for user
@@ -439,6 +439,9 @@
             unset($_SESSION['username']);
             unset($this->_UserID);
             $this->_userIsLoggedIn = false;
+
+            // destroy session
+            session_regenerate_id(true);
 
         }
 
@@ -627,7 +630,7 @@
 
             $query = "UPDATE users
                       SET realname = '$realname'
-		      WHERE uid = '".$this->_userID."';";
+		      WHERE uid = '" . $this->_userID . "';";
 
             $result = $database->query($query);
 

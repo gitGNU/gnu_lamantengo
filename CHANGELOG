@@ -34,6 +34,12 @@
     * Removed sid requirements from report.php
     * Renamed (id="contenido") with (id="contents") site wide
 
+    * Implemented session id regeneration on logout to fix session problem
+    * Edited mysql database - changed lastmod in sessions to
+      set timestamp on update
+    * Added UnitCheck class to tests/classes/ directory
+    * Added userIDRemainsInSessionTest - not yet in green
+
 2011-01-08 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Moved session updating to the User class because User object does
       not exist for updating purposes at the time of Session creation
